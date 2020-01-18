@@ -1,0 +1,48 @@
+<table mat-table #table class="full-width">
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> Title </th>
+    <td mat-cell *matCellDef="let questionItem" class="left">
+      {{questionItem.title}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="author">
+    <th mat-header-cell *matHeaderCellDef> Autor </th>
+    <td mat-cell *matCellDef="let questionItem" class="left">
+      {{questionItem.ownerName}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="dateCreated">
+    <th mat-header-cell *matHeaderCellDef> Created </th>
+    <td mat-cell *matCellDef="let questionItem" class="left">
+      {{questionItem.date}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="answersCount">
+    <th mat-header-cell *matHeaderCellDef> Answers </th>
+    <td mat-cell *matCellDef="let questionItem" class="left">
+      {{questionItem.answersCount}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td mat-cell *matCellDef="let questionItem">
+      <div class="actions">
+        <button mat-button mat-icon-button
+          color="primary" class="button-view"
+          [disabled]="busy"
+          (click)="onClickView(questionItem)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button mat-icon-button
+          color="warn" class="button-delete"
+          [disabled]="busy"
+          (click)="onClickDelete(questionItem)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+</table>

@@ -1,0 +1,28 @@
+<form class="form-group-person" [formGroup]="personFormGroup">
+
+  <mat-form-field class="form-control-name">
+    <input matInput placeholder="Full Name" formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field class="form-control-idnumber">
+    <input matInput placeholder="ID Number" formControlName="idNumber" />
+  </mat-form-field>
+
+  <mat-form-field class="form-control-address">
+    <input matInput placeholder="Address" formControlName="address" />
+  </mat-form-field>
+
+  <mat-form-field class="form-control-email">
+    <input matInput placeholder="E-mail" formControlName="email" />
+  </mat-form-field>
+
+  <mat-form-field class="form-control-phones">
+    <div class="phones-container">
+      <div *ngFor="let phone of phoneForms.controls; let i=index">
+        <input [formControl]="phone">
+        <button (click)="deletePhone(i)">Delete</button>
+      </div>
+    </div>
+    <button (click)="addPhone()">Add Phone Number</button>
+  </mat-form-field>
+</form>

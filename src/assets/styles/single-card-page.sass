@@ -1,0 +1,50 @@
+.page, mat-card-content
+  display: grid
+
+
+.page
+  background-color: #ddd
+  grid-auto-rows: 100vh
+  align-items: center
+  justify-items: center
+
+
+mat-card
+  background-color: #eee
+  width: 20rem
+  height: 20rem
+
+
+mat-card *
+  text-align: center
+
+
+mat-card-title
+  height: 25%
+  margin: 0
+  color: black
+  vertical-align: middle
+  font-size: 32pt
+
+
+mat-card-content
+  height: 75%
+  margin: 0
+  grid-template-columns: 1fr
+  grid-template-rows: 1fr 1fr
+
+
+mat-card-content > *
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+
+
+mat-card-content > * > a
+  width: 16rem
+  height: 4rem
+  font-size: 18pt
+  display: inline-flex
+  align-items: center
+  justify-content: center

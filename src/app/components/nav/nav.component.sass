@@ -1,0 +1,116 @@
+.container,
+.header,
+.header>*,
+mat-nav-list,
+.footer
+  display: flex
+
+
+.container
+  width: 100vw
+  height: 100vh
+  flex: 1 0 1em
+  flex-flow: column nowrap
+
+
+.header
+  flex: 0 0 5em
+  align-content: center
+  background: maroon
+  border-bottom: 1px #e0e0e06b solid
+
+
+.header>*
+  align-content: center
+
+
+.header-logo
+  width: 12em
+  background-color: darkred
+  padding: 0 1.5em 0 1em
+  justify-content: space-between
+  align-items: center
+
+
+.header-logo>img
+  height: 2.75em
+  width: 2.75em
+
+
+.header-logo>h1,
+.header-toggle-nav,
+.header-open-menu,
+mat-nav-list>a
+  color: white
+
+
+.header-content
+  display: inline-flex
+  font-size: 1.25rem
+  padding: 0.5em 1em
+  flex: 1 1 1em
+  flex-direction: column
+  align-items: center
+  justify-content: center
+
+
+.header-toggle-nav, .header-open-menu
+  width: 5em
+  min-width: 5em
+  height: 100%
+  padding: 0 0.75em 0.9em 0
+  flex: 0 0 1em
+  justify-items: center
+  justify-content: center
+  border-radius: 0
+
+
+.header-toggle-nav *, .header-open-menu *
+  font-size: 2.25rem
+  margin: 0
+
+
+mat-sidenav-container
+  flex: 1 0 25em
+
+
+mat-sidenav
+  width: 16em
+  background: maroon
+  border-right: none
+
+
+mat-nav-list
+  height: 100%
+  padding: 0
+  flex-flow: column nowrap
+
+mat-nav-list>a
+  font-size: 1.25rem
+
+mat-nav-list>a:hover,
+mat-nav-list>a.active
+  background: darkred
+
+mat-nav-list>a.active
+  border-top: 1px rgba(255, 255, 255, 0.1) solid
+  border-bottom: 1px rgba(255, 255, 255, 0.1) solid
+
+mat-nav-list>a mat-icon
+  font-size: 2.5rem
+  width: 1.5em
+  height: 1em
+
+
+.content
+  overflow-y: auto
+
+
+.footer
+  flex-flow: column nowrap
+  flex: 0 0 2em
+  background: #eee
+  border-top: 1px #e0e0e06b solid
+  align-items: center
+  justify-content: center
+

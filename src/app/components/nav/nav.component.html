@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="header">
+    <button mat-button
+      color="warn"
+      class="header-toggle-nav"
+      title="{{ toggleSideMenuLabel }}"
+      (click)="sidenavOpened = !sidenavOpened">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="header-logo">
+      <img src="assets/logo.png" alt="Forein">
+      <h1>Forein</h1>
+    </div>
+    <div class="header-content">
+      <span>{{ currentModuleNameLabel }}</span>
+    </div>
+    <ng-template *ngIf="username">
+      <mat-menu #headerMenu class="header-menu" xPosition="before">
+        <button mat-menu-item class="header-menu-edit-profile" title="{{ editProfileLabel }}" (click)="onClickEditProfile()">
+          <mat-icon>edit</mat-icon>
+          {{ editProfileLabel }}
+        </button>
+        <button mat-menu-item class="header-menu-exit-session" title="{{ disconnectLabel }}" (click)="onClickExitSession()">
+          <mat-icon>exit_to_app</mat-icon>
+          {{ disconnectLabel }}
+        </button>
+      </mat-menu>
+      <button mat-button class="header-open-menu" [matMenuTriggerFor]="headerMenu">
+        <span>{{ usernameLabel }}</span>
+        <mat-icon>person</mat-icon>
+      </button>
+    </ng-template>
+  </div>
+  <mat-sidenav-container>
+    <mat-sidenav [opened]="sidenavOpened" mode="side" role="navigation">
+      <mat-nav-list role="navigation-links">
+        <a mat-list-item *ngFor="let module of modules; let i = index"
+          (click)="onClickNavigationItem(i)"
+          [class.active]="module.enabled"
+          [routerLink]="[baseRoute, module.path]">
+          <mat-icon>{{ module.icon }}</mat-icon>
+          {{ module.text }}
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content role="main" class="content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <div class="footer">
+    <span>app-forein</span>
+    <span>Aplicación Angular 8 escrita por Benjamin '12g' La Madrid</span>
+  </div>
+</div>
