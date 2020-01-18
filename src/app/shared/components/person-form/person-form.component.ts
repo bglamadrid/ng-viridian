@@ -7,7 +7,7 @@ import { NO_REACTIVE_FORM_EVENTS } from 'src/app/app.module.constants';
   selector: 'app-person-form',
   templateUrl: './person-form.component.html',
   styleUrls: [
-    '../../../../assets//forms.sass',
+    '../../../../assets/styles/forms.sass',
     './person-form.component.sass'
   ]
 })
