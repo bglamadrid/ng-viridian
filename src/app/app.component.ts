@@ -3,7 +3,7 @@ import { NavComponent } from './components/nav/nav.component';
 
 @Component({
   selector: 'app-root',
-  template: '<app-nav #nav id="nav"></app-nav>',
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
