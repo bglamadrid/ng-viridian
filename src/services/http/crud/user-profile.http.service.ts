@@ -4,7 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { UserProfile } from 'src/models/entities/UserProfile';
 
 @Injectable({ providedIn: 'root' })
-export class UserHttpService extends CrudHttpService<UserProfile> {
+export class UserProfileHttpService
+  extends CrudHttpService<UserProfile> {
+
   protected entityURI = 'user';
   protected entitiesURI = 'users';
 

@@ -7,7 +7,9 @@ import { retry } from 'rxjs/operators';
 import { CrudHttpService } from './.crud.http.service';
 
 @Injectable({ providedIn: 'root' })
-export class PersonHttpService extends CrudHttpService<PersonProfile> {
+export class PersonProfileHttpService
+  extends CrudHttpService<PersonProfile> {
+
   protected entityURI = 'person';
   protected entitiesURI = 'people';
 

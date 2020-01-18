@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Computer } from 'src/models/entities/Computer';
+import { ComputerPart } from 'src/models/entities/ComputerPart';
 
 @Component({
   selector: 'app-device-catalog',
@@ -8,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class DeviceCatalogComponent
   implements OnInit {
 
-  constructor() { }
+  public devices: (Computer | ComputerPart)[];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

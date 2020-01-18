@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { PersonHttpService } from 'src/services/http/crud/person.crud.http.service';
+import { PersonProfileHttpService } from 'src/services/http/crud/person-profile.crud.http.service';
 import { SessionsHttpService } from 'src/services/http/sessions.http.service';
 import { ConfirmationDialogComponent, ConfirmationDialogData } from 'src/app/shared/dialogs/confirmation/confirmation.dialog.component';
 import { NAV_ITEMS } from './nav.items';
@@ -28,7 +28,7 @@ export class NavComponent implements OnInit, OnDestroy {
   public sidenavOpened = true;
 
   constructor(
-    protected profilesHttpSvc: PersonHttpService,
+    protected profilesHttpSvc: PersonProfileHttpService,
     protected sessionsHttpSvc: SessionsHttpService,
     protected router: Router,
     protected snackBar: MatSnackBar,

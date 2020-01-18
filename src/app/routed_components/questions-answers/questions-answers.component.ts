@@ -14,7 +14,8 @@ export class QuestionsAnswersComponent
 
   @ViewChild('grid', { static: false }) public grid: QuestionsGridComponent;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

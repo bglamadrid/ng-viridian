@@ -1,9 +1,45 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "name": "Elias58"
+    },
+    {
+      "id": 2,
+      "name": "El420MeMantienePoderoso"
+    },
+    {
+      "id": 3,
+      "name": "SalonAniki"
+    }
+  ],
+  "computers": [
+    {
+      "id": 1,
+      "name": "Lenovo IdeaPad L340 (81LK0009CL)",
+      "urls": [],
+      "owner": {
+        "id": 1,
+        "name": "Elias58"
+      },
+      "parts": []
+    },
+    {
+      "id": 2,
+      "name": "ASUS Zenbook Pro 15 UX581GV-H2001T",
+      "urls": [],
+      "owner": {
+        "id": 3,
+        "name": "SalonAniki"
+      },
+      "parts": []
+    }
+  ],
   "questions": [
     {
       "date": "2020-01-16T19:33",
       "owner": {
-        "id": 2,
+        "id": 1,
         "name": "Elias58"
       },
       "title": "¿Cómo reemplazar mi procesador?",
@@ -11,13 +47,13 @@
       "answers": [
         {
           "owner": {
-            "id": 1,
+            "id": 2,
             "name": "El420MeMantienePoderoso"
           },
           "date": "2020-01-18T08:34",
           "content": "Puedes averiguar las interfaces de procesador soportadas por tu placa madre (como los LGA1555), y buscar procesadores que implementen esa interfaz (como algunos Intel Core para la ya mencionada).",
-          "votes": 2,
-          "accepted": false
+          "votes": 1,
+          "accepted": true
         }
       ]
     }

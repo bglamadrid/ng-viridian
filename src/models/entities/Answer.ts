@@ -1,13 +1,12 @@
 import { AbstractEntity } from '../AbstractEntity';
-import { Ownable } from '../Ownable';
 import { UserProfile } from './UserProfile';
-import { PersonProfile } from './PersonProfile';
-import { TimeRestricted } from '../TimeRestricted';
+import { TimeBound } from '../TimeBound';
 
 export class Answer
   extends AbstractEntity
-  implements Ownable, TimeRestricted {
-  owner: Partial<UserProfile>;
+  implements TimeBound {
+
+  author: Partial<UserProfile>;
   date: Date;
   public content: string;
   public votes: number;

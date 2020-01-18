@@ -5,7 +5,9 @@ import { retry } from 'rxjs/operators';
 import { BaseHttpService } from '../.http.service';
 
 @Injectable({ providedIn: 'root' })
-export abstract class CrudHttpService<T> extends BaseHttpService {
+export abstract class CrudHttpService<T>
+  extends BaseHttpService {
+
   /** URI for the singular entity over whose/which these CRUD methods would act upon */
   protected entityURI: string;
   /** URI for the many entities over whose/which these CRUD methods would act upon */

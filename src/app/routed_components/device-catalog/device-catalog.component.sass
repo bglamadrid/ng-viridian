@@ -1,0 +1,37 @@
+section
+  display: flex
+  flex-direction: column
+  height: 100%
+  align-content: stretch
+
+h2
+  margin: 1em
+
+app-filtros-productos,
+.catalogo
+  padding: 1em
+
+app-filtros-productos
+  flex-grow: 0
+  flex-shrink: 1
+
+.catalogo
+  background: #eee
+  flex-grow: 1
+  flex-shrink: 1
+  display: grid
+  grid-gap: 1em
+  grid-template-columns: repeat(auto-fit, 30em)
+  grid-auto-rows: 12em
+  justify-content: center
+  overflow-x: hidden
+  overflow-y: auto
+
+.catalogo mat-card-header
+  height: 6em
+
+.catalogo mat-card-actions
+  text-align: right
+
+.catalogo mat-card-actions>button
+  margin-left: 1em

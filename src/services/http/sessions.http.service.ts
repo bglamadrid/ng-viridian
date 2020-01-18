@@ -5,7 +5,8 @@ import { Session } from 'src/models/entities/Session';
 import { BaseHttpService } from './.http.service';
 
 @Injectable({ providedIn: 'root' })
-export class SessionsHttpService extends BaseHttpService {
+export class SessionsHttpService
+  extends BaseHttpService {
 
   protected baseURI = this.baseURI + '/sessions';
 

@@ -51,18 +51,25 @@ export class PersonFormComponent {
   }
 
   @Input() public set person(input: PersonProfile) {
+    if (!!!input) {
+      console.log('falsy \'input\' param at \'PersonFormComponent@set person function\'');
+    } else {
+      if (input.id && typeof input.id === 'number') {
+        this.personId = input.id as number;
+      }
 
-    this.name.setValue(input.fullName, NO_REACTIVE_FORM_EVENTS);
-    this.idNumber.setValue(input.idNumber, NO_REACTIVE_FORM_EVENTS);
+      this.name.setValue(input.fullName, NO_REACTIVE_FORM_EVENTS);
+      this.idNumber.setValue(input.idNumber, NO_REACTIVE_FORM_EVENTS);
 
-    if (input.address) {
-      this.address.setValue(input.address, NO_REACTIVE_FORM_EVENTS);
-    }
-    if (input.email) {
-      this.email.setValue(input.email, NO_REACTIVE_FORM_EVENTS);
-    }
-    if (input.phones) {
-      this.phones.setValue(input.phones, NO_REACTIVE_FORM_EVENTS);
+      if (input.address) {
+        this.address.setValue(input.address, NO_REACTIVE_FORM_EVENTS);
+      }
+      if (input.email) {
+        this.email.setValue(input.email, NO_REACTIVE_FORM_EVENTS);
+      }
+      if (input.phones) {
+        this.phones.setValue(input.phones, NO_REACTIVE_FORM_EVENTS);
+      }
     }
   }
 

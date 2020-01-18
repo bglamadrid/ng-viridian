@@ -10,6 +10,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { QuestionsAnswersComponent } from './routed_components/questions-answers/questions-answers.component';
 import { DeviceCatalogComponent } from './routed_components/device-catalog/device-catalog.component';
 import { QuestionsGridComponent } from './routed_components/questions-answers/questions-grid/questions-grid.component';
+import { DeviceCardComponent } from './routed_components/device-catalog/device-card/device-card.component';
+import { DeviceFiltersCardComponent } from './routed_components/device-catalog/device-filters-card/device-filters-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { QuestionsGridComponent } from './routed_components/questions-answers/qu
     NavComponent,
     QuestionsAnswersComponent,
     DeviceCatalogComponent,
-    QuestionsGridComponent
+    QuestionsGridComponent,
+    DeviceCardComponent,
+    DeviceFiltersCardComponent
   ],
   imports: [
     BrowserModule,

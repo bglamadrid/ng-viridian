@@ -3,6 +3,7 @@ import { Descriptable } from '../Descriptable';
 
 export class PersonProfile
   extends AbstractEntity {
+
   public fullName: string;
   public idNumber: string;
   public address: string;
