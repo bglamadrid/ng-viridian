@@ -4,7 +4,7 @@ import { finalize } from 'rxjs/operators';
 import { PersonFormComponent } from 'src/app/shared/components/person-form/person-form.component';
 import { MSG_ERR_SRV_COMMUNICATION, MSG_WRN_INCOMPLETE_FORM } from 'src/assets/standard_messages';
 import { PersonProfile } from 'src/models/entities/PersonProfile';
-import { PersonProfileHttpService } from 'src/services/http/crud/person-profile.crud.http.service';
+import { PersonProfileCrudHttpService } from 'src/services/http/crud/person-profile.crud.http.service';
 
 export interface DatosUsuarioDialogData {
   person: PersonProfile;
@@ -25,7 +25,7 @@ export class UserProfileDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: DatosUsuarioDialogData,
     protected dialogRef: MatDialogRef<UserProfileDialogComponent>,
     protected snackBar: MatSnackBar,
-    protected profileHttpSvc: PersonProfileHttpService
+    protected profileHttpSvc: PersonProfileCrudHttpService
   ) {
     this.saving = false;
   }

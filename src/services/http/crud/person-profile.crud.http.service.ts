@@ -7,7 +7,7 @@ import { retry } from 'rxjs/operators';
 import { CrudHttpService } from './.crud.http.service';
 
 @Injectable({ providedIn: 'root' })
-export class PersonProfileHttpService
+export class PersonProfileCrudHttpService
   extends CrudHttpService<PersonProfile> {
 
   protected entityURI = 'person';
@@ -16,7 +16,7 @@ export class PersonProfileHttpService
   constructor(
     protected http: HttpClient
   ) {
-    super(http);
+    super();
   }
 
   public queryPersonFromSession(ssn: Session): Observable<PersonProfile> {

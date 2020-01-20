@@ -1,11 +1,20 @@
-import { HttpParams } from '@angular/common/http';
+import { HttpParams, HttpClient } from '@angular/common/http';
 
-export abstract class BaseHttpService {
+/**
+ * Service that communicates with a backend service through a HTTP client.
+ */
+export abstract class HttpService {
 
   // protected webServiceProviderHostName: string = "localhost";
   // protected webServiceProviderHostPort: number = 8082;
   // protected baseURI: string = "http://"+this.webServiceProviderHostName+":"+String(this.webServiceProviderHostPort)+"/api";
-  protected baseURI = '/api';
+
+  /**
+   * The very
+   */
+  protected get baseURI(): string { return '/api'; }
+
+  protected abstract http: HttpClient;
 
   /**
    * Syntactic sugar: create a wrapper object with HttpParams.
@@ -16,5 +25,4 @@ export abstract class BaseHttpService {
       params: new HttpParams({ fromObject: object })
     };
   }
-
 }

@@ -1,29 +1,24 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { retry } from 'rxjs/operators';
-import { BaseHttpService } from '../.http.service';
+import { HttpService } from '../.http.service';
+import { AbstractEntity } from 'src/models/AbstractEntity';
 
-@Injectable({ providedIn: 'root' })
-export abstract class CrudHttpService<T>
-  extends BaseHttpService {
+/**
+ * Transactional service that Creates/Reads/Updates/Deletes entities.
+ * This is a verbose abstraction which main features are:
+ * * Uses the HTTP methods that are standard for each CRUD operation.
+ * * Only requires an URI name for both plural and singular methods to enable them.
+ */
+export abstract class CrudHttpService<T extends AbstractEntity>
+  extends HttpService {
 
-  /** URI for the singular entity over whose/which these CRUD methods would act upon */
-  protected entityURI: string;
-  /** URI for the many entities over whose/which these CRUD methods would act upon */
-  protected entitiesURI: string;
-
-  constructor(
-    protected http: HttpClient
-  ) {
-    super();
-  }
+  /** Adverb for the singular entity over whose/which the CRUD methods would act upon e.g. 'person' */
+  protected abstract entityURI: string;
+  /** Adverb for the plural entities over whose/which the CRUD methods would act upon e.g. 'people' */
+  protected abstract entitiesURI: string;
 
   public loadById(id: number): Observable<T[]> {
     return this.http.get<T[]>(
       `${this.baseURI}/${this.entityURI}/${id}`
-    ).pipe(
-      retry(2)
     );
   }
 
@@ -35,7 +30,7 @@ export abstract class CrudHttpService<T>
 
   public create(emp: T): Observable<T> {
     return this.http.post<T>(
-      this.baseURI,
+      `${this.baseURI}/${this.entityURI}`,
       emp
     );
   }

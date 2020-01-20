@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserProfile } from 'src/models/entities/UserProfile';
 
 @Injectable({ providedIn: 'root' })
-export class UserProfileHttpService
+export class UserProfileCrudHttpService
   extends CrudHttpService<UserProfile> {
 
   protected entityURI = 'user';
@@ -13,6 +13,6 @@ export class UserProfileHttpService
   constructor(
     protected http: HttpClient
   ) {
-    super(http);
+    super();
   }
 }
