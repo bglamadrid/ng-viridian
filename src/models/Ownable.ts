@@ -7,9 +7,8 @@ import { Documentable } from './Documentable';
  * Can be branded as well.
  */
 export interface Ownable
-  extends Documentable {
+  extends Descriptable {
 
   owner: Partial<UserProfile>;
   owners?: Partial<UserProfile>[];
-  brand?: Descriptable;
 }

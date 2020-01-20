@@ -1,11 +1,13 @@
 import { AbstractEntity } from '../AbstractEntity';
 import { Descriptable } from '../Descriptable';
 import { Documentable } from '../Documentable';
+import { Brandable } from '../Brandable';
 
 export class ComputerPart
   extends AbstractEntity
-  implements Documentable {
+  implements Brandable, Documentable {
 
+  brand: Descriptable;
   public name: string;
   public description?: string;
   public urls: string[];
