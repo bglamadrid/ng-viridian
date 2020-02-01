@@ -16,8 +16,8 @@ export abstract class CrudHttpService<T extends AbstractEntity>
   /** Adverb for the plural entities over whose/which the CRUD methods would act upon e.g. 'people' */
   protected abstract entitiesURI: string;
 
-  public loadById(id: number): Observable<T[]> {
-    return this.http.get<T[]>(
+  public loadById(id: number): Observable<T> {
+    return this.http.get<T>(
       `${this.apiURL}/${this.entityURI}/${id}`
     );
   }
