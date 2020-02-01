@@ -1,10 +1,10 @@
-<div>
+<div class="page">
   <h2>Catálogo de Dispositivos</h2>
   <app-device-filters-card (filters)="onFilter($event)">
   </app-device-filters-card>
 
   <mat-spinner-centered *ngIf="loading"></mat-spinner-centered>
   <div class="catalog" [hidden]="loading">
-    <app-device-card *ngFor="let device of devices; let i = index" [device]="device"></app-device-card>
+    <app-device-card *ngFor="let device of (devices$ | async); let i = index" [device]="device"></app-device-card>
   </div>
 </div>

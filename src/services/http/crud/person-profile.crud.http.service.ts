@@ -21,7 +21,7 @@ export class PersonProfileCrudHttpService
 
   public queryPersonFromSession(ssn: Session): Observable<PersonProfile> {
     return this.http.get<PersonProfile>(
-      this.baseURI,
+      this.apiURL,
       this.httpParamsOf({
         session: ssn.uniqueHash
       })

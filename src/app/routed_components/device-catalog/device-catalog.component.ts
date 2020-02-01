@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Computer } from 'src/models/entities/Computer';
-import { ComputerPart } from 'src/models/entities/ComputerPart';
+import { DeviceCatalogService } from './device-catalog.service';
+import { Observable, Subscription } from 'rxjs';
+import { Marketable } from 'src/models/Brandable';
 
 @Component({
   selector: 'app-device-catalog',
@@ -10,12 +11,22 @@ import { ComputerPart } from 'src/models/entities/ComputerPart';
 export class DeviceCatalogComponent
   implements OnInit {
 
-  public devices: (Computer | ComputerPart)[];
+  protected devices$: Observable<Marketable[]>;
+  protected load: Subscription;
 
-  constructor() {
+  public get loading(): boolean {
+    return (this.load) ? this.load.closed : false;
+  }
+
+  constructor(
+    protected svc: DeviceCatalogService
+  ) {
   }
 
   ngOnInit() {
+    this.devices$ = this.svc.devicesSource.asObservable();
+    this.load = this.devices$.subscribe();
+    this.svc.reloadDevices();
   }
 
 }

@@ -1,38 +1,7 @@
 <div class="container">
-  <div class="header">
-    <button mat-button
-      color="warn"
-      class="header-toggle-nav"
-      title="{{ toggleSideMenuLabel }}"
-      (click)="sidenavOpened = !sidenavOpened">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <div class="header-logo">
-      <img src="assets/logo.png" alt="Forein">
-      <h1>Forein</h1>
-    </div>
-    <div class="header-content">
-      <span>{{ currentModuleNameLabel }}</span>
-    </div>
-    <ng-template *ngIf="username">
-      <mat-menu #headerMenu class="header-menu" xPosition="before">
-        <button mat-menu-item class="header-menu-edit-profile" title="{{ editProfileLabel }}" (click)="onClickEditProfile()">
-          <mat-icon>edit</mat-icon>
-          {{ editProfileLabel }}
-        </button>
-        <button mat-menu-item class="header-menu-exit-session" title="{{ disconnectLabel }}" (click)="onClickExitSession()">
-          <mat-icon>exit_to_app</mat-icon>
-          {{ disconnectLabel }}
-        </button>
-      </mat-menu>
-      <button mat-button class="header-open-menu" [matMenuTriggerFor]="headerMenu">
-        <span>{{ usernameLabel }}</span>
-        <mat-icon>person</mat-icon>
-      </button>
-    </ng-template>
-  </div>
+  <app-nav-header></app-nav-header>
   <mat-sidenav-container>
-    <mat-sidenav [opened]="sidenavOpened" mode="side" role="navigation">
+    <mat-sidenav [opened]="sidenavOpen" mode="side" role="navigation">
       <mat-nav-list role="navigation-links">
         <a mat-list-item *ngFor="let module of modules; let i = index"
           (click)="onClickNavigationItem(i)"

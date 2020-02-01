@@ -5,14 +5,14 @@ import { HttpParams, HttpClient } from '@angular/common/http';
  */
 export abstract class HttpService {
 
-  // protected webServiceProviderHostName: string = "localhost";
-  // protected webServiceProviderHostPort: number = 8082;
-  // protected baseURI: string = "http://"+this.webServiceProviderHostName+":"+String(this.webServiceProviderHostPort)+"/api";
+  protected readonly webSvcHostName = 'localhost';
+  protected readonly webSvcHostPort = 8082;
+  protected readonly webSvcBaseURI = `api`;
 
   /**
-   * The very
+   * The base URI for all API service consumption
    */
-  protected get baseURI(): string { return '/api'; }
+  protected readonly apiURL = `http://${this.webSvcHostName}:${this.webSvcHostPort}/${this.webSvcBaseURI}`;
 
   protected abstract http: HttpClient;
 

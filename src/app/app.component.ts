@@ -7,7 +7,9 @@ import { NavComponent } from './components/nav/nav.component';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'app-forein';
 
-  @ViewChild('nav', { static: true }) public nav: NavComponent;
+  public title = 'app-forein';
+
+  @ViewChild('nav', { static: true })
+    public nav: NavComponent;
 }

@@ -18,33 +18,33 @@ export abstract class CrudHttpService<T extends AbstractEntity>
 
   public loadById(id: number): Observable<T[]> {
     return this.http.get<T[]>(
-      `${this.baseURI}/${this.entityURI}/${id}`
+      `${this.apiURL}/${this.entityURI}/${id}`
     );
   }
 
   public loadAll(): Observable<T[]> {
     return this.http.get<T[]>(
-      `${this.baseURI}/${this.entitiesURI}`
+      `${this.apiURL}/${this.entitiesURI}`
     );
   }
 
   public create(emp: T): Observable<T> {
     return this.http.post<T>(
-      `${this.baseURI}/${this.entityURI}`,
+      `${this.apiURL}/${this.entityURI}`,
       emp
     );
   }
 
   public update(emp: T, id: number): Observable<T> {
     return this.http.put<T>(
-      `${this.baseURI}/${this.entityURI}/${id}`,
+      `${this.apiURL}/${this.entityURI}/${id}`,
       emp
     );
   }
 
   public deleteById(id: number): Observable<boolean> {
     return this.http.delete<boolean>(
-      `${this.baseURI}/${this.entityURI}/${id}`,
+      `${this.apiURL}/${this.entityURI}/${id}`,
     );
   }
 }

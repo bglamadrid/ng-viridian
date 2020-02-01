@@ -5,21 +5,21 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { OnInit } from '@angular/core';
 import { finalize, catchError } from 'rxjs/operators';
 import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/assets/standard_messages';
+import { AbstractEntity } from 'src/models/AbstractEntity';
+import { LBL_ITEM_NOT_LOADED } from 'src/assets/standard_labels';
 
-export abstract class DataManagerTemplateComponent<T>
+export abstract class DataManagerTemplateComponent<T extends AbstractEntity>
   implements OnInit {
 
+  public loading: boolean;
+  public busyScreen: boolean;
+  public items$: Observable<T[]>;
+  public dataGrid: DataGridTemplateComponent<T>;
   protected itemsSource: Subject<T[]>;
 
   protected httpService: CrudHttpService<T>;
   protected dialog: MatDialog;
   protected snackBar: MatSnackBar;
-
-  public loading: boolean;
-  public busyScreen: boolean;
-  public items$: Observable<T[]>;
-
-  public dataGrid: DataGridTemplateComponent<T>;
 
   constructor() {
     this.loading = false;
@@ -30,16 +30,11 @@ export abstract class DataManagerTemplateComponent<T>
   }
 
   ngOnInit() {
-    this.tryLoadingItems();
+    this.tryLoadItems();
   }
 
-  public loadItems(): Observable<T[]> {
-    throw Error(MSG_INF_UNSUPPORTED_OPERATION);
-  }
-
-  public openItemDetailsDialog(item: T): Observable<T> {
-    throw Error(MSG_INF_UNSUPPORTED_OPERATION);
-  }
+  protected abstract openItemDetailsDialog(item: T): Observable<T>;
+  protected abstract loadItems(): Observable<T[]>;
 
   protected onItemsLoaded(items: T[]): void {
     this.itemsSource.next(items);
@@ -55,7 +50,7 @@ export abstract class DataManagerTemplateComponent<T>
     return this.openItemDetailsDialog(item);
   }
 
-  public tryLoadingItems(): void {
+  public tryLoadItems(): void {
     if (!this.loading) {
       this.loading = true;
       this.loadItems().pipe(
@@ -68,13 +63,13 @@ export abstract class DataManagerTemplateComponent<T>
   public onClickEdit(item: T): void {
     this.promptEdit(item).pipe(
       catchError(err => {
-        this.snackBar.open('Item couldn\'t be loaded.');
+        this.snackBar.open(LBL_ITEM_NOT_LOADED);
         return null;
       }),
       finalize(() => { this.onItemSent(); })
     ).subscribe(
       (editedItem: T) => {
-        if (editedItem) { this.tryLoadingItems(); }
+        if (editedItem) { this.tryLoadItems(); }
       },
       err => {
         console.log(err);
@@ -87,7 +82,7 @@ export abstract class DataManagerTemplateComponent<T>
       finalize(() => { this.onItemSent(); })
     ).subscribe(
       (newItem: T) => {
-        if (newItem) { this.tryLoadingItems(); }
+        if (newItem) { this.tryLoadItems(); }
       },
       err => {
         console.log(err);

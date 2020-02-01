@@ -12,6 +12,7 @@ import { DeviceCatalogComponent } from './routed_components/device-catalog/devic
 import { QuestionsGridComponent } from './routed_components/questions-answers/questions-grid/questions-grid.component';
 import { DeviceCardComponent } from './routed_components/device-catalog/device-card/device-card.component';
 import { DeviceFiltersCardComponent } from './routed_components/device-catalog/device-filters-card/device-filters-card.component';
+import { NavHeaderComponent } from './components/nav/header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DeviceFiltersCardComponent } from './routed_components/device-catalog/d
     DeviceCatalogComponent,
     QuestionsGridComponent,
     DeviceCardComponent,
-    DeviceFiltersCardComponent
+    DeviceFiltersCardComponent,
+    NavHeaderComponent
   ],
   imports: [
     BrowserModule,

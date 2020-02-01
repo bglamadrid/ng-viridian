@@ -1,14 +1,19 @@
 import { NavItem } from './NavItem';
 
 export const NAV_ITEMS: { [key: string]: NavItem } = {
-  dashboard: {
-    path: 'home',
+  inicio: {
+    path: 'inicio',
     text: 'Inicio',
     icon: 'home'
   },
-  users: {
-    path: 'questions',
-    text: 'Preguntas',
+  foro: {
+    path: 'foro',
+    text: 'Preguntas y Respuestas',
     icon: 'question_answer'
+  },
+  equipos: {
+    path: 'equipos',
+    text: 'Equipos',
+    icon: 'devices'
   }
 };

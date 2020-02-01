@@ -8,7 +8,7 @@ import { HttpService } from './.http.service';
 export class SessionsHttpService
   extends HttpService {
 
-  private svcURI = `${this.baseURI}/sessions`;
+  private svcURI = `${this.apiURL}/sessions`;
 
   constructor(
     protected http: HttpClient
