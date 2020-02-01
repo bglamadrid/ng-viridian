@@ -1,37 +1,35 @@
+app-device-filters-card,
+.catalog
+  background: #eee
+
 .page
   display: flex
   flex-direction: column
   height: 100%
   align-content: stretch
 
-h2
-  margin: 1em
-
-app-filtros-productos,
+app-device-filters-card,
 .catalog
-  padding: 1em
+  padding: 0.75em
 
-app-filtros-productos
+app-device-filters-card
   flex-grow: 0
   flex-shrink: 1
 
 .catalog
-  background: #ccc
   flex-grow: 1
   flex-shrink: 1
   display: grid
   grid-gap: 1em
   grid-template-columns: repeat(auto-fit, 24em)
-  grid-auto-rows: 12em
+  grid-auto-rows: 20em
   justify-content: center
   overflow-x: hidden
   overflow-y: auto
 
-.catalog mat-card-header
-  height: 6em
-
-.catalog mat-card-actions
-  text-align: right
-
-.catalog mat-card-actions>button
-  margin-left: 1em
+.catalog-summary
+  height: 1.5em
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  padding: 0 3em

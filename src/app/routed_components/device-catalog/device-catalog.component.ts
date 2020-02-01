@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceCatalogService } from './device-catalog.service';
 import { Observable, Subscription } from 'rxjs';
-import { Marketable } from 'src/models/Brandable';
+import { Device } from 'src/models/Device';
 
 @Component({
   selector: 'app-device-catalog',
@@ -11,8 +11,10 @@ import { Marketable } from 'src/models/Brandable';
 export class DeviceCatalogComponent
   implements OnInit {
 
-  protected devices$: Observable<Marketable[]>;
+  protected devices$: Observable<Device[]>;
   protected load: Subscription;
+
+  public totalItemNumber: number;
 
   public get loading(): boolean {
     return (this.load) ? this.load.closed : false;
@@ -21,6 +23,7 @@ export class DeviceCatalogComponent
   constructor(
     protected svc: DeviceCatalogService
   ) {
+    this.totalItemNumber = 2;
   }
 
   ngOnInit() {

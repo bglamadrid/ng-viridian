@@ -38,6 +38,18 @@
       ]
     }
   ],
+  "device_brands": [
+    { "id": 1, "name": "Lenovo" },
+    { "id": 2, "name": "ASUS" }
+  ],
+  "device_types": [
+    { "id": 1, "name": "Computadores" },
+    { "id": 2, "name": "Notebooks" },
+    { "id": 3, "name": "Monitores" },
+    { "id": 4, "name": "Piezas" },
+    { "id": 5, "name": "Periféricos" },
+    { "id": 6, "name": "Accesorios" }
+  ],
   "questions": [
     {
       "date": "2020-01-16T19:33",

@@ -2,20 +2,24 @@ import { ComputerPart } from './ComputerPart';
 import { Ownable } from '../Ownable';
 import { AbstractEntity } from '../AbstractEntity';
 import { UserProfile } from './UserProfile';
-import { Marketable } from '../Brandable';
-import { Descriptable } from '../Descriptable';
 import { Image } from '../Image';
+import { Device } from '../Device';
+import { Descriptable } from '../Descriptable';
 
 export class Computer
   extends AbstractEntity
-  implements Marketable, Ownable {
+  implements Ownable, Device {
 
-  owner: Partial<UserProfile>;
+  name: string;
+  description: string;
   brand: Descriptable;
+  owner: Partial<UserProfile>;
   images: Image[];
-  description?: string;
-  public name: string;
-  public urls: string[];
+  urls: string[];
+  owners?: Partial<UserProfile>[];
+  deviceType: Descriptable;
+  specifications: { [key: string]: string; };
+
   public parts: ComputerPart[];
   public lastCheckDate?: Date;
 }

@@ -6,5 +6,4 @@ export interface Marketable
   extends Documentable {
 
   brand: Descriptable;
-  images: Image[];
 }

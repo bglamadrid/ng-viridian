@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Computer } from 'src/models/entities/Computer';
-import { ComputerPart } from 'src/models/entities/ComputerPart';
+import { Device } from 'src/models/Device';
 
 @Component({
   selector: 'app-device-card',
@@ -10,7 +9,7 @@ import { ComputerPart } from 'src/models/entities/ComputerPart';
 export class DeviceCardComponent
   implements OnInit {
 
-  @Input() public device: (Computer | ComputerPart);
+  @Input() public device: Device;
 
   constructor() { }
 

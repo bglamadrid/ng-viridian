@@ -1,1 +1,32 @@
-<p>device-filters-card works!</p>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Filtrar Dispositivos
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <form class="container" [formGroup]="filterForm">
+    <div class="filter-form">
+      <mat-form-field class="form-control-name">
+        <input matInput placeholder="Nombre" formControlName="name" />
+      </mat-form-field>
+    </div>
+    <div class="filter-form">
+      <mat-form-field class="form-control-brand">
+        <mat-select matInput placeholder="Marca" formControlName="brand">
+          <mat-option *ngFor="let b of (brands$ | async)" [value]="b.id">
+            {{ b.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="filter-form">
+      <mat-form-field class="form-control-type">
+        <mat-select matInput placeholder="Tipo" formControlName="type">
+          <mat-option *ngFor="let t of (types$ | async)" [value]="t.id">
+            {{ t.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-expansion-panel>
