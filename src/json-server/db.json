@@ -19,7 +19,6 @@
       "name": "Lenovo IdeaPad L340 (81LK0009CL)",
       "description": "Manteniendo la frescura y el poder de la serie IdeaPad",
       "urls": [],
-      "owner": { "id": 1, "name": "Elias58" },
       "parts": [],
       "brand": { "id": 1, "name": "Lenovo" },
       "images": [
@@ -30,7 +29,6 @@
       "id": 2,
       "name": "ASUS Zenbook Pro 15 UX581GV-H2001T",
       "urls": [],
-      "owner": { "id": 3, "name": "SalonAniki" },
       "parts": [],
       "brand": { "id": 2, "name": "ASUS" },
       "images": [
@@ -52,12 +50,14 @@
   ],
   "questions": [
     {
+      "id": null,
       "date": "2020-01-16T19:33",
       "owner": { "id": 1, "name": "Elias58" },
       "title": "¿Cómo reemplazar mi procesador?",
       "content": "Poseo una placa madre algo antigua, usa un procesador Intel Pentium IV. Quisiera saber, ¿qué necesito para reemplazarlo por un procesador más moderno?",
       "answers": [
         {
+          "id": null,
           "owner": { "id": 2, "name": "El420MeMantienePoderoso" },
           "date": "2020-01-18T08:34",
           "content": "Puedes averiguar las interfaces de procesador soportadas por tu placa madre (como los LGA1555), y buscar procesadores que implementen esa interfaz (como algunos Intel Core para la ya mencionada).",
