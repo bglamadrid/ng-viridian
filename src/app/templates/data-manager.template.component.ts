@@ -4,9 +4,9 @@ import { CrudHttpService } from 'src/services/http/crud/.crud.http.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { OnInit } from '@angular/core';
 import { finalize, catchError } from 'rxjs/operators';
-import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/assets/standard_messages';
+import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/app/shared/i18/es/messages';
 import { AbstractEntity } from 'src/models/AbstractEntity';
-import { LBL_ITEM_NOT_LOADED } from 'src/assets/standard_labels';
+import { LBL_ITEM_NOT_LOADED } from 'src/app/shared/i18/es/labels';
 
 export abstract class DataManagerTemplateComponent<T extends AbstractEntity>
   implements OnInit {

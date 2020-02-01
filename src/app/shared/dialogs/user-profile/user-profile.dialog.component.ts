@@ -2,7 +2,7 @@ import { Component, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { finalize } from 'rxjs/operators';
 import { PersonFormComponent } from 'src/app/shared/components/person-form/person-form.component';
-import { MSG_ERR_SRV_COMMUNICATION, MSG_WRN_INCOMPLETE_FORM } from 'src/assets/standard_messages';
+import { MSG_ERR_SRV_COMMUNICATION, MSG_WRN_INCOMPLETE_FORM } from 'src/app/shared/i18/es/messages';
 import { PersonProfile } from 'src/models/entities/PersonProfile';
 import { PersonProfileCrudHttpService } from 'src/services/http/crud/person-profile.crud.http.service';
 

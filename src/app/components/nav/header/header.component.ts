@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatDialog } from '@angular/material';
-import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/assets/standard_messages';
+import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/app/shared/i18/es/messages';
 import { ConfirmationDialogData, ConfirmationDialogComponent } from 'src/app/shared/dialogs/confirmation/confirmation.dialog.component';
 import { Observable } from 'rxjs';
 import { NavService } from '../nav.service';
 import { APPLICATION_NAME } from 'src/app/app.module.constants';
-import { LBL_TOGGLE_SIDEMENU, LBL_EDIT_PROFILE, LBL_DISCONNECT } from 'src/assets/standard_labels';
+import { LBL_TOGGLE_SIDEMENU, LBL_EDIT_PROFILE, LBL_DISCONNECT } from 'src/app/shared/i18/es/labels';
 
 @Component({
   selector: 'app-nav-header',
