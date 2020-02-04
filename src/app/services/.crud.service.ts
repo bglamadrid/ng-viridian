@@ -1,4 +1,3 @@
-import { CrudInMemoryService } from './in-memory/crud/.crud.in-memory.service';
 import { Observable } from 'rxjs';
 
 export interface CrudService<T> {

@@ -1,6 +1,6 @@
 import { Observable, Subject, of } from 'rxjs';
 import { DataGridTemplateComponent } from './data-grid.template.component';
-import { CrudHttpService } from 'src/services/http/crud/.crud.http.service';
+import { CrudHttpService } from 'src/app/services/http/crud/.crud.http.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { OnInit } from '@angular/core';
 import { finalize, catchError } from 'rxjs/operators';

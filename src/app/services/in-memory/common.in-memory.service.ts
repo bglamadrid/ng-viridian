@@ -4,7 +4,7 @@ import { Descriptable } from 'src/models/Descriptable';
 import { CommonService } from '../.common.service';
 import { MOCK_DEVICE_BRANDS, MOCK_DEVICE_TYPES } from './crud/data/mock-devices';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class CommonInMemoryService
   implements CommonService {
 

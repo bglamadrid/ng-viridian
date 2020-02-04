@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { UserProfile } from 'src/models/entities/UserProfile';
-import { MOCK_USERS } from './data/mock-users';
 import { CrudInMemoryService } from './.crud.in-memory.service';
+import { MOCK_USERS } from './data/mock-users';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class UserProfileCrudInMemoryService
   extends CrudInMemoryService<UserProfile> {
 

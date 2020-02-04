@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Session } from 'src/models/entities/Session';
 import { HttpService } from './.http.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class SessionsHttpService
   extends HttpService {
 

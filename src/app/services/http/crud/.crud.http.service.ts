@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpService } from '../.http.service';
 import { AbstractEntity } from 'src/models/AbstractEntity';
-import { CrudService } from 'src/services/.crud.service';
+import { CrudService } from 'src/app/services/.crud.service';
 
 /**
  * Transactional service that Creates/Reads/Updates/Deletes entities.

@@ -3,8 +3,10 @@ import { Subject, BehaviorSubject, Observable } from 'rxjs';
 import { Device } from 'src/models/entities/Device';
 import { catchError, retry } from 'rxjs/operators';
 import { Descriptable } from 'src/models/Descriptable';
-import { CrudService } from 'src/services/.crud.service';
-import { CommonHttpService } from 'src/services/http/common.http.service';
+import { CrudService } from 'src/app/services/.crud.service';
+import { CommonHttpService } from 'src/app/services/http/common.http.service';
+import { DeviceCrudInMemoryService } from 'src/app/services/in-memory/crud/device.crud.in-memory.service';
+import { CommonInMemoryService } from 'src/app/services/in-memory/common.in-memory.service';
 
 @Injectable({ providedIn: 'root' })
 export class DeviceCatalogService
@@ -30,8 +32,8 @@ export class DeviceCatalogService
   }
 
   constructor(
-    protected data: CrudService<Device>,
-    protected commonData: CommonHttpService
+    protected data: DeviceCrudInMemoryService,
+    protected commonData: CommonInMemoryService
   ) {
     this.devicesArray = [];
     this.devicesSource = new BehaviorSubject(this.devicesArray);

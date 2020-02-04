@@ -1,11 +1,9 @@
-import { CrudHttpService } from './.crud.http.service';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Device } from 'src/models/entities/Device';
-import { Observable } from 'rxjs';
-import { Descriptable } from 'src/models/Descriptable';
+import { CrudHttpService } from './.crud.http.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class DeviceCrudHttpService
   extends CrudHttpService<Device> {
 

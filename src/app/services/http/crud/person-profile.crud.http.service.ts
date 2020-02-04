@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Session } from 'src/models/entities/Session';
-import { PersonProfile } from 'src/models/entities/PersonProfile';
 import { retry } from 'rxjs/operators';
+import { PersonProfile } from 'src/models/entities/PersonProfile';
+import { Session } from 'src/models/entities/Session';
 import { CrudHttpService } from './.crud.http.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class PersonProfileCrudHttpService
   extends CrudHttpService<PersonProfile> {
 
