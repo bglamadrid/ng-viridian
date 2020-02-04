@@ -9,6 +9,7 @@ import { CrudService } from 'src/app/services/.crud.service';
 import { PersonProfileCrudInMemoryService } from 'src/app/services/in-memory/crud/person-profile.crud.in-memory.service';
 
 @Component({
+  providers: [ PersonProfileCrudInMemoryService ],
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: [

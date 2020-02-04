@@ -38,10 +38,7 @@ import { UserProfileCrudInMemoryService } from './services/in-memory/crud/user-p
     SharedModule
   ],
   providers: [
-    CommonInMemoryService,
-    DeviceCrudInMemoryService,
-    PersonProfileCrudInMemoryService,
-    UserProfileCrudInMemoryService
+    CommonInMemoryService
   ],
   bootstrap: [AppComponent]
 })
