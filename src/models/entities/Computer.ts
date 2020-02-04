@@ -3,13 +3,14 @@ import { Ownable } from '../Ownable';
 import { AbstractEntity } from '../AbstractEntity';
 import { UserProfile } from './UserProfile';
 import { Image } from '../Image';
-import { Device } from '../Device';
+import { Device } from './Device';
 import { Descriptable } from '../Descriptable';
 
 export class Computer
   extends AbstractEntity
   implements Ownable, Device {
 
+  id: number;
   name: string;
   description: string;
   brand: Descriptable;

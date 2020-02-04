@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Device } from 'src/models/Device';
+import { Device } from 'src/models/entities/Device';
 import { Observable } from 'rxjs';
 import { Descriptable } from 'src/models/Descriptable';
 import { DeviceCatalogService } from '../device-catalog.service';

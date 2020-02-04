@@ -1,7 +1,7 @@
 import { CrudHttpService } from './.crud.http.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Device } from 'src/models/Device';
+import { Device } from 'src/models/entities/Device';
 import { Observable } from 'rxjs';
 import { Descriptable } from 'src/models/Descriptable';
 
@@ -17,17 +17,4 @@ export class DeviceCrudHttpService
   ) {
     super();
   }
-
-  public loadTypes(): Observable<Descriptable[]> {
-    return this.http.get<Descriptable[]>(
-      `${this.apiURL}/device_types`
-    );
-  }
-
-  public loadBrands(): Observable<Descriptable[]> {
-    return this.http.get<Descriptable[]>(
-      `${this.apiURL}/device_brands`
-    );
-  }
-
 }

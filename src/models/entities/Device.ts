@@ -1,11 +1,11 @@
-import { Marketable } from './Marketable';
-import { Descriptable } from './Descriptable';
-import { Image } from './Image';
+import { Marketable } from '../Marketable';
+import { Descriptable } from '../Descriptable';
+import { Image } from '../Image';
 
-export abstract class Device
+export class Device
   implements Marketable {
 
-  id: string | number;
+  id: number;
   name: string;
   description: string;
   brand: Descriptable;

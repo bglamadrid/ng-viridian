@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceCatalogService } from './device-catalog.service';
 import { Observable, Subscription } from 'rxjs';
-import { Device } from 'src/models/Device';
+import { Device } from 'src/models/entities/Device';
 
 @Component({
   selector: 'app-device-catalog',

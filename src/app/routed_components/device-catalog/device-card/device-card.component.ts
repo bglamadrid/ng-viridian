@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Device } from 'src/models/Device';
+import { Device } from 'src/models/entities/Device';
 
 @Component({
   selector: 'app-device-card',

@@ -1,4 +1,19 @@
-import { Device } from 'src/models/Device';
+import { Descriptable } from 'src/models/Descriptable';
+import { Device } from 'src/models/entities/Device';
+
+export const MOCK_DEVICE_TYPES: Descriptable[] = [
+  { id: 1, name: 'Computadores' },
+  { id: 2, name: 'Notebooks' },
+  { id: 3, name: 'Monitores' },
+  { id: 4, name: 'Piezas' },
+  { id: 5, name: 'Periféricos' },
+  { id: 6, name: 'Accesorios' }
+];
+
+export const MOCK_DEVICE_BRANDS: Descriptable[] = [
+  { id: 1, name: 'Lenovo' },
+  { id: 2, name: 'ASUS' }
+];
 
 export const MOCK_DEVICES: Device[] = [
   {

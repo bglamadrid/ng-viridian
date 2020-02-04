@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpService } from '../.http.service';
 import { AbstractEntity } from 'src/models/AbstractEntity';
+import { CrudService } from 'src/services/.crud.service';
 
 /**
  * Transactional service that Creates/Reads/Updates/Deletes entities.
@@ -9,7 +10,8 @@ import { AbstractEntity } from 'src/models/AbstractEntity';
  * * Only requires an URI name for both plural and singular methods to enable them.
  */
 export abstract class CrudHttpService<T extends AbstractEntity>
-  extends HttpService {
+  extends HttpService
+  implements CrudService<AbstractEntity> {
 
   /** Adverb for the singular entity over whose/which the CRUD methods would act upon e.g. 'person' */
   protected abstract entityURI: string;
