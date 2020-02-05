@@ -9,11 +9,18 @@ mat-nav-list,
   flex: 1 0 1em
   flex-flow: column nowrap
 
+.container>app-nav-header
+  flex: 0 0 5em
+
+.container>mat-sidenav-container
+  flex: 1 1 25em
+
+.container>.footer
+  flex: 0 0 3em
+
 mat-nav-list>a
   color: white
 
-mat-sidenav-container
-  flex: 1 0 25em
 
 mat-sidenav
   width: 16em
@@ -53,8 +60,8 @@ mat-nav-list>a mat-icon
 
 .footer
   flex-flow: column nowrap
-  flex: 0 0 3em
-  background: #eee
+  background: black
+  color: grey
   border-top: 1px #e0e0e06b solid
   align-items: center
   justify-content: center

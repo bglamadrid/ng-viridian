@@ -2,30 +2,25 @@
 .header>*
   display: flex
 
-
 .header
   flex: 0 0 5em
   align-content: center
   background: maroon
   border-bottom: 1px #e0e0e06b solid
 
-
 .header>*
   align-content: center
 
-
 .header-logo
-  width: 12em
+  width: 10em
   background-color: darkred
   padding: 0 1.5em 0 1em
   justify-content: space-between
   align-items: center
 
-
 .header-logo>img
-  height: 2.75em
-  width: 2.75em
-
+  height: 3em
+  width: 3em
 
 .header-logo>h1,
 .header-toggle-nav,
@@ -34,14 +29,18 @@
   color: white
 
 
+.header-content,
+.header-toggle-nav,
+.header-open-menu
+  align-items: center
+  justify-content: center
+
 .header-content
   display: inline-flex
   font-size: 1.25rem
   padding: 0.5em 1em
   flex: 1 1 1em
   flex-direction: column
-  align-items: center
-  justify-content: center
 
 .header-toggle-nav,
 .header-open-menu
@@ -49,8 +48,6 @@
   min-width: 5em
   padding: 0 0.75em 0.9em 0
   flex: 0 0 1em
-  justify-items: center
-  justify-content: center
   border-radius: 0
 
 .header-toggle-nav *,

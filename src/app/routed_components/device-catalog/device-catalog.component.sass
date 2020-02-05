@@ -8,17 +8,17 @@ app-device-filters-card,
   height: 100%
   align-content: stretch
 
+.page>app-device-filters-card
+  flex: 0 1 4em
+
+.page>.catalog
+  flex: 1 1 10em
+
 app-device-filters-card,
 .catalog
   padding: 0.75em
 
-app-device-filters-card
-  flex-grow: 0
-  flex-shrink: 1
-
 .catalog
-  flex-grow: 1
-  flex-shrink: 1
   display: grid
   grid-gap: 1em
   grid-template-columns: repeat(auto-fit, 24em)
