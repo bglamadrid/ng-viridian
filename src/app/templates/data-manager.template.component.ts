@@ -4,9 +4,8 @@ import { CrudHttpService } from 'src/app/services/http/crud/.crud.http.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { OnInit } from '@angular/core';
 import { finalize, catchError } from 'rxjs/operators';
-import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/app/shared/i18/es/messages';
+import { MSG_INF_UNSUPPORTED_OPERATION, MSG_WRN_ITEM_NOT_LOADED } from 'src/app/shared/i18/es/messages';
 import { AbstractEntity } from 'src/models/AbstractEntity';
-import { LBL_ITEM_NOT_LOADED } from 'src/app/shared/i18/es/labels';
 
 export abstract class DataManagerTemplateComponent<T extends AbstractEntity>
   implements OnInit {
@@ -63,7 +62,7 @@ export abstract class DataManagerTemplateComponent<T extends AbstractEntity>
   public onClickEdit(item: T): void {
     this.promptEdit(item).pipe(
       catchError(err => {
-        this.snackBar.open(LBL_ITEM_NOT_LOADED);
+        this.snackBar.open(MSG_WRN_ITEM_NOT_LOADED);
         return null;
       }),
       finalize(() => { this.onItemSent(); })
