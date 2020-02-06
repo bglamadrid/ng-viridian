@@ -1,32 +1,41 @@
 <mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title>
-      Filtrar Dispositivos
+      {{ labelDeviceFilters }}
     </mat-panel-title>
   </mat-expansion-panel-header>
-  <form class="container" [formGroup]="filterForm">
-    <div class="filter-form">
-      <mat-form-field class="form-control-name">
-        <input matInput placeholder="Nombre" formControlName="name" />
-      </mat-form-field>
+  <form [formGroup]="filterForm">
+    <div class="filters">
+      <div class="filter-form">
+        <mat-form-field class="form-control-name">
+          <input matInput placeholder="{{ labelName }}" formControlName="name" />
+        </mat-form-field>
+      </div>
+      <div class="filter-form">
+        <mat-form-field class="form-control-brand">
+          <mat-select matInput placeholder="{{ labelBrand }}" formControlName="brand">
+            <mat-option *ngFor="let b of (brands$ | async)" [value]="b.id">
+              {{ b.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="filter-form">
+        <mat-form-field class="form-control-type">
+          <mat-select matInput placeholder="{{ labelType }}" formControlName="type">
+            <mat-option *ngFor="let t of (types$ | async)" [value]="t.id">
+              {{ t.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
-    <div class="filter-form">
-      <mat-form-field class="form-control-brand">
-        <mat-select matInput placeholder="Marca" formControlName="brand">
-          <mat-option *ngFor="let b of (brands$ | async)" [value]="b.id">
-            {{ b.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="filter-form">
-      <mat-form-field class="form-control-type">
-        <mat-select matInput placeholder="Tipo" formControlName="type">
-          <mat-option *ngFor="let t of (types$ | async)" [value]="t.id">
-            {{ t.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div class="confirm">
+      <button mat-raised-button color="accent"
+        type="submit"
+        title="{{ labelUpdateFilters }}">
+        <i class="material-icons">check</i>
+      </button>
     </div>
   </form>
 </mat-expansion-panel>
