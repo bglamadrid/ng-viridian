@@ -4,7 +4,7 @@
     class="header-toggle-nav"
     title="{{ toggleSideMenuLabel }}"
     (click)="sidenavOpen = !sidenavOpen">
-    <mat-icon>menu</mat-icon>
+    <i class="material-icons">menu</i>
   </button>
   <div class="header-logo">
     <img src="assets/logo.png" alt="Forein">
@@ -18,19 +18,19 @@
       <button mat-menu-item class="header-menu-edit-profile"
         title="{{ editProfileLabel }}"
         (click)="onClickEditProfile()">
-        <mat-icon>edit</mat-icon>
+        <i class="material-icons">edit</i>
         {{ editProfileLabel }}
       </button>
       <button mat-menu-item class="header-menu-exit-session"
         title="{{ disconnectLabel }}"
         (click)="onClickExitSession()">
-        <mat-icon>exit_to_app</mat-icon>
+        <i class="material-icons">exit_to_app</i>
         {{ disconnectLabel }}
       </button>
     </mat-menu>
     <button mat-button class="header-open-menu" [matMenuTriggerFor]="headerMenu">
       <span>{{ usernameLabel }}</span>
-      <mat-icon>person</mat-icon>
+      <i class="material-icons">person</i>
     </button>
   </ng-template>
 </div>

@@ -27,17 +27,17 @@
     <th mat-header-cell *matHeaderCellDef> </th>
     <td mat-cell *matCellDef="let questionItem">
       <div class="actions">
-        <button mat-button mat-icon-button
+        <button mat-button i class="material-icons"-button
           color="primary" class="button-view"
           [disabled]="busy"
           (click)="onClickView(questionItem)">
-          <mat-icon>edit</mat-icon>
+          <i class="material-icons">edit</i>
         </button>
-        <button mat-button mat-icon-button
+        <button mat-button i class="material-icons"-button
           color="warn" class="button-delete"
           [disabled]="busy"
           (click)="onClickDelete(questionItem)">
-          <mat-icon>delete</mat-icon>
+          <i class="material-icons">delete</i>
         </button>
       </div>
     </td>

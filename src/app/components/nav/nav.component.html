@@ -7,7 +7,7 @@
           (click)="onClickNavigationItem(i)"
           [class.active]="module.enabled"
           [routerLink]="[baseRoute, module.path]">
-          <mat-icon>{{ module.icon }}</mat-icon>
+          <i class="material-icons">{{ module.icon }}</i>
           {{ module.text }}
         </a>
       </mat-nav-list>
