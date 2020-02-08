@@ -17,6 +17,7 @@ import { CommonInMemoryService } from './services/in-memory/common.in-memory.ser
 import { DeviceCrudInMemoryService } from './services/in-memory/crud/device.crud.in-memory.service';
 import { PersonProfileCrudInMemoryService } from './services/in-memory/crud/person-profile.crud.in-memory.service';
 import { UserProfileCrudInMemoryService } from './services/in-memory/crud/user-profile.crud.in-memory.service';
+import { QuestionFiltersCardComponent } from './routed_components/questions-answers/question-filters-card/question-filters-card.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserProfileCrudInMemoryService } from './services/in-memory/crud/user-p
     QuestionsGridComponent,
     DeviceCardComponent,
     DeviceFiltersCardComponent,
-    NavHeaderComponent
+    NavHeaderComponent,
+    QuestionFiltersCardComponent
   ],
   imports: [
     BrowserModule,
