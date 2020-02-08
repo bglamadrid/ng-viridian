@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { NavItem } from './NavItem';
-import { APP_ROUTES } from 'src/app/app.routes';
+import { APP_ROUTES } from 'src/app/app-routes';
 import { NAV_ITEMS } from './nav.items';
 
 @Injectable({ providedIn: 'root' })

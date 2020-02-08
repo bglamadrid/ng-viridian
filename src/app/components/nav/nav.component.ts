@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PersonProfileCrudHttpService } from 'src/app/services/http/crud/person-profile.crud.http.service';
 import { SessionsHttpService } from 'src/app/services/http/sessions.http.service';
 import { NavItem } from './NavItem';
-import { BASE_ROUTE } from 'src/app/app.routes';
+import { BASE_ROUTE } from 'src/app/app-routes';
 import { NavService } from './nav.service';
 import { CrudService } from 'src/app/services/.crud.service';
 import { PersonProfileCrudInMemoryService } from 'src/app/services/in-memory/crud/person-profile.crud.in-memory.service';
