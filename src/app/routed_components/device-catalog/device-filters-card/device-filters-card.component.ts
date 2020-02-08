@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Device } from 'src/models/entities/Device';
 import { Observable } from 'rxjs';
 import { Descriptable } from 'src/models/Descriptable';
@@ -37,6 +37,8 @@ export class DeviceFiltersCardComponent
     }
   }
 
+  @Output() public filters: EventEmitter<Device>;
+
   constructor(
     protected fb: FormBuilder,
     protected svc: DeviceCatalogService
@@ -46,11 +48,35 @@ export class DeviceFiltersCardComponent
       brand: [null],
       type: [null]
     });
+
+    this.filters = new EventEmitter();
   }
 
-  ngOnInit() {
+  protected emitFilters(f: any): void {
+    const dvc = new Device();
+    if (f.name) {
+      dvc.name = f.name;
+    }
+    if (f.brand) {
+      dvc.brand = f.brand;
+    }
+    if (f.type) {
+      dvc.deviceType = f.type;
+    }
+    this.filters.emit(dvc);
+  }
+
+  ngOnInit(): void {
     this.brands$ = this.svc.deviceBrands;
     this.types$ = this.svc.deviceTypes;
+
+    this.filterForm.valueChanges.subscribe(
+      f => {
+        if (this.filterForm.touched || this.filterForm.dirty) {
+          this.emitFilters(f);
+        }
+      }
+    );
   }
 
 }

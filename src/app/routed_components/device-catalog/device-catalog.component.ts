@@ -37,4 +37,8 @@ export class DeviceCatalogComponent
     this.svc.reloadDevices();
   }
 
+  public onFilter(dvc: Device) {
+
+  }
+
 }
