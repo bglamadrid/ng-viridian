@@ -4,7 +4,7 @@ import { Question } from 'src/models/entities/Question';
 import { MOCK_QUESTIONS } from './data/mock-questions';
 
 @Injectable()
-export class QuestionsCrudInMemoryService
+export class QuestionCrudInMemoryService
   extends CrudInMemoryService<Question> {
 
   constructor() {

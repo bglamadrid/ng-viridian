@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { QuestionsCrudInMemoryService } from 'src/app/services/in-memory/crud/questions.crud.in-memory.service';
+import { QuestionCrudInMemoryService } from 'src/app/services/in-memory/crud/question.crud.in-memory.service';
 import { UserProfileCrudInMemoryService } from 'src/app/services/in-memory/crud/user-profile.crud.in-memory.service';
 import { Question } from 'src/models/entities/Question';
 import { UserProfile } from 'src/models/entities/UserProfile';
@@ -26,7 +26,7 @@ export class QuestionsAnswersService
   }
 
   constructor(
-    protected data: QuestionsCrudInMemoryService,
+    protected data: QuestionCrudInMemoryService,
     protected usersData: UserProfileCrudInMemoryService
   ) {
     this.questionsArray = [];
