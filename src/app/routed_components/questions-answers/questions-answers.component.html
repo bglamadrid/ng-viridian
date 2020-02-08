@@ -1,3 +1,7 @@
-<p>qa works!</p>
+<div class="page">
+  <app-question-filters-card (filters)="onFilter($event)">
+  </app-question-filters-card>
 
-<app-questions-grid #grid></app-questions-grid>
+  <mat-spinner-centered *ngIf="loading"></mat-spinner-centered>
+  <app-questions-grid #grid [hidden]="loading"></app-questions-grid>
+</div>
