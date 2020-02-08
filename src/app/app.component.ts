@@ -10,6 +10,5 @@ export class AppComponent {
 
   public title = 'app-forein';
 
-  @ViewChild('nav', { static: true })
-    public nav: NavComponent;
+  @ViewChild('nav', { static: true }) public nav: NavComponent;
 }
