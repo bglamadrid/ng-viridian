@@ -18,22 +18,29 @@ export abstract class CrudHttpService<T extends AbstractEntity>
   /** Adverb for the plural entities over whose/which the CRUD methods would act upon e.g. 'people' */
   protected abstract entitiesURI: string;
 
-  public loadById(id: number): Observable<T> {
+  public create(emp: T): Observable<T> {
+    return this.http.post<T>(
+      `${this.apiURL}/${this.entityURI}`,
+      emp
+    );
+  }
+
+  public readById(id: number): Observable<T> {
     return this.http.get<T>(
       `${this.apiURL}/${this.entityURI}/${id}`
     );
   }
 
-  public loadAll(): Observable<T[]> {
+  public readAll(): Observable<T[]> {
     return this.http.get<T[]>(
       `${this.apiURL}/${this.entitiesURI}`
     );
   }
 
-  public create(emp: T): Observable<T> {
-    return this.http.post<T>(
-      `${this.apiURL}/${this.entityURI}`,
-      emp
+  public readFiltered(f: T): Observable<T[]> {
+    return this.http.get<T[]>(
+      `${this.apiURL}/${this.entitiesURI}`,
+      this.httpParamsOf(f)
     );
   }
 

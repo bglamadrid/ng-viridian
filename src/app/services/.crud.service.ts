@@ -2,9 +2,10 @@ import { Observable } from 'rxjs';
 
 export interface CrudService<T> {
 
-  loadById(id: number | string): Observable<T>;
-  loadAll(): Observable<T[]>;
   create(emp: T): Observable<T>;
+  readById(id: number | string): Observable<T>;
+  readAll(): Observable<T[]>;
+  readFiltered(f: T): Observable<T[]>;
   update(emp: T, id: number | string): Observable<T>;
   deleteById(id: number | string): Observable<boolean>;
 }
