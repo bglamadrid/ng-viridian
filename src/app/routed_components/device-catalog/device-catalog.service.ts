@@ -1,16 +1,17 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Subject, BehaviorSubject, Observable } from 'rxjs';
-import { Device } from 'src/models/entities/Device';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Descriptable } from 'src/models/Descriptable';
-import { DeviceCrudInMemoryService } from 'src/app/services/in-memory/crud/device.crud.in-memory.service';
 import { CommonInMemoryService } from 'src/app/services/in-memory/common.in-memory.service';
+import { DeviceCrudInMemoryService } from 'src/app/services/in-memory/crud/device.crud.in-memory.service';
+import { Descriptable } from 'src/models/Descriptable';
+import { Device } from 'src/models/entities/Device';
 
 @Injectable()
 export class DeviceCatalogService
   implements OnDestroy {
 
   protected devicesArray: Device[];
+  protected deviceFilters: Device;
   public devicesSource: Subject<Device[]>;
 
   public get devices(): Device[] {
@@ -19,6 +20,14 @@ export class DeviceCatalogService
   public set devices(devices: Device[]) {
     this.devicesArray = devices;
     this.devicesSource.next(devices);
+  }
+
+  public get filters(): Device {
+    return this.deviceFilters;
+  }
+  public set filters(dvc: Device) {
+    this.deviceFilters = dvc;
+
   }
 
   public get deviceTypes(): Observable<Descriptable[]> {
@@ -42,7 +51,7 @@ export class DeviceCatalogService
   }
 
   public reloadDevices(): void {
-    this.data.loadAll()
+    this.data.readAll()
     .pipe(
       catchError(err => []),
       retry(1)
