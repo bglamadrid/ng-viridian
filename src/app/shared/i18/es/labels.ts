@@ -1,3 +1,4 @@
+export const LBL_TITLE = 'Título';
 export const LBL_AUTHOR = 'Autor';
 export const LBL_NAME = 'Nombre';
 export const LBL_BRAND = 'Marca';
@@ -8,6 +9,9 @@ export const LBL_DATE_TO = 'Hasta';
 
 export const LBL_DISCONNECT = 'Desconectar';
 export const LBL_UPDATE = 'Actualizar';
+
+export const LBL_DATE_CREATED = 'Creada en';
+export const LBL_ANSWERS_COUNT = 'Respuestas';
 
 
 export const LBL_TOGGLE_SIDEMENU = 'Alternar menú lateral';

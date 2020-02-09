@@ -1,27 +1,27 @@
 <table mat-table #table>
   <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef> Title </th>
+    <th mat-header-cell *matHeaderCellDef> {{ labelTitle }} </th>
     <td mat-cell *matCellDef="let question"
       (click)="onClickView(question)">
       {{ question.title }}
     </td>
   </ng-container>
   <ng-container matColumnDef="author">
-    <th mat-header-cell *matHeaderCellDef> Autor </th>
+    <th mat-header-cell *matHeaderCellDef> {{ labelAuthor }} </th>
     <td mat-cell *matCellDef="let question"
       (click)="onClickView(question)">
       {{ question.ownerName }}
     </td>
   </ng-container>
   <ng-container matColumnDef="dateCreated">
-    <th mat-header-cell *matHeaderCellDef> Created </th>
+    <th mat-header-cell *matHeaderCellDef> {{ labelDateCreated }} </th>
     <td mat-cell *matCellDef="let question"
       (click)="onClickView(question)">
       {{ question.properDate }}
     </td>
   </ng-container>
   <ng-container matColumnDef="answersCount">
-    <th mat-header-cell *matHeaderCellDef> Answers </th>
+    <th mat-header-cell *matHeaderCellDef> {{ labelAnswersCount }} </th>
     <td mat-cell *matCellDef="let question"
       (click)="onClickView(question)">
       {{ question.answersCount }}
