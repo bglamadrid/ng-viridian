@@ -13,5 +13,6 @@ export class Question
   public title: string;
   public content: string;
   public answers: Answer[];
-  public get properDate() { return formatDate(this.date, 'YYYY/MM/DD', 'en-Es'); }
+  public properDate?: string;
+  // { return formatDate(this.date, 'YYYY/MM/DD', 'es-CL'); }
 }
