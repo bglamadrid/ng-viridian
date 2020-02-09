@@ -1,2 +1,22 @@
-.filters
-  grid-template-columns: 1fr 1fr
+.filters-grid
+  grid-template-columns: none
+  grid-auto-columns: 1fr
+
+.filter.title,
+.filter.author
+  grid-row: 1
+
+.filter.date-range-from,
+.filter.date-range-to
+  grid-row: 2
+
+.filter.title
+  grid-column: 1 / 3
+.filter.author
+  grid-column: 3 / 6
+
+.filter.date-range-from
+  grid-column: 1 / 2
+.filter.date-range-to
+  grid-column: 2 / 3
+

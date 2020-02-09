@@ -5,34 +5,36 @@
     </mat-panel-title>
   </mat-expansion-panel-header>
   <form [formGroup]="filterForm">
-    <div class="filters">
-      <div class="filter-form">
-        <mat-form-field class="form-control-name">
+    <div class="filters-grid">
+      <div class="filter name">
+        <mat-form-field>
           <input matInput placeholder="{{ labelName }}" formControlName="name" />
         </mat-form-field>
       </div>
-      <div class="filter-form">
-        <mat-form-field class="form-control-brand">
+      <div class="filter brand">
+        <mat-form-field>
           <mat-select matInput placeholder="{{ labelBrand }}" formControlName="brand">
-            <mat-option *ngFor="let b of (brands$ | async)" [value]="b.id">
+            <mat-option *ngFor="let b of (brands$ | async)"
+              [value]="b.id">
               {{ b.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="filter-form">
-        <mat-form-field class="form-control-type">
+      <div class="filter type">
+        <mat-form-field>
           <mat-select matInput placeholder="{{ labelType }}" formControlName="type">
-            <mat-option *ngFor="let t of (types$ | async)" [value]="t.id">
+            <mat-option *ngFor="let t of (types$ | async)"
+              [value]="t.id">
               {{ t.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
     </div>
-    <div class="confirm">
-      <button mat-raised-button color="accent"
-        type="submit"
+    <div class="filter-confirm">
+      <button mat-raised-button type="submit"
+        color="accent"
         title="{{ labelUpdateFilters }}">
         <i class="small material-icons">search</i>
       </button>

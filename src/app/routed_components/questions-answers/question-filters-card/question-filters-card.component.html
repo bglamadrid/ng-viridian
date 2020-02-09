@@ -5,27 +5,28 @@
     </mat-panel-title>
   </mat-expansion-panel-header>
   <form [formGroup]="filterForm">
-    <div class="filters">
-      <div class="filter-form">
-        <mat-form-field class="form-control-title">
+    <div class="filters-grid">
+      <div class="filter title">
+        <mat-form-field>
           <input matInput type="text"
             placeholder="{{ labelTitle }}"
             formControlName="title" />
         </mat-form-field>
       </div>
-      <div class="filter-form">
-        <mat-form-field class="form-control-author">
+      <div class="filter author">
+        <mat-form-field>
           <mat-select matInput
             placeholder="{{ labelAuthor }}"
             formControlName="author">
-            <mat-option *ngFor="let u of (users$ | async)" [value]="u.id">
+            <mat-option *ngFor="let u of (users$ | async)"
+              [value]="u.id">
               {{ u.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="filter-form">
-        <mat-form-field class="form-control-date-range-from">
+      <div class="filter date-range-from">
+        <mat-form-field>
           <input matInput type="date"
             placeholder="{{ labelDateRangeFrom }}"
             formControlName="dateRangeFrom"
@@ -34,9 +35,9 @@
           <mat-datepicker #dateFrom></mat-datepicker>
         </mat-form-field>
       </div>
-      <div class="filter-form">
-        <mat-form-field class="form-control-date-range-to">
-          <input matInput type="text"
+      <div class="filter date-range-to">
+        <mat-form-field>
+          <input matInput type="date"
             placeholder="{{ labelDateRangeTo }}"
             formControlName="dateRangeTo"
             [matDatepicker]="dateTo">
@@ -45,9 +46,9 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="confirm">
-      <button mat-raised-button color="accent"
-        type="submit"
+    <div class="filter-submit">
+      <button mat-raised-button type="submit"
+        color="accent"
         title="{{ labelUpdateFilters }}">
         <i class="small material-icons">search</i>
       </button>
