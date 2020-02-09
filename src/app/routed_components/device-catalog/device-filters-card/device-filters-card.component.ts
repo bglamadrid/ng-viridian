@@ -9,7 +9,10 @@ import { LBL_UPDATE, LBL_DEVICE_FILTERS, LBL_NAME, LBL_BRAND, LBL_TYPE } from 's
 @Component({
   selector: 'app-device-filters-card',
   templateUrl: './device-filters-card.component.html',
-  styleUrls: ['./device-filters-card.component.sass']
+  styleUrls: [
+    '../../../../assets/styles/filters-card.sass',
+    './device-filters-card.component.sass'
+  ]
 })
 export class DeviceFiltersCardComponent
   implements OnInit {
