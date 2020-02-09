@@ -1,32 +1,47 @@
 <mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title>
-      {{ labelDeviceFilters }}
+      {{ labelQuestionFilters }}
     </mat-panel-title>
   </mat-expansion-panel-header>
   <form [formGroup]="filterForm">
     <div class="filters">
       <div class="filter-form">
-        <mat-form-field class="form-control-name">
-          <input matInput placeholder="{{ labelName }}" formControlName="name" />
+        <mat-form-field class="form-control-title">
+          <input matInput type="text"
+            placeholder="{{ labelTitle }}"
+            formControlName="title" />
         </mat-form-field>
       </div>
       <div class="filter-form">
-        <mat-form-field class="form-control-brand">
-          <mat-select matInput placeholder="{{ labelBrand }}" formControlName="brand">
-            <mat-option *ngFor="let b of (brands$ | async)" [value]="b.id">
-              {{ b.name }}
+        <mat-form-field class="form-control-author">
+          <mat-select matInput
+            placeholder="{{ labelAuthor }}"
+            formControlName="author">
+            <mat-option *ngFor="let u of (users$ | async)" [value]="u.id">
+              {{ u.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="filter-form">
-        <mat-form-field class="form-control-type">
-          <mat-select matInput placeholder="{{ labelType }}" formControlName="type">
-            <mat-option *ngFor="let t of (types$ | async)" [value]="t.id">
-              {{ t.name }}
-            </mat-option>
-          </mat-select>
+        <mat-form-field class="form-control-date-range-from">
+          <input matInput type="date"
+            placeholder="{{ labelDateRangeFrom }}"
+            formControlName="dateRangeFrom"
+            [matDatepicker]="dateFrom">
+          <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+          <mat-datepicker #dateFrom></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="filter-form">
+        <mat-form-field class="form-control-date-range-to">
+          <input matInput type="text"
+            placeholder="{{ labelDateRangeTo }}"
+            formControlName="dateRangeTo"
+            [matDatepicker]="dateTo">
+          <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+          <mat-datepicker #dateTo></mat-datepicker>
         </mat-form-field>
       </div>
     </div>
@@ -34,7 +49,7 @@
       <button mat-raised-button color="accent"
         type="submit"
         title="{{ labelUpdateFilters }}">
-        <i class="material-icons">check</i>
+        <i class="small material-icons">search</i>
       </button>
     </div>
   </form>
