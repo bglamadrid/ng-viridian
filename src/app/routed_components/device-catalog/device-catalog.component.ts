@@ -16,9 +16,9 @@ import { DeviceCrudInMemoryService } from 'src/app/services/in-memory/crud/devic
 export class DeviceCatalogComponent
   implements OnInit {
 
-  protected devices$: Observable<Device[]>;
   protected load: Subscription;
 
+  public devices$: Observable<Device[]>;
   public totalItemNumber: number;
 
   public get loading(): boolean {
