@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 /**
  * Barra de acciones genérica. Se sitúa debajo o encima de un listado de mantenedor.

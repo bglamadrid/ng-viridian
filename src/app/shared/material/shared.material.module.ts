@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatNativeDateModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,30 +17,36 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 
 export const MATERIAL_MODULES = [
-  MatProgressSpinnerModule,
-  MatSnackBarModule,
-  MatListModule,
   MatButtonModule,
-  MatDialogModule,
   MatCardModule,
-  MatInputModule,
-  MatFormFieldModule,
+  MatDatepickerModule,
+  MatDialogModule,
   MatExpansionModule,
-  MatSidenavModule,
-  MatTableModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule,
   MatMenuModule,
-  MatSelectModule
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSnackBarModule,
+  MatSidenavModule,
+  MatTableModule
 ];
+
+// apps may change this module
+export const DATE_PROVIDER_IMPLEMENTATION = MatNativeDateModule;
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    MATERIAL_MODULES
+    MATERIAL_MODULES,
+    DATE_PROVIDER_IMPLEMENTATION
   ],
   exports: [
-    MATERIAL_MODULES
+    MATERIAL_MODULES,
+    DATE_PROVIDER_IMPLEMENTATION
   ]
 })
 export class MaterialModule { }

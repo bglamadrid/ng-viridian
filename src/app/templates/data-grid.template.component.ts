@@ -1,4 +1,4 @@
-import { Output, Input, EventEmitter } from '@angular/core';
+import { EventEmitter, Input, Output } from '@angular/core';
 import { MatTable } from '@angular/material';
 import { of } from 'rxjs';
 

@@ -1,11 +1,11 @@
-import { Observable, Subject, of } from 'rxjs';
-import { DataGridTemplateComponent } from './data-grid.template.component';
-import { CrudHttpService } from 'src/app/services/http/crud/.crud.http.service';
-import { MatDialog, MatSnackBar } from '@angular/material';
 import { OnInit } from '@angular/core';
-import { finalize, catchError } from 'rxjs/operators';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { Observable, Subject } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
+import { CrudHttpService } from 'src/app/services/http/crud/.crud.http.service';
 import { MSG_INF_UNSUPPORTED_OPERATION, MSG_WRN_ITEM_NOT_LOADED } from 'src/app/shared/i18/es/messages';
 import { AbstractEntity } from 'src/models/AbstractEntity';
+import { DataGridTemplateComponent } from './data-grid.template.component';
 
 export abstract class DataManagerTemplateComponent<T extends AbstractEntity>
   implements OnInit {

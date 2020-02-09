@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
-import { PersonProfile } from 'src/models/entities/PersonProfile';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NO_REACTIVE_FORM_EVENTS } from 'src/app/app.module.constants';
+import { PersonProfile } from 'src/models/entities/PersonProfile';
 
 @Component({
   selector: 'app-person-form',

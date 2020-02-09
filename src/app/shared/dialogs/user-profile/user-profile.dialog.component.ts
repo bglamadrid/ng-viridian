@@ -1,12 +1,12 @@
 import { Component, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { finalize } from 'rxjs/operators';
+import { PersonProfileCrudHttpService } from 'src/app/services/http/crud/person-profile.crud.http.service';
 import { PersonFormComponent } from 'src/app/shared/components/person-form/person-form.component';
 import { MSG_ERR_SRV_COMMUNICATION, MSG_WRN_INCOMPLETE_FORM } from 'src/app/shared/i18/es/messages';
 import { PersonProfile } from 'src/models/entities/PersonProfile';
-import { PersonProfileCrudHttpService } from 'src/app/services/http/crud/person-profile.crud.http.service';
 
-export interface DatosUsuarioDialogData {
+export interface UserProfileDialogData {
   person: PersonProfile;
 }
 
@@ -22,7 +22,7 @@ export class UserProfileDialogComponent {
   @ViewChild('personForm', {static: false}) public personForm: PersonFormComponent;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: DatosUsuarioDialogData,
+    @Inject(MAT_DIALOG_DATA) public data: UserProfileDialogData,
     protected dialogRef: MatDialogRef<UserProfileDialogComponent>,
     protected snackBar: MatSnackBar,
     protected profileHttpSvc: PersonProfileCrudHttpService
