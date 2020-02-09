@@ -1,48 +1,35 @@
-<table mat-table #table class="full-width">
+<table mat-table #table>
   <ng-container matColumnDef="title">
     <th mat-header-cell *matHeaderCellDef> Title </th>
-    <td mat-cell *matCellDef="let questionItem" class="left">
-      {{ questionItem.title }}
+    <td mat-cell *matCellDef="let question"
+      (click)="onClickView(question)">
+      {{ question.title }}
     </td>
   </ng-container>
   <ng-container matColumnDef="author">
     <th mat-header-cell *matHeaderCellDef> Autor </th>
-    <td mat-cell *matCellDef="let questionItem" class="left">
-      {{ questionItem.ownerName }}
+    <td mat-cell *matCellDef="let question"
+      (click)="onClickView(question)">
+      {{ question.ownerName }}
     </td>
   </ng-container>
   <ng-container matColumnDef="dateCreated">
     <th mat-header-cell *matHeaderCellDef> Created </th>
-    <td mat-cell *matCellDef="let questionItem" class="left">
-      {{ questionItem.date }}
+    <td mat-cell *matCellDef="let question"
+      (click)="onClickView(question)">
+      {{ question.properDate }}
     </td>
   </ng-container>
   <ng-container matColumnDef="answersCount">
     <th mat-header-cell *matHeaderCellDef> Answers </th>
-    <td mat-cell *matCellDef="let questionItem" class="left">
-      {{ questionItem.answersCount }}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef> </th>
-    <td mat-cell *matCellDef="let questionItem">
-      <div class="actions">
-        <button mat-button i class="material-icons"-button
-          color="primary" class="button-view"
-          [disabled]="busy"
-          (click)="onClickView(questionItem)">
-          <i class="material-icons">edit</i>
-        </button>
-        <button mat-button i class="material-icons"-button
-          color="warn" class="button-delete"
-          [disabled]="busy"
-          (click)="onClickDelete(questionItem)">
-          <i class="material-icons">delete</i>
-        </button>
-      </div>
+    <td mat-cell *matCellDef="let question"
+      (click)="onClickView(question)">
+      {{ question.answersCount }}
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+  <tr mat-row
+    *matRowDef="let row; columns: tableColumns;">
+  </tr>
 </table>

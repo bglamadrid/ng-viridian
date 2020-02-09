@@ -6,8 +6,8 @@ export class Answer
   extends AbstractEntity
   implements TimeBound {
 
-  author: Partial<UserProfile>;
   date: Date;
+  public author: Partial<UserProfile>;
   public content: string;
   public votes: number;
   public accepted: boolean;
