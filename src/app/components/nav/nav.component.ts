@@ -19,7 +19,7 @@ import { PersonProfileCrudInMemoryService } from 'src/app/services/in-memory/cru
 export class NavComponent
   implements OnInit {
 
-  public modules: NavItem[];
+  public links: NavItem[];
 
   public get sidenavOpen(): boolean { return this.svc.sidenavOpen; }
   public get baseRoute(): string { return `/${BASE_ROUTE}`; }
@@ -33,26 +33,20 @@ export class NavComponent
     protected route: ActivatedRoute,
     protected svc: NavService
   ) {
-    this.modules = this.svc.loadNavItems();
+      this.links = this.svc.loadNavItems();
   }
 
   ngOnInit(): void {
-    const currentRoute = this.route.firstChild;
-    console.log(this.route);
-
-    if (currentRoute) {
-      const moduleRoutePath = currentRoute.routeConfig.path;
-      alert(moduleRoutePath);
-      const moduleIndex = this.modules.findIndex(m => m.path === moduleRoutePath);
-      const module = this.modules[moduleIndex];
-      this.onClickNavigationItem(moduleIndex);
-      this.router.navigate([module.path], { relativeTo: this.route });
+    const currentPath = this.svc.currentPathName;
+    if (currentPath) {
+      const linkIndex = this.links.findIndex(m => m.path === currentPath);
+      this.onNavigation(linkIndex);
     }
   }
 
-  public onClickNavigationItem(index: number) {
-    const item = this.modules[index];
-    this.modules.forEach(m => { m.enabled = false; });
+  public onNavigation(linkIndex: number) {
+    const item = this.links[linkIndex];
+    this.links.forEach(m => { m.enabled = false; });
     this.svc.currentModuleName = item.text;
     item.enabled = true;
   }

@@ -22,6 +22,12 @@ export class NavService {
     localStorage.setItem('sidenavOpen', String(v));
   }
 
+  public get currentPathName(): string {
+    const pathSplits = location.pathname.split('/');
+    console.log(pathSplits);
+    return pathSplits[1];
+  }
+
   constructor() {
     this.currentModuleName = '';
   }
