@@ -3,7 +3,7 @@
   </app-question-filters-panel>
 
   <mat-spinner-centered *ngIf="loading"></mat-spinner-centered>
-  <app-questions-grid #grid
+  <app-questions-grid #grid class="grid"
     [hidden]="loading"
     [items]="questions$ | async">
   </app-questions-grid>
