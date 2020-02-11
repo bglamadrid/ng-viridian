@@ -1,5 +1,4 @@
 .filters-grid
-  grid-template-columns: none
   grid-auto-columns: 1fr
 
 .filter.title,
@@ -7,7 +6,8 @@
   grid-row: 1
 
 .filter.date-range-from,
-.filter.date-range-to
+.filter.date-range-to,
+.filters-grid>button
   grid-row: 2
 
 .filter.title
@@ -20,3 +20,5 @@
 .filter.date-range-to
   grid-column: 2 / 3
 
+.filters-grid>button
+  grid-column: 5 / 6
