@@ -15,6 +15,8 @@ import { DeviceFiltersCardComponent } from './routed_components/device-catalog/d
 import { NavHeaderComponent } from './components/nav/header/header.component';
 import { CommonInMemoryService } from './services/in-memory/common.in-memory.service';
 import { QuestionFiltersCardComponent } from './routed_components/questions-answers/question-filters-card/question-filters-card.component';
+import { QuestionThreadCardComponent } from './routed_components/questions-answers/question-thread-card/question-thread-card.component';
+import { DeviceDetailsCardComponent } from './routed_components/device-catalog/device-details-card/device-details-card.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { QuestionFiltersCardComponent } from './routed_components/questions-answ
     DeviceCardComponent,
     DeviceFiltersCardComponent,
     NavHeaderComponent,
-    QuestionFiltersCardComponent
+    QuestionFiltersCardComponent,
+    QuestionThreadCardComponent,
+    DeviceDetailsCardComponent
   ],
   imports: [
     SharedModule,
