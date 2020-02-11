@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeviceFiltersCardComponent } from './device-filters-card.component';
+import { DeviceFiltersPanelComponent } from './device-filters-panel.component';
 
-describe('DeviceFiltersCardComponent', () => {
-  let component: DeviceFiltersCardComponent;
-  let fixture: ComponentFixture<DeviceFiltersCardComponent>;
+describe('DeviceFiltersPanelComponent', () => {
+  let component: DeviceFiltersPanelComponent;
+  let fixture: ComponentFixture<DeviceFiltersPanelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeviceFiltersCardComponent ]
+      declarations: [ DeviceFiltersPanelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeviceFiltersCardComponent);
+    fixture = TestBed.createComponent(DeviceFiltersPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

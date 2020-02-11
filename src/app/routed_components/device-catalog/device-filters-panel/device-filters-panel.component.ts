@@ -7,14 +7,14 @@ import { DeviceCatalogService } from '../device-catalog.service';
 import { LBL_UPDATE, LBL_DEVICE_FILTERS, LBL_NAME, LBL_BRAND, LBL_TYPE } from 'src/app/shared/i18/es/labels';
 
 @Component({
-  selector: 'app-device-filters-card',
-  templateUrl: './device-filters-card.component.html',
+  selector: 'app-device-filters-panel',
+  templateUrl: './device-filters-panel.component.html',
   styleUrls: [
-    '../../../../assets/styles/filters-card.sass',
-    './device-filters-card.component.sass'
+    '../../../../assets/styles/filters-panel.sass',
+    './device-filters-panel.component.sass'
   ]
 })
-export class DeviceFiltersCardComponent
+export class DeviceFiltersPanelComponent
   implements OnInit {
 
   public filterForm: FormGroup;

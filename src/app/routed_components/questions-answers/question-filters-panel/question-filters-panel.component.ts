@@ -5,16 +5,17 @@ import { LBL_AUTHOR, LBL_DATE_FROM, LBL_DATE_TO, LBL_NAME, LBL_QUESTION_FILTERS,
 import { Question } from 'src/models/entities/Question';
 import { UserProfile } from 'src/models/entities/UserProfile';
 import { QuestionsAnswersService } from '../questions-answers.service';
+import { QuestionFilters } from './QuestionFilters';
 
 @Component({
-  selector: 'app-question-filters-card',
-  templateUrl: './question-filters-card.component.html',
+  selector: 'app-question-filters-panel',
+  templateUrl: './question-filters-panel.component.html',
   styleUrls: [
-    '../../../../assets/styles/filters-card.sass',
-    './question-filters-card.component.sass'
+    '../../../../assets/styles/filters-panel.sass',
+    './question-filters-panel.component.sass'
   ]
 })
-export class QuestionFiltersCardComponent
+export class QuestionFiltersPanelComponent
   implements OnInit {
 
   public filterForm: FormGroup;
@@ -32,20 +33,22 @@ export class QuestionFiltersCardComponent
   public get labelDateRangeFrom(): string { return LBL_DATE_FROM; }
   public get labelDateRangeTo(): string { return LBL_DATE_TO; }
 
-  @Input() public set questionFilters(qt: Question) {
+  @Input() public set questionFilters(qt: QuestionFilters) {
     if (qt.title) {
       this.title.setValue(qt.title);
     }
     if (qt.author) {
-      this.author.setValue(qt.author.id);
+      this.author.setValue(qt.author);
     }
-    if (qt.date) {
-      this.dateRangeFrom.setValue(qt.date);
-      this.dateRangeTo.setValue(qt.date);
+    if (qt.dateRangeFrom) {
+      this.dateRangeFrom.setValue(qt.dateRangeFrom);
+    }
+    if (qt.dateRangeTo) {
+      this.dateRangeTo.setValue(qt.dateRangeTo);
     }
   }
 
-  @Output() public filters: EventEmitter<Question>;
+  @Output() public filters: EventEmitter<QuestionFilters>;
 
   constructor(
     protected fb: FormBuilder,
@@ -61,27 +64,23 @@ export class QuestionFiltersCardComponent
     this.filters = new EventEmitter();
   }
 
-  protected emitFilters(f: any): void {
-    const qt = new Question();
-    if (f.title) {
-      qt.title = f.title;
-    }
-    if (f.author) {
-      qt.author = f.author;
-    }
-    if (f.date) {
-      qt.date = f.date;
-    }
-    this.filters.emit(qt);
+  protected emitFilters(): void {
+    const f: QuestionFilters = {
+      title: this.title.value ? this.title.value : undefined,
+      author: this.author.value ? this.author.value : undefined,
+      dateRangeFrom: this.dateRangeFrom.value ? this.dateRangeFrom.value : undefined,
+      dateRangeTo: this.dateRangeTo.value ? this.dateRangeTo.value : undefined
+    };
+    this.filters.emit(f);
   }
 
   ngOnInit() {
     this.users$ = this.svc.users;
 
     this.filterForm.valueChanges.subscribe(
-      f => {
+      () => {
         if (this.filterForm.touched || this.filterForm.dirty) {
-          this.emitFilters(f);
+          this.emitFilters();
         }
       }
     );

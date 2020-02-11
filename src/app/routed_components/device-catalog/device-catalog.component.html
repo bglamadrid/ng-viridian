@@ -1,6 +1,6 @@
 <div class="page">
-  <app-device-filters-card (filters)="onFilter($event)">
-  </app-device-filters-card>
+  <app-device-filters-panel (filters)="onFilter($event)">
+  </app-device-filters-panel>
 
   <mat-spinner-centered *ngIf="loading"></mat-spinner-centered>
   <div class="catalog" [hidden]="loading">
