@@ -9,7 +9,7 @@ export class DeviceCrudInMemoryService
 
   constructor() {
     super();
-    this.items = MOCK_DEVICES;
+    this.items = MOCK_DEVICES.map(d => Object.assign(new Device(), d));
   }
 
   protected filterItems(filter: Partial<Device>): Set<Device> {

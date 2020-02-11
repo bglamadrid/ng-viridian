@@ -1,10 +1,9 @@
 import { Question } from 'src/models/entities/Question';
 
-export const MOCK_QUESTIONS: Question[] = [
+export const MOCK_QUESTIONS: Partial<Question>[] = [
   {
     id: null,
     date: new Date('2020-01-16T19:33'),
-    properDate: '2020/01/16',
     author: { id: 1, name: 'Elias58' },
     title: '¿Cómo reemplazar mi procesador?',
     content: 'Poseo una placa madre algo antigua, usa un procesador Intel Pentium IV. Quisiera saber, ¿qué necesito para reemplazarlo por un procesador más moderno?',

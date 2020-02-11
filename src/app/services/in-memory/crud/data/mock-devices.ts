@@ -15,7 +15,7 @@ export const MOCK_DEVICE_BRANDS: Descriptable[] = [
   { id: 2, name: 'ASUS' }
 ];
 
-export const MOCK_DEVICES: Device[] = [
+export const MOCK_DEVICES: Partial<Device>[] = [
   {
     id: 1,
     name: 'Lenovo IdeaPad L340 (81LK0009CL)',

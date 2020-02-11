@@ -9,6 +9,6 @@ export class UserProfileCrudInMemoryService
 
   constructor() {
     super();
-    this.items = MOCK_USERS;
+    this.items = MOCK_USERS.map(u => Object.assign(new UserProfile(), u));
   }
 }

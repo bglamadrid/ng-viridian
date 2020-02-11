@@ -9,6 +9,6 @@ export class QuestionCrudInMemoryService
 
   constructor() {
     super();
-    this.items = MOCK_QUESTIONS;
+    this.items = MOCK_QUESTIONS.map(q => Object.assign(new Question(), q));
   }
 }
