@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { LBL_AUTHOR, LBL_DATE_FROM, LBL_DATE_TO, LBL_NAME, LBL_QUESTION_FILTERS, LBL_UPDATE } from 'src/app/shared/i18/es/labels';
-import { Question } from 'src/models/entities/Question';
+import { LBL_AUTHOR, LBL_DATE_FROM, LBL_DATE_TO, LBL_QUESTION_FILTERS, LBL_UPDATE, LBL_TITLE } from 'src/app/shared/i18/es/labels';
 import { UserProfile } from 'src/models/entities/UserProfile';
 import { QuestionsAnswersService } from '../questions-answers.service';
-import { QuestionFilters } from './QuestionFilters';
+import { QuestionFilters } from '../QuestionFilters';
 
 @Component({
   selector: 'app-question-filters-panel',
@@ -28,7 +27,7 @@ export class QuestionFiltersPanelComponent
 
   public get labelQuestionFilters(): string { return LBL_QUESTION_FILTERS; }
   public get labelUpdateFilters(): string { return LBL_UPDATE; }
-  public get labelTitle(): string { return LBL_NAME; }
+  public get labelTitle(): string { return LBL_TITLE; }
   public get labelAuthor(): string { return LBL_AUTHOR; }
   public get labelDateRangeFrom(): string { return LBL_DATE_FROM; }
   public get labelDateRangeTo(): string { return LBL_DATE_TO; }
@@ -48,8 +47,6 @@ export class QuestionFiltersPanelComponent
     }
   }
 
-  @Output() public filters: EventEmitter<QuestionFilters>;
-
   constructor(
     protected fb: FormBuilder,
     protected svc: QuestionsAnswersService
@@ -60,30 +57,27 @@ export class QuestionFiltersPanelComponent
       dateRangeFrom: [null],
       dateRangeTo: [null]
     });
-
-    this.filters = new EventEmitter();
   }
 
   protected emitFilters(): void {
-    const f: QuestionFilters = {
-      title: this.title.value ? this.title.value : undefined,
-      author: this.author.value ? this.author.value : undefined,
-      dateRangeFrom: this.dateRangeFrom.value ? this.dateRangeFrom.value : undefined,
-      dateRangeTo: this.dateRangeTo.value ? this.dateRangeTo.value : undefined
-    };
-    this.filters.emit(f);
+    const filters: Partial<QuestionFilters> = {};
+    if (this.title.value) { filters.title = this.title.value; }
+    if (this.author.value) { filters.author = this.author.value; }
+    if (this.dateRangeFrom.value) { filters.dateRangeFrom = this.dateRangeFrom.value; }
+    if (this.dateRangeTo.value) { filters.dateRangeTo = this.dateRangeTo.value; }
+
+    if (JSON.stringify(this.svc.filters) !== JSON.stringify(filters)) {
+      this.svc.filters = filters;
+      this.svc.reloadQuestions();
+    }
   }
 
   ngOnInit() {
-    this.users$ = this.svc.users;
+    this.users$ = this.svc.users$;
+  }
 
-    this.filterForm.valueChanges.subscribe(
-      () => {
-        if (this.filterForm.touched || this.filterForm.dirty) {
-          this.emitFilters();
-        }
-      }
-    );
+  public submitFilters(): void {
+    this.emitFilters();
   }
 
 }

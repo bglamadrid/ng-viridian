@@ -15,6 +15,10 @@ import { QuestionsGridComponent } from './routed_components/questions-answers/qu
 import { CommonInMemoryService } from './services/in-memory/common.in-memory.service';
 import { SharedModule } from './shared/shared.module';
 
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+registerLocaleData(localeEs);
+
 @NgModule({
   declarations: [
     AppComponent,

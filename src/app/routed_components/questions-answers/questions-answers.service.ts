@@ -5,6 +5,7 @@ import { QuestionCrudInMemoryService } from 'src/app/services/in-memory/crud/que
 import { UserProfileCrudInMemoryService } from 'src/app/services/in-memory/crud/user-profile.crud.in-memory.service';
 import { Question } from 'src/models/entities/Question';
 import { UserProfile } from 'src/models/entities/UserProfile';
+import { QuestionFilters } from './QuestionFilters';
 
 @Injectable()
 export class QuestionsAnswersService
@@ -12,16 +13,18 @@ export class QuestionsAnswersService
 
   protected questionsArray: Question[];
   public questionsSource: Subject<Question[]>;
+  public filters: Partial<QuestionFilters>;
 
   public get questions(): Question[] {
     return this.questionsArray;
   }
-  public set questions(devices: Question[]) {
-    this.questionsArray = devices;
-    this.questionsSource.next(devices);
+  public set questions(questions: Question[]) {
+
+    this.questionsArray = questions;
+    this.questionsSource.next(questions);
   }
 
-  public get users(): Observable<UserProfile[]> {
+  public get users$(): Observable<UserProfile[]> {
     return this.usersData.readAll();
   }
 
@@ -31,6 +34,7 @@ export class QuestionsAnswersService
   ) {
     this.questionsArray = [];
     this.questionsSource = new BehaviorSubject(this.questionsArray);
+    this.filters = {};
   }
 
   ngOnDestroy(): void {
@@ -38,12 +42,14 @@ export class QuestionsAnswersService
   }
 
   public reloadQuestions(): void {
-    this.data.readAll()
-    .pipe(
+    const noFilters = (JSON.stringify(this.filters) === '{}');
+    const query: Observable<Question[]> = noFilters ? this.data.readAll() : this.data.readFiltered(this.filters);
+
+    query.pipe(
       catchError(() => []),
       retry(1)
     ).subscribe(
-      (items: Question[]) => {
+      items => {
         if (items) {
           this.questions = items;
         }

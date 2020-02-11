@@ -7,12 +7,20 @@ export abstract class CrudInMemoryService<T extends AbstractEntity>
 
   protected items: T[];
 
-  protected filterItems(filter: Partial<T>): Set<T> {
+  protected filterItems(filter: any): Set<T> {
+
     const uniqueItems = new Set<T>();
     for (const property in filter) {
-      if (property !== 'id' && property in filter) {
-        const itemsMatchingProperty = this.items.filter(it => filter[property] === it[property]);
-        for (const item of itemsMatchingProperty) {
+      if (filter.hasOwnProperty(property) && property !== 'id') {
+        const value = filter[property];
+        let matchingItems: T[];
+        if (typeof value === 'string') {
+          matchingItems = this.items.filter(it => property in it && (it[property] as string).includes(value) );
+        } else if (typeof value === 'number' || (typeof value === 'object' && value instanceof Date)) {
+          matchingItems = this.items.filter(it => property in it && it[property] === value);
+        }
+
+        for (const item of matchingItems) {
           uniqueItems.add(item);
         }
       }
@@ -39,7 +47,7 @@ export abstract class CrudInMemoryService<T extends AbstractEntity>
     return of(this.items);
   }
 
-  public readFiltered(filter: T): Observable<T[]> {
+  public readFiltered(filter: any): Observable<T[]> {
     return of([...this.filterItems(filter)]);
   }
 

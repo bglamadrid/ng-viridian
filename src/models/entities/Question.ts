@@ -15,5 +15,5 @@ export class Question
   public answers: Answer[];
 
   public get answersCount(): number { return this.answers ? this.answers.length : 0; }
-  public get properDate(): string { return formatDate(this.date, 'YYYY/MM/DD', 'es-CL'); }
+  public get properDate(): string { return formatDate(this.date, 'YYYY/MM/DD', 'es'); }
 }

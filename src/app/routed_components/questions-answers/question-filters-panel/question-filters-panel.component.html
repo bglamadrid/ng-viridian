@@ -4,7 +4,7 @@
       {{ labelQuestionFilters }}
     </mat-panel-title>
   </mat-expansion-panel-header>
-  <form [formGroup]="filterForm">
+  <form [formGroup]="filterForm" (submit)="submitFilters()">
     <div class="filters-grid">
       <div class="filter title">
         <mat-form-field>
@@ -47,7 +47,8 @@
       </div>
       <button mat-button type="submit"
         color="accent"
-        title="{{ labelUpdateFilters }}">
+        title="{{ labelUpdateFilters }}"
+        [disabled]="filterForm.disabled || filterForm.pristine || filterForm.untouched">
         <i class="small material-icons">search</i>
       </button>
     </div>

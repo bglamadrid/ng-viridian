@@ -32,9 +32,4 @@ export class QuestionsGridComponent
   ngOnInit() {
   }
 
-  public onClickView(q: Question) {
-    alert(q.title);
-    console.log(q);
-  }
-
 }
