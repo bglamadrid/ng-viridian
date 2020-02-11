@@ -3,8 +3,10 @@
   </app-device-filters-panel>
 
   <mat-spinner-centered *ngIf="loading"></mat-spinner-centered>
-  <div class="catalog" [hidden]="loading">
-    <app-device-card *ngFor="let device of (devices$ | async); let i = index" [device]="device"></app-device-card>
+  <div class="catalog-wrapper" [hidden]="loading">
+    <div class="catalog">
+      <app-device-card *ngFor="let device of (devices$ | async); let i = index" [device]="device"></app-device-card>
+    </div>
   </div>
   <div class="catalog-summary">
     <span>Total items: {{ totalItemNumber }}</span>
