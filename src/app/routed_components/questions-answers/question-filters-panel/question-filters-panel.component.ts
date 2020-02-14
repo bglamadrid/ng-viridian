@@ -59,7 +59,11 @@ export class QuestionFiltersPanelComponent
     });
   }
 
-  protected emitFilters(): void {
+  ngOnInit() {
+    this.users$ = this.svc.users$;
+  }
+
+  public submitFilters(): void {
     const filters: Partial<QuestionFilters> = {};
     if (this.title.value) { filters.title = this.title.value; }
     if (this.author.value) { filters.author = this.author.value; }
@@ -70,14 +74,6 @@ export class QuestionFiltersPanelComponent
       this.svc.filters = filters;
       this.svc.reloadQuestions();
     }
-  }
-
-  ngOnInit() {
-    this.users$ = this.svc.users$;
-  }
-
-  public submitFilters(): void {
-    this.emitFilters();
   }
 
 }

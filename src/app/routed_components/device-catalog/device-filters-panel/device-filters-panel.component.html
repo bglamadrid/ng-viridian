@@ -4,7 +4,7 @@
       {{ labelDeviceFilters }}
     </mat-panel-title>
   </mat-expansion-panel-header>
-  <form [formGroup]="filterForm">
+  <form [formGroup]="filterForm" (submit)="submitFilters()">
     <div class="filters-grid">
       <div class="filter name">
         <mat-form-field>
@@ -14,6 +14,7 @@
       <div class="filter brand">
         <mat-form-field>
           <mat-select matInput placeholder="{{ labelBrand }}" formControlName="brand">
+            <mat-option>{{ labelOmitFilter }}</mat-option>
             <mat-option *ngFor="let b of (brands$ | async)"
               [value]="b.id">
               {{ b.name }}
@@ -24,6 +25,7 @@
       <div class="filter type">
         <mat-form-field>
           <mat-select matInput placeholder="{{ labelType }}" formControlName="type">
+            <mat-option>{{ labelOmitFilter }}</mat-option>
             <mat-option *ngFor="let t of (types$ | async)"
               [value]="t.id">
               {{ t.name }}

@@ -5,14 +5,15 @@ import { CommonInMemoryService } from 'src/app/services/in-memory/common.in-memo
 import { DeviceCrudInMemoryService } from 'src/app/services/in-memory/crud/device.crud.in-memory.service';
 import { Descriptable } from 'src/models/Descriptable';
 import { Device } from 'src/models/entities/Device';
+import { DeviceFilters } from './DeviceFilters';
 
 @Injectable()
 export class DeviceCatalogService
   implements OnDestroy {
 
   protected devicesArray: Device[];
-  protected deviceFilters: Device;
   public devicesSource: Subject<Device[]>;
+  public filters: Partial<DeviceFilters>;
 
   public get devices(): Device[] {
     return this.devicesArray;
@@ -22,19 +23,11 @@ export class DeviceCatalogService
     this.devicesSource.next(devices);
   }
 
-  public get filters(): Device {
-    return this.deviceFilters;
-  }
-  public set filters(dvc: Device) {
-    this.deviceFilters = dvc;
-
-  }
-
-  public get deviceTypes(): Observable<Descriptable[]> {
+  public get deviceTypes$(): Observable<Descriptable[]> {
     return this.commonData.loadDeviceTypes();
   }
 
-  public get deviceBrands(): Observable<Descriptable[]> {
+  public get deviceBrands$(): Observable<Descriptable[]> {
     return this.commonData.loadDeviceBrands();
   }
 
@@ -44,6 +37,7 @@ export class DeviceCatalogService
   ) {
     this.devicesArray = [];
     this.devicesSource = new BehaviorSubject(this.devicesArray);
+    this.filters = {};
   }
 
   ngOnDestroy(): void {
@@ -51,8 +45,11 @@ export class DeviceCatalogService
   }
 
   public reloadDevices(): void {
-    this.data.readAll()
-    .pipe(
+
+    const noFilters = (JSON.stringify(this.filters) === '{}');
+    const query: Observable<Device[]> = noFilters ? this.data.readAll() : this.data.readFiltered(this.filters);
+
+    query.pipe(
       catchError(err => []),
       retry(1)
     ).subscribe(

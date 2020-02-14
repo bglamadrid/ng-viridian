@@ -11,17 +11,4 @@ export class DeviceCrudInMemoryService
     super();
     this.items = MOCK_DEVICES.map(d => Object.assign(new Device(), d));
   }
-
-  protected filterItems(filter: Partial<Device>): Set<Device> {
-    const uniqueItems = new Set<Device>();
-    for (const property in filter) {
-      if (property !== 'id' && property in filter) {
-        const itemsMatchingProperty = this.items.filter(it => filter[property] === it[property]);
-        for (const item of itemsMatchingProperty) {
-          uniqueItems.add(item);
-        }
-      }
-    }
-    return uniqueItems;
-  }
 }

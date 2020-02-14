@@ -8,22 +8,27 @@ export abstract class CrudInMemoryService<T extends AbstractEntity>
   protected items: T[];
 
   protected filterItems(filter: any): Set<T> {
-
-    const uniqueItems = new Set<T>();
-    for (const property in filter) {
-      if (filter.hasOwnProperty(property) && property !== 'id') {
-        const value = filter[property];
-        let matchingItems: T[];
-        if (typeof value === 'string') {
-          matchingItems = this.items.filter(it => property in it && (it[property] as string).includes(value) );
-        } else if (typeof value === 'number' || (typeof value === 'object' && value instanceof Date)) {
-          matchingItems = this.items.filter(it => property in it && it[property] === value);
-        }
-
-        for (const item of matchingItems) {
-          uniqueItems.add(item);
+    let matchingItems = this.items;
+    for (const propName in filter) {
+      if (filter.hasOwnProperty(propName) && propName !== 'id') {
+        const propValue = filter[propName];
+        if (typeof propValue === 'string') {
+          matchingItems = matchingItems.filter(it => propName in it && (it[propName] as string).toUpperCase().includes(propValue.toUpperCase()) );
+        } else if (typeof propValue === 'number') {
+          matchingItems = matchingItems.filter(it => propName in it && it[propName] === propValue);
+        } else if (typeof propValue === 'object') {
+          if (propValue instanceof Date) {
+            matchingItems = matchingItems.filter(it => propName in it && it[propName].toString() === propValue.toString());
+          } else if ('id' in propValue) {
+            matchingItems = matchingItems.filter(it => propName in it && (it[propName] as AbstractEntity).id === propValue.id);
+          }
         }
       }
+    }
+
+    const uniqueItems = new Set<T>();
+    for (const item of matchingItems) {
+      uniqueItems.add(item);
     }
     return uniqueItems;
   }

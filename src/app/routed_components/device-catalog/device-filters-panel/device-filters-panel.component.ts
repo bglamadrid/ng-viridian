@@ -4,7 +4,8 @@ import { Device } from 'src/models/entities/Device';
 import { Observable } from 'rxjs';
 import { Descriptable } from 'src/models/Descriptable';
 import { DeviceCatalogService } from '../device-catalog.service';
-import { LBL_UPDATE, LBL_DEVICE_FILTERS, LBL_NAME, LBL_BRAND, LBL_TYPE } from 'src/app/shared/i18/es/labels';
+import { LBL_UPDATE, LBL_DEVICE_FILTERS, LBL_NAME, LBL_BRAND, LBL_TYPE, LBL_NO_FILTER } from 'src/app/shared/i18/es/labels';
+import { DeviceFilters } from '../DeviceFilters';
 
 @Component({
   selector: 'app-device-filters-panel',
@@ -30,8 +31,12 @@ export class DeviceFiltersPanelComponent
   public get labelType(): string { return LBL_TYPE; }
   public get labelDeviceFilters(): string { return LBL_DEVICE_FILTERS; }
   public get labelUpdateFilters(): string { return LBL_UPDATE; }
+  public get labelOmitFilter(): string { return LBL_NO_FILTER; }
 
   @Input() public set deviceFilters(dvc: Device) {
+    if (dvc.name) {
+      this.name.setValue(dvc.name);
+    }
     if (dvc.brand) {
       this.brand.setValue(dvc.brand.id);
     }
@@ -39,8 +44,6 @@ export class DeviceFiltersPanelComponent
       this.type.setValue(dvc.deviceType.id);
     }
   }
-
-  @Output() public filters: EventEmitter<Device>;
 
   constructor(
     protected fb: FormBuilder,
@@ -51,35 +54,23 @@ export class DeviceFiltersPanelComponent
       brand: [null],
       type: [null]
     });
-
-    this.filters = new EventEmitter();
-  }
-
-  protected emitFilters(f: any): void {
-    const dvc = new Device();
-    if (f.name) {
-      dvc.name = f.name;
-    }
-    if (f.brand) {
-      dvc.brand = f.brand;
-    }
-    if (f.type) {
-      dvc.deviceType = f.type;
-    }
-    this.filters.emit(dvc);
   }
 
   ngOnInit(): void {
-    this.brands$ = this.svc.deviceBrands;
-    this.types$ = this.svc.deviceTypes;
+    this.brands$ = this.svc.deviceBrands$;
+    this.types$ = this.svc.deviceTypes$;
+  }
 
-    this.filterForm.valueChanges.subscribe(
-      f => {
-        if (this.filterForm.touched || this.filterForm.dirty) {
-          this.emitFilters(f);
-        }
-      }
-    );
+  public submitFilters(): void {
+    const filters: Partial<DeviceFilters> = {};
+    if (this.name.value) { filters.name = this.name.value; }
+    if (this.brand.value) { filters.brand = { id: this.brand.value }; }
+    if (this.type.value) { filters.deviceType = { id: this.type.value }; }
+
+    if (JSON.stringify(this.svc.filters) !== JSON.stringify(filters)) {
+      this.svc.filters = filters;
+      this.svc.reloadDevices();
+    }
   }
 
 }

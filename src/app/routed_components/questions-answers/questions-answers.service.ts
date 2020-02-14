@@ -45,6 +45,9 @@ export class QuestionsAnswersService
     const noFilters = (JSON.stringify(this.filters) === '{}');
     const query: Observable<Question[]> = noFilters ? this.data.readAll() : this.data.readFiltered(this.filters);
 
+    console.log(noFilters? 'readAll' : 'readFiltered');
+
+
     query.pipe(
       catchError(() => []),
       retry(1)
