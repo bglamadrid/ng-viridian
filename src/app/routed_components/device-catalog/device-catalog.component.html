@@ -5,6 +5,8 @@
   <div class="catalog-wrapper" [hidden]="loading">
     <div class="catalog">
       <app-device-card *ngFor="let device of (devices$ | async); let i = index" [device]="device"></app-device-card>
+      <button mat-button class="">
+      </button>
     </div>
   </div>
   <div class="catalog-summary">
