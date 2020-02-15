@@ -17,6 +17,8 @@ import { SharedModule } from './shared/shared.module';
 
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { DeviceCrudInMemoryService } from './services/in-memory/crud/device.crud.in-memory.service';
+import { QuestionCrudInMemoryService } from './services/in-memory/crud/question.crud.in-memory.service';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -39,7 +41,9 @@ registerLocaleData(localeEs);
     AppRoutingModule
   ],
   providers: [
-    CommonInMemoryService
+    CommonInMemoryService,
+    DeviceCrudInMemoryService,
+    QuestionCrudInMemoryService
   ],
   bootstrap: [AppComponent]
 })
