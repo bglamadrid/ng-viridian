@@ -19,6 +19,8 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { DeviceCrudInMemoryService } from './services/in-memory/crud/device.crud.in-memory.service';
 import { QuestionCrudInMemoryService } from './services/in-memory/crud/question.crud.in-memory.service';
+import { DeviceDialogComponent } from './dialogs/device-dialog/device-dialog.component';
+import { UserProfileCrudInMemoryService } from './services/in-memory/crud/user-profile.crud.in-memory.service';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -34,7 +36,8 @@ registerLocaleData(localeEs);
     NavHeaderComponent,
     QuestionFiltersPanelComponent,
     QuestionThreadCardComponent,
-    DeviceDetailsCardComponent
+    DeviceDetailsCardComponent,
+    DeviceDialogComponent
   ],
   imports: [
     SharedModule,
@@ -43,7 +46,11 @@ registerLocaleData(localeEs);
   providers: [
     CommonInMemoryService,
     DeviceCrudInMemoryService,
-    QuestionCrudInMemoryService
+    QuestionCrudInMemoryService,
+    UserProfileCrudInMemoryService
+  ],
+  entryComponents: [
+    DeviceDialogComponent
   ],
   bootstrap: [AppComponent]
 })
