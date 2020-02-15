@@ -12,6 +12,16 @@ export abstract class DataGridTemplateComponent<T> {
   public table: MatTable<T>;
   public tableColumns: string[];
 
+  @Input() public set items(input: T[]) {
+    if (this.table) {
+      if (input) {
+        this.table.dataSource = of(input);
+      } else {
+        this.table.dataSource = of([]);
+      }
+    }
+  }
+
   constructor() {
     this.tableColumns = [];
     this.itemsLoaded = new EventEmitter();
@@ -29,16 +39,6 @@ export abstract class DataGridTemplateComponent<T> {
   public onClickDelete(item: T) {
     if (this.deleteItem) {
       this.deleteItem.emit(item);
-    }
-  }
-
-  @Input() public set items(input: T[]) {
-    if (this.table) {
-      if (input) {
-        this.table.dataSource = of(input);
-      } else {
-        this.table.dataSource = of([]);
-      }
     }
   }
 
