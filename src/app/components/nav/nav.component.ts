@@ -36,7 +36,7 @@ export class NavComponent
       this.links = this.svc.loadNavItems();
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     const currentPath = this.svc.currentPathName;
     if (currentPath) {
       const linkIndex = this.links.findIndex(m => m.path === currentPath);
