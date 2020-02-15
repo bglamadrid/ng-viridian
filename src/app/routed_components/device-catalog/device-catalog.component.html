@@ -5,9 +5,13 @@
   <div class="catalog-wrapper" [hidden]="loading">
     <div class="catalog">
       <app-device-card *ngFor="let device of (devices$ | async); let i = index" [device]="device"></app-device-card>
-      <button mat-button class="">
-      </button>
     </div>
+    <button mat-fab class="btn-add"
+      color="primary"
+      (click)="onClickAdd()"
+      title="{{ labelAddDevice }}">
+      <i class="small material-icons">add</i>
+    </button>
   </div>
   <div class="catalog-summary">
     <span>Total items: {{ totalItemNumber }}</span>

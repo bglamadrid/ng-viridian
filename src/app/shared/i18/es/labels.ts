@@ -7,6 +7,7 @@ export const LBL_TYPE = 'Tipo';
 export const LBL_DATE_FROM = 'Desde';
 export const LBL_DATE_TO = 'Hasta';
 
+export const LBL_ADD_DEVICE = 'Nuevo dispositivo';
 export const LBL_DISCONNECT = 'Desconectar';
 export const LBL_UPDATE = 'Actualizar';
 

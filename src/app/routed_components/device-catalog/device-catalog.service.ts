@@ -6,6 +6,8 @@ import { DeviceCrudInMemoryService } from 'src/app/services/in-memory/crud/devic
 import { Descriptable } from 'src/models/Descriptable';
 import { Device } from 'src/models/entities/Device';
 import { DeviceFilters } from './DeviceFilters';
+import { MatDialog } from '@angular/material';
+import { DeviceDialogComponent } from 'src/app/dialogs/device-dialog/device-dialog.component';
 
 @Injectable()
 export class DeviceCatalogService
@@ -33,7 +35,8 @@ export class DeviceCatalogService
 
   constructor(
     protected data: DeviceCrudInMemoryService,
-    protected commonData: CommonInMemoryService
+    protected commonData: CommonInMemoryService,
+    protected dialogs: MatDialog
   ) {
     this.devicesArray = [];
     this.devicesSource = new BehaviorSubject(this.devicesArray);
@@ -59,5 +62,12 @@ export class DeviceCatalogService
         }
       }
     );
+  }
+
+  public openDeviceDialogFor(dvc: Device): Observable<Device> {
+    const dlg = !dvc ?
+      this.dialogs.open(DeviceDialogComponent) :
+      this.dialogs.open(DeviceDialogComponent, { data: { device: dvc } });
+    return dlg.afterClosed();
   }
 }
