@@ -4,38 +4,37 @@
       {{ labelQuestionFilters }}
     </mat-panel-title>
   </mat-expansion-panel-header>
-  <form [formGroup]="filterForm" (submit)="submitFilters()">
-    <div class="filters-grid">
-      <mat-form-field class="filter title">
-        <input matInput type="text" formControlName="title"
-          placeholder="{{ labelTitle }}" />
-      </mat-form-field>
-      <mat-form-field class="filter author">
-        <mat-select formControlName="author"
-          placeholder="{{ labelAuthor }}" >
-          <mat-option *ngFor="let u of (users$ | async)" [value]="u.id">{{ u.name }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="filter date-range-from">
-        <input matInput type="date" formControlName="dateRangeFrom"
-          placeholder="{{ labelDateRangeFrom }}"
-          [matDatepicker]="dateFrom">
-        <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
-        <mat-datepicker #dateFrom></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field class="filter date-range-to">
-        <input matInput type="date" formControlName="dateRangeTo"
-          placeholder="{{ labelDateRangeTo }}"
-          [matDatepicker]="dateTo">
-        <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
-        <mat-datepicker #dateTo></mat-datepicker>
-      </mat-form-field>
-      <button mat-button type="submit"
-        color="accent"
-        title="{{ labelUpdateFilters }}"
-        [disabled]="filterForm.disabled || filterForm.pristine || filterForm.untouched">
-        <i class="small material-icons">search</i>
-      </button>
-    </div>
+  <form [formGroup]="filterForm" class="filters-grid"
+    (submit)="submitFilters()">
+    <mat-form-field class="filter title">
+      <input matInput type="text" formControlName="title"
+        placeholder="{{ labelTitle }}" />
+    </mat-form-field>
+    <mat-form-field class="filter author">
+      <mat-select formControlName="author"
+        placeholder="{{ labelAuthor }}" >
+        <mat-option *ngFor="let u of (users$ | async)" [value]="u.id">{{ u.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="filter date-range-from">
+      <input matInput type="date" formControlName="dateRangeFrom"
+        placeholder="{{ labelDateRangeFrom }}"
+        [matDatepicker]="dateFrom">
+      <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+      <mat-datepicker #dateFrom></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="filter date-range-to">
+      <input matInput type="date" formControlName="dateRangeTo"
+        placeholder="{{ labelDateRangeTo }}"
+        [matDatepicker]="dateTo">
+      <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+      <mat-datepicker #dateTo></mat-datepicker>
+    </mat-form-field>
+    <button mat-button type="submit"
+      color="accent"
+      title="{{ labelUpdateFilters }}"
+      [disabled]="filterForm.disabled || filterForm.pristine || filterForm.untouched">
+      <i class="small material-icons">search</i>
+    </button>
   </form>
 </mat-expansion-panel>
