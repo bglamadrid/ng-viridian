@@ -6,45 +6,30 @@
   </mat-expansion-panel-header>
   <form [formGroup]="filterForm" (submit)="submitFilters()">
     <div class="filters-grid">
-      <div class="filter title">
-        <mat-form-field>
-          <input matInput type="text"
-            placeholder="{{ labelTitle }}"
-            formControlName="title" />
-        </mat-form-field>
-      </div>
-      <div class="filter author">
-        <mat-form-field>
-          <mat-select matInput
-            placeholder="{{ labelAuthor }}"
-            formControlName="author">
-            <mat-option *ngFor="let u of (users$ | async)"
-              [value]="u.id">
-              {{ u.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="filter date-range-from">
-        <mat-form-field>
-          <input matInput type="date"
-            placeholder="{{ labelDateRangeFrom }}"
-            formControlName="dateRangeFrom"
-            [matDatepicker]="dateFrom">
-          <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
-          <mat-datepicker #dateFrom></mat-datepicker>
-        </mat-form-field>
-      </div>
-      <div class="filter date-range-to">
-        <mat-form-field>
-          <input matInput type="date"
-            placeholder="{{ labelDateRangeTo }}"
-            formControlName="dateRangeTo"
-            [matDatepicker]="dateTo">
-          <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
-          <mat-datepicker #dateTo></mat-datepicker>
-        </mat-form-field>
-      </div>
+      <mat-form-field class="filter title">
+        <input matInput type="text" formControlName="title"
+          placeholder="{{ labelTitle }}" />
+      </mat-form-field>
+      <mat-form-field class="filter author">
+        <mat-select formControlName="author"
+          placeholder="{{ labelAuthor }}" >
+          <mat-option *ngFor="let u of (users$ | async)" [value]="u.id">{{ u.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="filter date-range-from">
+        <input matInput type="date" formControlName="dateRangeFrom"
+          placeholder="{{ labelDateRangeFrom }}"
+          [matDatepicker]="dateFrom">
+        <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+        <mat-datepicker #dateFrom></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="filter date-range-to">
+        <input matInput type="date" formControlName="dateRangeTo"
+          placeholder="{{ labelDateRangeTo }}"
+          [matDatepicker]="dateTo">
+        <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+        <mat-datepicker #dateTo></mat-datepicker>
+      </mat-form-field>
       <button mat-button type="submit"
         color="accent"
         title="{{ labelUpdateFilters }}"

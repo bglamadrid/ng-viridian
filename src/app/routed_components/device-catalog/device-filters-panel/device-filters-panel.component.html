@@ -6,36 +6,28 @@
   </mat-expansion-panel-header>
   <form [formGroup]="filterForm" (submit)="submitFilters()">
     <div class="filters-grid">
-      <div class="filter name">
-        <mat-form-field>
-          <input matInput placeholder="{{ labelName }}" formControlName="name" />
-        </mat-form-field>
-      </div>
-      <div class="filter brand">
-        <mat-form-field>
-          <mat-select matInput placeholder="{{ labelBrand }}" formControlName="brand">
-            <mat-option>{{ labelOmitFilter }}</mat-option>
-            <mat-option *ngFor="let b of (brands$ | async)"
-              [value]="b.id">
-              {{ b.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="filter type">
-        <mat-form-field>
-          <mat-select matInput placeholder="{{ labelType }}" formControlName="type">
-            <mat-option>{{ labelOmitFilter }}</mat-option>
-            <mat-option *ngFor="let t of (types$ | async)"
-              [value]="t.id">
-              {{ t.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+      <mat-form-field class="filter name">
+        <input matInput type="text" formControlName="name"
+          placeholder="{{ labelName }}" />
+      </mat-form-field>
+      <mat-form-field class="filter brand">
+        <mat-select formControlName="brand"
+          placeholder="{{ labelBrand }}">
+          <mat-option>{{ labelOmitFilter }}</mat-option>
+          <mat-option *ngFor="let b of (brands$ | async)" [value]="b.id">{{ b.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="filter type">
+        <mat-select formControlName="type"
+          placeholder="{{ labelType }}" >
+          <mat-option>{{ labelOmitFilter }}</mat-option>
+          <mat-option *ngFor="let t of (types$ | async)" [value]="t.id">{{ t.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
       <button mat-button type="submit"
         color="accent"
-        title="{{ labelUpdateFilters }}">
+        title="{{ labelUpdateFilters }}"
+        [disabled]="filterForm.disabled || filterForm.pristine || filterForm.untouched">
         <i class="small material-icons">search</i>
       </button>
     </div>
