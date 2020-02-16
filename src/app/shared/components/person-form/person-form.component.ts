@@ -16,6 +16,12 @@ export class PersonFormComponent {
   protected personId: number;
   public personFormGroup: FormGroup;
 
+  public get name() { return this.personFormGroup.get('name'); }
+  public get idNumber() { return this.personFormGroup.get('idNumber'); }
+  public get address() { return this.personFormGroup.get('address'); }
+  public get email() { return this.personFormGroup.get('email'); }
+  public get phones() { return this.personFormGroup.get('phones') as FormArray; }
+
   constructor(
     protected fb: FormBuilder
   ) {
@@ -27,12 +33,6 @@ export class PersonFormComponent {
       phones: this.fb.array([])
     });
   }
-
-  public get name() { return this.personFormGroup.get('name'); }
-  public get idNumber() { return this.personFormGroup.get('idNumber'); }
-  public get address() { return this.personFormGroup.get('address'); }
-  public get email() { return this.personFormGroup.get('email'); }
-  public get phones() { return this.personFormGroup.get('phones') as FormArray; }
 
   public get person(): PersonProfile {
     if (this.personFormGroup.invalid) {
