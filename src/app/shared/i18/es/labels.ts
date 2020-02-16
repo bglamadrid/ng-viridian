@@ -3,9 +3,12 @@ export const LBL_AUTHOR = 'Autor';
 export const LBL_NAME = 'Nombre';
 export const LBL_BRAND = 'Marca';
 export const LBL_TYPE = 'Tipo';
+export const LBL_SPECS = 'Especificaciones';
 
 export const LBL_DATE_FROM = 'Desde';
 export const LBL_DATE_TO = 'Hasta';
+export const LBL_KEY = 'Llave';
+export const LBL_VALUE = 'Valor';
 
 export const LBL_ADD_DEVICE = 'Nuevo dispositivo';
 export const LBL_DISCONNECT = 'Desconectar';
