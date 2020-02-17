@@ -4,13 +4,17 @@ mat-dialog-content
   grid-template-columns: 1fr
   height: 32em
 
+.form-table
+  min-height: 4em
+  max-height: 20em
+  overflow-y: auto
+  overflow-x: hidden
+
+h5
+  margin: 0
+
 #specsTable
   width: 100%
-
-#specsTable button
-  min-width: 2em
-  line-height: 2em
-  padding: 0
 
 #specsTable .mat-column-key,
 #specsTable .mat-column-value
@@ -18,9 +22,6 @@ mat-dialog-content
 
 #specsTable .mat-column-actions
   flex: 0 0 3em
-
-.form-container>h5
-  margin: 0
 
 .form-array-container.urls
   display: flex
@@ -35,4 +36,4 @@ mat-dialog-content
 
 .form-array-container.urls>.btn-add-url
   flex: 0 0 auto
-  margin-left: 1em
+  margin: 1em

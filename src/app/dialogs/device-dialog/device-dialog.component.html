@@ -17,8 +17,9 @@
         <mat-option *ngFor="let b of (deviceTypes$ | async)" [value]="b.id">{{ b.name }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <div class="form-container specs">
-      <h5>{{ labelSpecs }}</h5>
+
+    <h5>{{ labelSpecs }}</h5>
+    <div class="form-table specs">
       <table mat-table #specsTable id="specsTable"
         [dataSource]="specs.controls">
         <ng-container matColumnDef="key">
@@ -35,14 +36,16 @@
         </ng-container>
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>
-            <button type="button" mat-button mat-raised-button class="btn-add-spec"
+            <button type="button" mat-button mat-raised-button
+              class="very-small"
               color="accent"
               (click)="onClickAddSpec()">
               <i class="small material-icons">add</i>
             </button>
           </th>
           <td mat-cell *matCellDef="let i = index">
-            <button type="button" mat-button mat-raised-button class="btn-delete-spec"
+            <button type="button" mat-button mat-raised-button
+              class="very-small"
               color="warn"
               (click)="onClickDeleteSpec(i)">
               <i class="very-small material-icons">close</i>
@@ -54,25 +57,24 @@
         <tr mat-row *matRowDef="let row; columns: specsTableColumns;"></tr>
       </table>
     </div>
-    <div class="form-container urls">
-      <h5>URLs</h5>
-      <div class="form-array-container urls">
-        <div class="form-array urls">
-          <mat-form-field *ngFor="let c of urls.controls; let i = index"
-            class="form-control url">
-            <input matInput type="text" [formControl]="c" />
-            <button matSuffix type="button" mat-button mat-icon-button
-              (click)="onClickDeleteUrl(i)">
-              <i class="very-small material-icons">close</i>
-            </button>
-          </mat-form-field>
-        </div>
-        <button type="button" mat-mini-fab class="btn-add-url"
-          color="accent"
-          (click)="onClickAddUrl()">
-          <i class="small material-icons">add</i>
-        </button>
+
+    <h5>URLs</h5>
+    <div class="form-array-container urls">
+      <div class="form-array urls">
+        <mat-form-field *ngFor="let c of urls.controls; let i = index"
+          class="form-control url">
+          <input matInput type="text" [formControl]="c" />
+          <button matSuffix type="button" mat-button mat-icon-button
+            (click)="onClickDeleteUrl(i)">
+            <i class="very-small material-icons">close</i>
+          </button>
+        </mat-form-field>
       </div>
+      <button type="button" mat-mini-fab class="btn-add-url"
+        color="accent"
+        (click)="onClickAddUrl()">
+        <i class="small material-icons">add</i>
+      </button>
     </div>
   </form>
 </mat-dialog-content>
