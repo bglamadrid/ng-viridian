@@ -3,9 +3,12 @@ import { FormArray, FormBuilder, FormGroup, Validators, AbstractControl } from '
 import { MAT_DIALOG_DATA, MatTable } from '@angular/material';
 import { Observable } from 'rxjs';
 import { DeviceCatalogService } from 'src/app/routed_components/device-catalog/device-catalog.service';
-import { LBL_BRAND, LBL_NAME, LBL_SPECS, LBL_KEY, LBL_VALUE } from 'src/app/shared/i18/es/labels';
+import { LBL_BRAND, LBL_NAME, LBL_SPECS, LBL_KEY, LBL_VALUE, LBL_TYPE } from 'src/app/shared/i18/es/labels';
 import { Descriptable } from 'src/models/Descriptable';
 import { DeviceDialogData } from './DeviceDialogData';
+import { Device } from 'src/models/entities/Device';
+
+export const requiredTextInput = ['', Validators.required];
 
 @Component({
   selector: 'app-device-dialog',
@@ -19,20 +22,24 @@ export class DeviceDialogComponent
   implements OnInit {
 
   protected svc: DeviceCatalogService;
+  protected deviceId: number;
 
   public formGroup: FormGroup;
   public brands$: Observable<Descriptable[]>;
+  public deviceTypes$: Observable<Descriptable[]>;
 
   @ViewChild('specsTable', { static: true }) public specsTable: MatTable<FormArray>;
-  public tableColumns: string[];
+  public specsTableColumns: string[];
 
   public get name() { return this.formGroup.get('name'); }
   public get brand() { return this.formGroup.get('brand'); }
+  public get type() { return this.formGroup.get('type'); }
   public get specs() { return this.formGroup.get('specs') as FormArray; }
   public get urls() { return this.formGroup.get('urls') as FormArray; }
 
   public get labelName(): string { return LBL_NAME; }
   public get labelBrand(): string { return LBL_BRAND; }
+  public get labelType(): string { return LBL_TYPE; }
   public get labelSpecs(): string { return LBL_SPECS; }
   public get labelKey(): string { return LBL_KEY; }
   public get labelValue(): string { return LBL_VALUE; }
@@ -42,23 +49,47 @@ export class DeviceDialogComponent
     protected fb: FormBuilder
   ) {
     this.formGroup = this.fb.group({
-      name: ['', Validators.required],
+      name: requiredTextInput,
       brand: [null, Validators.required],
-      specs: this.fb.array([ this.fb.array(['', '']) ]),
-      urls: this.fb.array([''], Validators.compose([Validators.minLength(1)]))
+      type: [null, Validators.required],
+      specs: this.fb.array([ this.fb.array([requiredTextInput, requiredTextInput]) ], Validators.required),
+      urls: this.fb.array([])
     });
 
     this.svc = this.data.svc;
+    this.deviceId = (this.data.device && this.data.device.id) ? this.data.device.id : 0;
 
-    this.tableColumns = [ 'key', 'value', 'actions' ];
+    this.specsTableColumns = [ 'key', 'value', 'actions' ];
   }
 
   ngOnInit() {
     this.brands$ = this.svc.deviceBrands$;
+    this.deviceTypes$ = this.svc.deviceTypes$;
+  }
+
+  protected constructSpecifications(): { [key: string]: string } {
+    const specifications = {};
+    for (const c of this.specs.value) {
+      specifications[c[0]] = c[1];
+    }
+    return specifications;
+  }
+
+  protected constructDevice(): Device {
+    return {
+      id: this.deviceId,
+      name: this.name.value,
+      description: '',
+      brand: { id: this.brand.value },
+      deviceType: { id: this.type.value },
+      images: [],
+      urls: [],
+      specifications: this.constructSpecifications()
+    };
   }
 
   public onClickAddSpec(): void {
-    const specFormControl = this.fb.array(['', '']);
+    const specFormControl = this.fb.array([requiredTextInput, requiredTextInput]);
     this.specs.push(specFormControl);
     this.specsTable.renderRows();
   }
@@ -69,7 +100,7 @@ export class DeviceDialogComponent
   }
 
   public onClickAddUrl(): void {
-    const urlFormControl = this.fb.control('');
+    const urlFormControl = this.fb.control('', Validators.required);
     this.urls.push(urlFormControl);
   }
 
@@ -78,9 +109,12 @@ export class DeviceDialogComponent
   }
 
   public onSubmit() {
-    alert('submit');
-    alert(`formGroup.valid=${this.formGroup.valid}`);
-    console.log(this.formGroup.value);
+    const dvc = this.constructDevice();
+    this.svc.insertDevice(dvc).subscribe(
+      d => {
+        console.log(d);
+      }
+    );
   }
 
 }

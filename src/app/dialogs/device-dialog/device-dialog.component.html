@@ -11,6 +11,12 @@
         <mat-option *ngFor="let b of (brands$ | async)" [value]="b.id">{{ b.name }}</mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-form-field class="form-control type">
+      <mat-select formControlName="type"
+        placeholder="{{ labelType }}">
+        <mat-option *ngFor="let b of (deviceTypes$ | async)" [value]="b.id">{{ b.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
     <div class="form-container specs">
       <h5>{{ labelSpecs }}</h5>
       <table mat-table #specsTable id="specsTable"
@@ -44,8 +50,8 @@
           </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="specsTableColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: specsTableColumns;"></tr>
       </table>
     </div>
     <div class="form-container urls">
@@ -73,6 +79,7 @@
 <mat-dialog-actions align="end">
   <button type="button" mat-raised-button
     color="success"
+    [disabled]="formGroup.invalid || formGroup.untouched || formGroup.pristine"
     (click)="onSubmit()">
     <i class="small material-icons">check</i>
   </button>

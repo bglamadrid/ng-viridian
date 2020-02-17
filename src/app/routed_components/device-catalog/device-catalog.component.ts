@@ -5,6 +5,7 @@ import { Device } from 'src/models/entities/Device';
 import { LBL_ADD_DEVICE } from 'src/app/shared/i18/es/labels';
 import { MatDialog } from '@angular/material';
 import { DeviceDialogComponent } from 'src/app/dialogs/device-dialog/device-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   providers: [ DeviceCatalogService ],
@@ -40,6 +41,17 @@ export class DeviceCatalogComponent
 
   public onClickAdd(): void {
     this.svc.openDeviceDialogFor(null);
+  }
+
+  public onClickEdit(index: number, dvc: Device) {
+    const deviceEditing = this.svc.openDeviceDialogFor(dvc);
+    deviceEditing.subscribe(
+      (edited) => {
+        if (edited) {
+          this.svc
+        }
+      }
+    )
   }
 
 }

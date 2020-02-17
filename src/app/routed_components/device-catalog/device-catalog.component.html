@@ -4,7 +4,8 @@
   <mat-spinner-centered *ngIf="loading"></mat-spinner-centered>
   <div class="catalog-wrapper" [hidden]="loading">
     <div class="catalog">
-      <app-device-card *ngFor="let device of (devices$ | async); let i = index" [device]="device"></app-device-card>
+      <app-device-card *ngFor="let device of (devices$ | async); let i = index" [device]="device"
+      (click)="onClickEdit(i, device)"></app-device-card>
     </div>
     <button mat-fab class="btn-add"
       color="primary"

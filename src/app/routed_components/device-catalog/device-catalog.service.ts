@@ -70,10 +70,19 @@ export class DeviceCatalogService
       svc: this,
       device: dvc ? dvc : null
     };
-    return this.dialogs.open(DeviceDialogComponent, {
-      width: '30em',
-      height: '40em',
-      data: dialogData
-    }).afterClosed();
+    const dialogRef = this.dialogs.open(
+      DeviceDialogComponent,
+      {
+        width: '30em',
+        height: '40em',
+        data: dialogData
+      }
+    );
+
+    return dialogRef.afterClosed();
+  }
+
+  public insertDevice(dvc: Device): Observable<Device> {
+    return this.data.create(dvc);
   }
 }
