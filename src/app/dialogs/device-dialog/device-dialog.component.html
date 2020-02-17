@@ -1,84 +1,91 @@
 <mat-dialog-content>
-  <form [formGroup]="formGroup">
-    <h2>Registrar Nuevo Equipo</h2>
-    <mat-form-field class="form-control name">
-      <input matInput type="text" formControlName="name"
-        placeholder="{{ labelName }}" />
-    </mat-form-field>
-    <mat-form-field class="form-control brand">
-      <mat-select formControlName="brand"
-        placeholder="{{ labelBrand }}">
-        <mat-option *ngFor="let b of (brands$ | async)" [value]="b.id">{{ b.name }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="form-control type">
-      <mat-select formControlName="type"
-        placeholder="{{ labelType }}">
-        <mat-option *ngFor="let b of (deviceTypes$ | async)" [value]="b.id">{{ b.name }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+  <mat-spinner-centered *ngIf="submitting"></mat-spinner-centered>
+  <div [hidden]="submitting">
+    <form [formGroup]="formGroup">
+      <h2>Registrar Nuevo Equipo</h2>
+      <mat-form-field class="form-control name">
+        <input matInput type="text" formControlName="name"
+          placeholder="{{ labelName }}" />
+      </mat-form-field>
+      <mat-form-field class="form-control brand">
+        <mat-select formControlName="brand"
+          placeholder="{{ labelBrand }}">
+          <mat-option *ngFor="let b of (brands$ | async)" [value]="b.id">{{ b.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-control type">
+        <mat-select formControlName="type"
+          placeholder="{{ labelType }}">
+          <mat-option *ngFor="let b of (deviceTypes$ | async)" [value]="b.id">{{ b.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-control description">
+        <textarea matInput cdkTextareaAutosize formControlName="description"
+          placeholder="{{ labelDescription }}"></textarea>
+      </mat-form-field>
 
-    <h5>{{ labelSpecs }}</h5>
-    <div class="form-table specs">
-      <table mat-table #specsTable id="specsTable"
-        [dataSource]="specs.controls">
-        <ng-container matColumnDef="key">
-          <th mat-header-cell *matHeaderCellDef> {{ labelKey }} </th>
-          <td mat-cell *matCellDef="let formArray">
-            <input matInput type="text" [formControl]="formArray.controls[0]" />
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="value">
-          <th mat-header-cell *matHeaderCellDef> {{ labelValue }} </th>
-          <td mat-cell *matCellDef="let formArray">
-            <input matInput type="text" [formControl]="formArray.controls[1]" />
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef>
-            <button type="button" mat-button mat-raised-button
-              class="very-small"
-              color="accent"
-              (click)="onClickAddSpec()">
-              <i class="small material-icons">add</i>
-            </button>
-          </th>
-          <td mat-cell *matCellDef="let i = index">
-            <button type="button" mat-button mat-raised-button
-              class="very-small"
-              color="warn"
-              (click)="onClickDeleteSpec(i)">
+      <h5>{{ labelSpecs }}</h5>
+      <div class="form-table specs">
+        <table mat-table #specsTable id="specsTable"
+          [dataSource]="specs.controls">
+          <ng-container matColumnDef="key">
+            <th mat-header-cell *matHeaderCellDef> {{ labelKey }} </th>
+            <td mat-cell *matCellDef="let formArray">
+              <input matInput type="text" [formControl]="formArray.controls[0]" />
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef> {{ labelValue }} </th>
+            <td mat-cell *matCellDef="let formArray">
+              <input matInput type="text" [formControl]="formArray.controls[1]" />
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>
+              <button type="button" mat-button mat-raised-button
+                class="very-small"
+                color="accent"
+                (click)="onClickAddSpec()">
+                <i class="small material-icons">add</i>
+              </button>
+            </th>
+            <td mat-cell *matCellDef="let i = index">
+              <button type="button" mat-button mat-raised-button
+                class="very-small"
+                color="warn"
+                (click)="onClickDeleteSpec(i)">
+                <i class="very-small material-icons">close</i>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="specsTableColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: specsTableColumns;"></tr>
+        </table>
+      </div>
+
+      <h5>URLs</h5>
+      <div class="form-array-container urls">
+        <div class="form-array urls">
+          <mat-form-field *ngFor="let c of urls.controls; let i = index"
+            class="form-control url">
+            <input matInput type="text" [formControl]="c" />
+            <button matSuffix type="button" mat-button mat-icon-button
+              (click)="onClickDeleteUrl(i)">
               <i class="very-small material-icons">close</i>
             </button>
-          </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="specsTableColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: specsTableColumns;"></tr>
-      </table>
-    </div>
-
-    <h5>URLs</h5>
-    <div class="form-array-container urls">
-      <div class="form-array urls">
-        <mat-form-field *ngFor="let c of urls.controls; let i = index"
-          class="form-control url">
-          <input matInput type="text" [formControl]="c" />
-          <button matSuffix type="button" mat-button mat-icon-button
-            (click)="onClickDeleteUrl(i)">
-            <i class="very-small material-icons">close</i>
-          </button>
-        </mat-form-field>
+          </mat-form-field>
+        </div>
+        <button type="button" mat-mini-fab class="btn-add-url"
+          color="accent"
+          (click)="onClickAddUrl()">
+          <i class="small material-icons">add</i>
+        </button>
       </div>
-      <button type="button" mat-mini-fab class="btn-add-url"
-        color="accent"
-        (click)="onClickAddUrl()">
-        <i class="small material-icons">add</i>
-      </button>
-    </div>
-  </form>
+    </form>
+  </div>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
+<mat-dialog-actions align="end" *ngIf="!submitting">
   <button type="button" mat-raised-button
     color="success"
     [disabled]="formGroup.invalid || formGroup.untouched || formGroup.pristine"

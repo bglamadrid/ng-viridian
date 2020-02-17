@@ -3,6 +3,7 @@ export const LBL_AUTHOR = 'Autor';
 export const LBL_NAME = 'Nombre';
 export const LBL_BRAND = 'Marca';
 export const LBL_TYPE = 'Tipo';
+export const LBL_DESCRIPTION = 'Descripción';
 export const LBL_SPECS = 'Especificaciones';
 
 export const LBL_DATE_FROM = 'Desde';

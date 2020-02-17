@@ -3,9 +3,10 @@ import { DeviceCatalogService } from './device-catalog.service';
 import { Observable, Subscription } from 'rxjs';
 import { Device } from 'src/models/entities/Device';
 import { LBL_ADD_DEVICE } from 'src/app/shared/i18/es/labels';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { DeviceDialogComponent } from 'src/app/dialogs/device-dialog/device-dialog.component';
 import { Router } from '@angular/router';
+import { MSG_INF_OPERATION_COMPLETED } from 'src/app/shared/i18/es/messages';
 
 @Component({
   providers: [ DeviceCatalogService ],
@@ -22,13 +23,15 @@ export class DeviceCatalogComponent
   public totalItemNumber: number;
 
   public get labelAddDevice(): string { return LBL_ADD_DEVICE; }
+  public get labelSuccess(): string { return MSG_INF_OPERATION_COMPLETED; }
 
   public get loading(): boolean {
     return (this.load) ? this.load.closed : false;
   }
 
   constructor(
-    protected svc: DeviceCatalogService
+    protected svc: DeviceCatalogService,
+    protected snackBar: MatSnackBar
   ) {
     this.totalItemNumber = 2;
   }
@@ -40,7 +43,13 @@ export class DeviceCatalogComponent
   }
 
   public onClickAdd(): void {
-    this.svc.openDeviceDialogFor(null);
+    this.svc.openDeviceDialogFor(null).subscribe(
+      (edited) => {
+        if (edited) {
+          this.snackBar.open(this.labelSuccess, 'OK');
+        }
+      }
+    );
   }
 
   public onClickEdit(index: number, dvc: Device) {
@@ -48,10 +57,10 @@ export class DeviceCatalogComponent
     deviceEditing.subscribe(
       (edited) => {
         if (edited) {
-          this.svc
+          this.snackBar.open(this.labelSuccess, 'OK');
         }
       }
-    )
+    );
   }
 
 }
