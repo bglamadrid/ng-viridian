@@ -25,8 +25,8 @@ export const MOCK_DEVICES: Partial<Device>[] = [
     images: [
       { width: 750, height: 555, url: 'https://home.ripley.cl/store/Attachment/WOP/D113/2000375197631/2000375197631-3.jpg' }
     ],
-    deviceType: { id: 1, name: 'Computadores' },
-    specifications: {}
+    deviceType: { id: 2, name: 'Notebooks' },
+    specifications: { Procesador: 'Intel Core i5' }
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ export const MOCK_DEVICES: Partial<Device>[] = [
     images: [
       { width: 1500, height: 1500, url: 'assets/img/8129265_1.jpg' }
     ],
-    deviceType: { id: 1, name: 'Computadores' },
-    specifications: {}
+    deviceType: { id: 2, name: 'Notebooks' },
+    specifications: { Procesador: 'Intel Core i3' }
   }
 ];
