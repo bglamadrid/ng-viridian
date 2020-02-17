@@ -85,4 +85,7 @@ export class DeviceCatalogService
   public insertDevice(dvc: Device): Observable<Device> {
     return this.data.create(dvc);
   }
+  public updateDevice(dvc: Device): Observable<Device> {
+    return this.data.update(dvc, dvc.id);
+  }
 }

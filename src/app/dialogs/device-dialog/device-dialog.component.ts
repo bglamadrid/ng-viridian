@@ -44,6 +44,22 @@ export class DeviceDialogComponent
   public get labelKey(): string { return LBL_KEY; }
   public get labelValue(): string { return LBL_VALUE; }
 
+  public set device(dvc: Device) {
+    this.deviceId = dvc.id;
+    this.name.setValue(dvc.name);
+    this.brand.setValue(dvc.brand.id);
+    this.type.setValue(dvc.deviceType.id);
+
+    const specifications = [];
+    for (const key in dvc.specifications) {
+      if (dvc.specifications.hasOwnProperty(key)) {
+        specifications.push([key, dvc.specifications[key]]);
+      }
+    }
+    this.specs.setValue(specifications);
+    this.urls.setValue(dvc.urls);
+  }
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DeviceDialogData,
     protected fb: FormBuilder
@@ -57,7 +73,11 @@ export class DeviceDialogComponent
     });
 
     this.svc = this.data.svc;
-    this.deviceId = (this.data.device && this.data.device.id) ? this.data.device.id : 0;
+    if (this.data.device) {
+      this.device = this.data.device;
+    } else {
+      this.deviceId = 0;
+    }
 
     this.specsTableColumns = [ 'key', 'value', 'actions' ];
   }
@@ -110,11 +130,19 @@ export class DeviceDialogComponent
 
   public onSubmit() {
     const dvc = this.constructDevice();
-    this.svc.insertDevice(dvc).subscribe(
-      d => {
-        console.log(d);
-      }
-    );
+    if (!dvc.id) {
+      this.svc.insertDevice(dvc).subscribe(
+        d => {
+          console.log(d);
+        }
+      );
+    } else {
+      this.svc.updateDevice(dvc).subscribe(
+        d => {
+          console.log(d);
+        }
+      );
+    }
   }
 
 }
