@@ -8,10 +8,10 @@ export class Device
   id: number;
   name: string;
   description: string;
-  brand: Descriptable;
+  brand: Partial<Descriptable>;
   images: Image[];
   urls: string[];
 
-  public deviceType: Descriptable;
+  public deviceType: Partial<Descriptable>;
   public specifications: { [key: string]: string };
 }

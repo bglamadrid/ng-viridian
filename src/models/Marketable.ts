@@ -5,5 +5,5 @@ import { Image } from './Image';
 export interface Marketable
   extends Documentable {
 
-  brand: Descriptable;
+  brand: Partial<Descriptable>;
 }
