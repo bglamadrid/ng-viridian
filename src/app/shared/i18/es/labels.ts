@@ -17,6 +17,8 @@ export const LBL_UPDATE = 'Actualizar';
 export const LBL_DATE_CREATED = 'Creada en';
 export const LBL_ANSWERS_COUNT = 'Respuestas';
 export const LBL_NO_FILTER = 'No filtrar';
+export const LBL_NO_PHOTOS = 'No hay fotos asociadas';
+export const LBL_NO_DESCRIPTION = '(Sin descripción)';
 
 
 export const LBL_TOGGLE_SIDEMENU = 'Alternar menú lateral';

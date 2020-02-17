@@ -8,9 +8,9 @@
         src="{{ device.images[0].url }}"
         alt="{{ device.name }}" />
       <ng-template #noImage>
-        <span>This device has no associated photos or images.</span>
+        <span>{{ labelNoPhotos }}</span>
       </ng-template>
     </div>
-    <p class="summary">{{ device.description || '(no description)' }}</p>
+    <p class="summary">{{ device.description || labelNoDescription }}</p>
   </mat-card-content>
 </mat-card>
