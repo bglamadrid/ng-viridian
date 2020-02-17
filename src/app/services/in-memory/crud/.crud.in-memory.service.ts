@@ -34,7 +34,7 @@ export abstract class CrudInMemoryService<T extends AbstractEntity>
   }
 
   public create(d: T): Observable<T> {
-    if (!!d.id) {
+    if (!d.id) {
       const devicesById = this.items.sort((a, b) => ((a.id as number) - (b.id as number)));
       const highestId = devicesById[this.items.length - 1].id as number;
       d.id = highestId + 1;
