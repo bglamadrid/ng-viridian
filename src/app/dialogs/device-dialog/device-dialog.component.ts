@@ -70,7 +70,7 @@ export class DeviceDialogComponent
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: DeviceDialogData,
-    protected self: MatDialogRef<DeviceDialogComponent>,
+    protected dialog: MatDialogRef<DeviceDialogComponent>,
     protected fb: FormBuilder
   ) {
     this.submitting = false;
@@ -153,7 +153,7 @@ export class DeviceDialogComponent
         )
       ).subscribe(
         (returnedDevice) => {
-          this.self.close(returnedDevice);
+          this.dialog.close(returnedDevice);
         }
       );
     }, 2000);
