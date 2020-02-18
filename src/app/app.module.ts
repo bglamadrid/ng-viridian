@@ -5,7 +5,6 @@ import { NavHeaderComponent } from './components/nav/header/header.component';
 import { NavComponent } from './components/nav/nav.component';
 import { DeviceCardComponent } from './routed_components/device-catalog/device-card/device-card.component';
 import { DeviceCatalogComponent } from './routed_components/device-catalog/device-catalog.component';
-import { DeviceDetailsCardComponent } from './routed_components/device-catalog/device-details-card/device-details-card.component';
 import { DeviceFiltersPanelComponent } from './routed_components/device-catalog/device-filters-panel/device-filters-panel.component';
 import { LandingComponent } from './routed_components/landing/landing.component';
 import { QuestionFiltersPanelComponent } from './routed_components/questions-answers/question-filters-panel/question-filters-panel.component';
@@ -21,6 +20,7 @@ import { DeviceCrudInMemoryService } from './services/in-memory/crud/device.crud
 import { QuestionCrudInMemoryService } from './services/in-memory/crud/question.crud.in-memory.service';
 import { DeviceDialogComponent } from './dialogs/device-dialog/device-dialog.component';
 import { UserProfileCrudInMemoryService } from './services/in-memory/crud/user-profile.crud.in-memory.service';
+import { QuestionDialogComponent } from './dialogs/question-dialog/question-dialog.component';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -36,8 +36,8 @@ registerLocaleData(localeEs);
     NavHeaderComponent,
     QuestionFiltersPanelComponent,
     QuestionThreadCardComponent,
-    DeviceDetailsCardComponent,
-    DeviceDialogComponent
+    DeviceDialogComponent,
+    QuestionDialogComponent
   ],
   imports: [
     SharedModule,
@@ -50,7 +50,8 @@ registerLocaleData(localeEs);
     UserProfileCrudInMemoryService
   ],
   entryComponents: [
-    DeviceDialogComponent
+    DeviceDialogComponent,
+    QuestionDialogComponent
   ],
   bootstrap: [AppComponent]
 })
