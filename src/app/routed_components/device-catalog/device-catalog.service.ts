@@ -50,7 +50,7 @@ export class DeviceCatalogService
 
   public reloadDevices(): void {
 
-    const noFilters = (JSON.stringify(this.filters) === '{}');
+    const noFilters: boolean = (JSON.stringify(this.filters) === '{}');
     const query: Observable<Device[]> = noFilters ? this.data.readAll() : this.data.readFiltered(this.filters);
 
     query.pipe(
@@ -70,7 +70,7 @@ export class DeviceCatalogService
       svc: this,
       device: dvc ? dvc : null
     };
-    const dialogRef = this.dialogs.open(
+    const dialog = this.dialogs.open(
       DeviceDialogComponent,
       {
         width: '30em',
@@ -79,7 +79,7 @@ export class DeviceCatalogService
       }
     );
 
-    return dialogRef.afterClosed();
+    return dialog.afterClosed();
   }
 
   public insertDevice(dvc: Device): Observable<Device> {
