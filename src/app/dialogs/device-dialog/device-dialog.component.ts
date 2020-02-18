@@ -69,7 +69,7 @@ export class DeviceDialogComponent
   }
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: DeviceDialogData,
+    @Inject(MAT_DIALOG_DATA) data: DeviceDialogData,
     protected self: MatDialogRef<DeviceDialogComponent>,
     protected fb: FormBuilder
   ) {
@@ -83,9 +83,9 @@ export class DeviceDialogComponent
       urls: this.fb.array([])
     });
 
-    this.svc = this.data.svc;
-    if (this.data.device) {
-      this.device = this.data.device;
+    this.svc = data.svc;
+    if (data.device) {
+      this.device = data.device;
     } else {
       this.deviceId = 0;
       this.images = [];
