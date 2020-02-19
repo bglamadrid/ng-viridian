@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -21,6 +22,7 @@ export const MATERIAL_MODULES = [
   MatCardModule,
   MatDatepickerModule,
   MatDialogModule,
+  MatDividerModule,
   MatExpansionModule,
   MatFormFieldModule,
   MatInputModule,
