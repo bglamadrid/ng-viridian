@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTable } from '@angular/material';
+import { LBL_ANSWERS_COUNT, LBL_AUTHOR, LBL_DATE_CREATED, LBL_TITLE } from 'src/app/shared/i18/es/labels';
 import { DataGridTemplateComponent } from 'src/app/templates/data-grid.template.component';
 import { Question } from 'src/models/entities/Question';
-import { MatTable } from '@angular/material';
-import { LBL_AUTHOR, LBL_TITLE, LBL_DATE_CREATED, LBL_ANSWERS_COUNT } from 'src/app/shared/i18/es/labels';
+import { QuestionsAnswersService } from '../questions-answers.service';
 
 @Component({
   selector: 'app-questions-grid',
@@ -24,12 +25,18 @@ export class QuestionsGridComponent
   public get labelDateCreated(): string { return LBL_DATE_CREATED; }
   public get labelAnswersCount(): string { return LBL_ANSWERS_COUNT; }
 
-  constructor() {
+  constructor(
+    protected svc: QuestionsAnswersService
+  ) {
     super();
     this.tableColumns = [ 'title', 'author', 'dateCreated', 'answersCount' ];
   }
 
   ngOnInit() {
+  }
+
+  public onClickView(question: Question): void {
+    this.svc.openQuestionDialogFor(question);
   }
 
 }

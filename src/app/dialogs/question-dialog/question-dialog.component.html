@@ -1,1 +1,50 @@
-<p>question-dialog works!</p>
+<mat-dialog-content>
+  <div class="scroll">
+    <div class="resume">
+      <h4>{{ question.author.name }} | {{ question.date }}</h4>
+      <h1>{{ question.title }}</h1>
+      <p>{{ question.content }}</p>
+      <i class="small material-icons"></i>
+    </div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ labelReplyToQuestion }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <form [formGroup]="replyForm"
+        (submit)="submitReply()">
+        <mat-form-field class="form-control reply-content">
+          <textarea matInput cdkTextareaAutosize formControlName="replyContent"
+            placeholder="{{ labelReplyContent }}"></textarea>
+        </mat-form-field>
+        <mat-form-field class="form-control signature">
+          <input matInput type="text" formControlName="signature"
+            placeholder="{{ labelSignature }}" />
+        </mat-form-field>
+        <button mat-button mat-raised-button type="submit"
+          color="primary"
+          title="{{ labelReply }}"
+          [disabled]="replyForm.disabled || replyForm.pristine || replyForm.untouched">
+          {{ labelReply }}
+        </button>
+      </form>
+    </mat-expansion-panel>
+    <mat-divider></mat-divider>
+    <h2>Respuestas</h2>
+    <ng-container *ngFor="let a of question.answers; let i = index">
+      <div class="answer">
+        <h4>{{ a.author.name }} | {{ a.date }}</h4>
+        <p>{{ a.content }}</p>
+        <div class="votes">
+          <span>{{ a.votes }}</span>
+          <button type="button" mat-icon-button
+            (click)="onClickThumbsUpAnswer(a)">
+            <i class="very-small material-icons">thumb_up</i>
+          </button>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </div>
+</mat-dialog-content>

@@ -6,6 +6,9 @@ import { UserProfileCrudInMemoryService } from 'src/app/services/in-memory/crud/
 import { Question } from 'src/models/entities/Question';
 import { UserProfile } from 'src/models/entities/UserProfile';
 import { QuestionFilters } from './QuestionFilters';
+import { QuestionDialogData } from 'src/app/dialogs/question-dialog/QuestionDialogData';
+import { QuestionDialogComponent } from 'src/app/dialogs/question-dialog/question-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Injectable()
 export class QuestionsAnswersService
@@ -30,7 +33,8 @@ export class QuestionsAnswersService
 
   constructor(
     protected data: QuestionCrudInMemoryService,
-    protected usersData: UserProfileCrudInMemoryService
+    protected usersData: UserProfileCrudInMemoryService,
+    protected dialogs: MatDialog
   ) {
     this.questionsArray = [];
     this.questionsSource = new BehaviorSubject(this.questionsArray);
@@ -55,6 +59,24 @@ export class QuestionsAnswersService
         }
       }
     );
+  }
+
+  public openQuestionDialogFor(dvc: Question): Observable<Question> {
+    const dialogData: QuestionDialogData = {
+      svc: this,
+      question: dvc ? dvc : null
+    };
+    const dialog = this.dialogs.open(
+      QuestionDialogComponent,
+      {
+        width: '60em',
+        height: '30em',
+        panelClass: [ 'no-padding' ],
+        data: dialogData
+      }
+    );
+
+    return dialog.afterClosed();
   }
 
 }
