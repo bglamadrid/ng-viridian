@@ -8,6 +8,7 @@ export class Question
   extends AbstractEntity
   implements TimeBound  {
 
+  id: number;
   date: Date;
   public author: Partial<UserProfile>;
   public title: string;
