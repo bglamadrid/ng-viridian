@@ -11,9 +11,7 @@
 * UI for deleting devices/data
 * Logic for pagination
 ### Q&A
-* UI for viewing full individual threads
 * UI for asking new questions
-* UI for replying to questions/threads
 * Logic for pagination
 ### General
 * Logic to consume different labels based on preferred language
