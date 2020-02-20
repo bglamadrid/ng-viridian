@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, retry, tap, map } from 'rxjs/operators';
 import { QuestionCrudInMemoryService } from 'src/app/services/in-memory/crud/question.crud.in-memory.service';
 import { UserProfileCrudInMemoryService } from 'src/app/services/in-memory/crud/user-profile.crud.in-memory.service';
 import { Question } from 'src/models/entities/Question';
@@ -9,6 +9,7 @@ import { QuestionFilters } from './QuestionFilters';
 import { QuestionDialogData } from 'src/app/dialogs/question-dialog/QuestionDialogData';
 import { QuestionDialogComponent } from 'src/app/dialogs/question-dialog/question-dialog.component';
 import { MatDialog } from '@angular/material';
+import { Answer } from 'src/models/entities/Answer';
 
 @Injectable()
 export class QuestionsAnswersService
@@ -77,6 +78,29 @@ export class QuestionsAnswersService
     );
 
     return dialog.afterClosed();
+  }
+
+  public insertQuestion(qst: Question): Observable<Question> {
+    return this.data.create(qst);
+  }
+  public updateQuestion(qst: Question): Observable<Question> {
+    return this.data.update(qst, qst.id);
+  }
+  public replyToQuestion(ans: Answer, qstId: number): Observable<boolean> {
+    return this.data.readById(qstId).pipe(
+      tap(
+        (q) => {
+          if (q) {
+            q.answers.push(ans);
+            this.data.update(q, qstId).subscribe();
+          }
+        }
+      ),
+      map(q => !!q)
+    );
+  }
+  public updateQuestion2(qst: Question): Observable<Question> {
+    return this.data.update(qst, qst.id);
   }
 
 }

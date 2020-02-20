@@ -1,11 +1,13 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { QuestionDialogData } from './QuestionDialogData';
 import { QuestionsAnswersService } from 'src/app/routed_components/questions-answers/questions-answers.service';
 import { Question } from 'src/models/entities/Question';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LBL_MESSAGE_BODY, LBL_SIGNATURE, LBL_REPLY, LBL_REPLY_TO_THIS_QUESTION } from 'src/app/shared/i18/es/labels';
 import { Answer } from 'src/models/entities/Answer';
+import { MSG_INF_OPERATION_COMPLETED, MSG_ERR_UNKNOWN } from 'src/app/shared/i18/es/messages';
+import { resetForm } from 'src/app/shared/functions/resetForm';
 
 @Component({
   selector: 'app-question-dialog',
@@ -13,9 +15,10 @@ import { Answer } from 'src/models/entities/Answer';
   styleUrls: ['./question-dialog.component.sass']
 })
 export class QuestionDialogComponent
-  implements OnInit {
+  implements AfterViewInit {
 
   protected svc: QuestionsAnswersService;
+  protected draw = false;
 
   public question: Question;
   public replyForm: FormGroup;
@@ -31,7 +34,8 @@ export class QuestionDialogComponent
   constructor(
     @Inject(MAT_DIALOG_DATA) data: QuestionDialogData,
     protected dialog: MatDialogRef<QuestionDialogComponent>,
-    protected fb: FormBuilder
+    protected fb: FormBuilder,
+    protected snackBar: MatSnackBar
   ) {
     this.svc = data.svc;
     this.question = data.question;
@@ -42,7 +46,8 @@ export class QuestionDialogComponent
     });
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    this.draw = true;
   }
 
   public onClickThumbsUpAnswer(a: Answer): void {
@@ -60,7 +65,16 @@ export class QuestionDialogComponent
     };
 
     console.log(newReply);
-    alert('Por construir');
+    this.svc.replyToQuestion(newReply, this.question.id).subscribe(
+      (wasSuccessful) => {
+        if (wasSuccessful) {
+          this.snackBar.open(MSG_INF_OPERATION_COMPLETED, 'OK');
+          resetForm(this.replyForm);
+        } else {
+          this.snackBar.open(MSG_ERR_UNKNOWN);
+        }
+      }
+    );
   }
 
 }

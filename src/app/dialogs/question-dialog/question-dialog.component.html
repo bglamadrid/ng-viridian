@@ -6,7 +6,7 @@
       <p>{{ question.content }}</p>
       <i class="small material-icons"></i>
     </div>
-    <mat-expansion-panel>
+    <mat-expansion-panel [hidden]="!draw">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{ labelReplyToQuestion }}
