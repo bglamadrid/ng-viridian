@@ -8,7 +8,6 @@ import { DeviceCatalogComponent } from './routed_components/device-catalog/devic
 import { DeviceFiltersPanelComponent } from './routed_components/device-catalog/device-filters-panel/device-filters-panel.component';
 import { LandingComponent } from './routed_components/landing/landing.component';
 import { QuestionFiltersPanelComponent } from './routed_components/questions-answers/question-filters-panel/question-filters-panel.component';
-import { QuestionThreadCardComponent } from './routed_components/questions-answers/question-thread-card/question-thread-card.component';
 import { QuestionsAnswersComponent } from './routed_components/questions-answers/questions-answers.component';
 import { QuestionsGridComponent } from './routed_components/questions-answers/questions-grid/questions-grid.component';
 import { CommonInMemoryService } from './services/in-memory/common.in-memory.service';
@@ -35,7 +34,6 @@ registerLocaleData(localeEs);
     DeviceFiltersPanelComponent,
     NavHeaderComponent,
     QuestionFiltersPanelComponent,
-    QuestionThreadCardComponent,
     DeviceDialogComponent,
     QuestionDialogComponent
   ],
