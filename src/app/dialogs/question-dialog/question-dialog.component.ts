@@ -14,11 +14,9 @@ import { resetForm } from 'src/app/shared/functions/resetForm';
   templateUrl: './question-dialog.component.html',
   styleUrls: ['./question-dialog.component.sass']
 })
-export class QuestionDialogComponent
-  implements AfterViewInit {
+export class QuestionDialogComponent {
 
   protected svc: QuestionsAnswersService;
-  protected draw = false;
 
   public question: Question;
   public replyForm: FormGroup;
@@ -46,10 +44,6 @@ export class QuestionDialogComponent
     });
   }
 
-  ngAfterViewInit() {
-    this.draw = true;
-  }
-
   public onClickThumbsUpAnswer(a: Answer): void {
     a.votes++;
   }
@@ -64,7 +58,6 @@ export class QuestionDialogComponent
       accepted: true
     };
 
-    console.log(newReply);
     this.svc.replyToQuestion(newReply, this.question.id).subscribe(
       (wasSuccessful) => {
         if (wasSuccessful) {
