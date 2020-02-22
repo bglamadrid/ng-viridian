@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup"
+  (submit)="submitReply()">
+  <mat-form-field class="form-control reply-content">
+    <textarea matInput cdkTextareaAutosize formControlName="replyContent"
+      placeholder="{{ labelReplyContent }}"></textarea>
+  </mat-form-field>
+  <mat-form-field class="form-control signature">
+    <input matInput type="text" formControlName="signature"
+      placeholder="{{ labelSignature }}" />
+  </mat-form-field>
+  <button mat-button mat-raised-button type="submit"
+    color="primary"
+    title="{{ labelReply }}"
+    [disabled]="formGroup.disabled || formGroup.pristine || formGroup.untouched">
+    {{ labelReply }}
+  </button>
+</form>

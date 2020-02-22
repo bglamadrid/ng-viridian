@@ -20,6 +20,8 @@ import { QuestionCrudInMemoryService } from './services/in-memory/crud/question.
 import { DeviceDialogComponent } from './dialogs/device-dialog/device-dialog.component';
 import { UserProfileCrudInMemoryService } from './services/in-memory/crud/user-profile.crud.in-memory.service';
 import { QuestionDialogComponent } from './dialogs/question-dialog/question-dialog.component';
+import { QuestionThreadComponent } from './routed_components/questions-answers/question-thread/question-thread.component';
+import { QuestionReplyFormComponent } from './routed_components/questions-answers/question-reply-form/question-reply-form.component';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -35,7 +37,9 @@ registerLocaleData(localeEs);
     NavHeaderComponent,
     QuestionFiltersPanelComponent,
     DeviceDialogComponent,
-    QuestionDialogComponent
+    QuestionDialogComponent,
+    QuestionThreadComponent,
+    QuestionReplyFormComponent
   ],
   imports: [
     SharedModule,
