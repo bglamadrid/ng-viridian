@@ -99,8 +99,5 @@ export class QuestionsAnswersService
       map(q => !!q)
     );
   }
-  public updateQuestion2(qst: Question): Observable<Question> {
-    return this.data.update(qst, qst.id);
-  }
 
 }
