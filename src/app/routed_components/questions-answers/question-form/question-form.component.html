@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup"
+  (submit)="submitQuestion()">
+  <h2>{{ labelAskQuestion }}</h2>
+  <mat-form-field class="form-control title">
+    <input matInput formControlName="title"
+      placeholder="{{ labelTitle }}" />
+  </mat-form-field>
+  <mat-form-field class="form-control question-content">
+    <textarea matInput cdkTextareaAutosize formControlName="questionContent"
+      cdkAutosizeMaxRows="10"
+      placeholder="{{ labelQuestionContent }}"></textarea>
+  </mat-form-field>
+  <mat-form-field class="form-control signature">
+    <input matInput type="text" formControlName="signature"
+      placeholder="{{ labelSignature }}" />
+  </mat-form-field>
+  <button mat-button mat-raised-button type="submit"
+    color="primary"
+    title="{{ labelAsk }}"
+    [disabled]="formGroup.disabled || formGroup.pristine || formGroup.untouched || formGroup.invalid">
+    {{ labelAsk }}
+  </button>
+</form>

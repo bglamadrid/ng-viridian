@@ -23,4 +23,14 @@ export class QuestionDialogComponent {
     this.question = data.question;
   }
 
+  public onAsk(question: Question): void {
+    this.svc.insertQuestion(question).subscribe(
+      (q) => {
+        if (q) {
+          this.dialog.close(q);
+        }
+      }
+    );
+  }
+
 }

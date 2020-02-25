@@ -71,7 +71,7 @@ export class QuestionsAnswersService
       QuestionDialogComponent,
       {
         width: '60em',
-        height: '30em',
+        height: '35em',
         panelClass: [ 'no-padding' ],
         data: dialogData
       }
