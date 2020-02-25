@@ -73,7 +73,7 @@ export class DeviceCatalogService
     const dialog = this.dialogs.open(
       DeviceDialogComponent,
       {
-        panelClass: 'scrollable-actions',
+        panelClass: 'with-actions',
         width: '30rem',
         height: '70vh',
         data: dialogData
