@@ -5,7 +5,7 @@
   <div class="catalog-wrapper" [hidden]="loading">
     <div class="catalog">
       <app-device-card *ngFor="let device of (devices$ | async); let i = index" [device]="device"
-      (click)="onClickEdit(i, device)"></app-device-card>
+      (click)="onClickEdit(device)"></app-device-card>
     </div>
     <button mat-fab class="btn-add no-padding"
       color="primary"
