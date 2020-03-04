@@ -1,6 +1,6 @@
-import { Question } from 'src/models/entities/Question';
+import { ForumThread } from 'src/models/entities/ForumThread';
 
-export const MOCK_QUESTIONS: Partial<Question>[] = [
+export const MOCK_QUESTIONS: Partial<ForumThread>[] = [
   {
     id: null,
     date: new Date('2020-01-16T19:33'),

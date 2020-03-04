@@ -1,0 +1,8 @@
+<div class="page">
+  <div class="latest-questions">
+    <app-forum-thread-list #questionsGrid class="grid"
+      [hidden]="loadingLatestQuestions"
+      [items]="latestQuestions$ | async">
+    </app-forum-thread-list>
+  </div>
+</div>

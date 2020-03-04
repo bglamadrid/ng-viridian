@@ -1,0 +1,14 @@
+<div class="page">
+  <app-forum-filters-panel></app-forum-filters-panel>
+
+  <mat-spinner-centered *ngIf="loading"></mat-spinner-centered>
+  <app-forum-thread-list #grid class="grid"
+    [hidden]="loading">
+  </app-forum-thread-list>
+  <button mat-fab class="btn-add"
+    color="primary"
+    (click)="onClickAskQuestion()"
+    title="{{ labelAskQuestion }}">
+    <i class="small material-icons">message</i>
+  </button>
+</div>

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavComponent } from './components/nav/nav.component';
+import { NavComponent } from './nav/nav.component';
 
 @Component({
   selector: 'app-root',

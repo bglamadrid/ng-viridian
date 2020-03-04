@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavHeaderComponent } from './components/nav/header/header.component';
-import { NavComponent } from './components/nav/nav.component';
-import { DeviceCardComponent } from './routed_components/device-catalog/device-card/device-card.component';
-import { DeviceCatalogComponent } from './routed_components/device-catalog/device-catalog.component';
-import { DeviceFiltersPanelComponent } from './routed_components/device-catalog/device-filters-panel/device-filters-panel.component';
-import { LandingComponent } from './routed_components/landing/landing.component';
-import { QuestionFiltersPanelComponent } from './routed_components/questions-answers/question-filters-panel/question-filters-panel.component';
-import { QuestionsAnswersComponent } from './routed_components/questions-answers/questions-answers.component';
-import { QuestionsGridComponent } from './routed_components/questions-answers/questions-grid/questions-grid.component';
+import { NavHeaderComponent } from './nav/header/header.component';
+import { NavComponent } from './nav/nav.component';
+import { DeviceCardComponent } from './devices/card/device-card.component';
+import { DevicesComponent } from './devices/devices.component';
+import { DeviceFiltersPanelComponent } from './devices/filters-panel/device-filters-panel.component';
+import { LandingComponent } from './landing/landing.component';
+import { ForumFiltersPanelComponent } from './forum/filters-panel/forum-filters-panel.component';
+import { ForumComponent } from './forum/forum.component';
+import { ForumThreadListComponent } from './forum/thread-list/forum-thread-list.component';
 import { CommonInMemoryService } from './services/in-memory/common.in-memory.service';
 import { SharedModule } from './shared/shared.module';
 
@@ -17,12 +17,16 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { DeviceCrudInMemoryService } from './services/in-memory/crud/device.crud.in-memory.service';
 import { QuestionCrudInMemoryService } from './services/in-memory/crud/question.crud.in-memory.service';
-import { DeviceDialogComponent } from './dialogs/device-dialog/device-dialog.component';
+import { DeviceDialogComponent } from './devices/dialog/device-dialog.component';
 import { UserProfileCrudInMemoryService } from './services/in-memory/crud/user-profile.crud.in-memory.service';
-import { QuestionDialogComponent } from './dialogs/question-dialog/question-dialog.component';
-import { QuestionThreadComponent } from './routed_components/questions-answers/question-thread/question-thread.component';
-import { QuestionReplyFormComponent } from './routed_components/questions-answers/question-reply-form/question-reply-form.component';
-import { QuestionFormComponent } from './routed_components/questions-answers/question-form/question-form.component';
+import { ForumThreadDialogComponent } from './forum/thread-dialog/forum-thread-dialog.component';
+import { ForumThreadComponent } from './forum/thread/forum-thread.component';
+import { ForumThreadReplyFormComponent } from './forum/thread-reply-form/forum-thread-reply-form.component';
+import { ForumThreadFormComponent } from './forum/thread-form/forum-thread-form.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -30,21 +34,26 @@ registerLocaleData(localeEs);
     AppComponent,
     LandingComponent,
     NavComponent,
-    QuestionsAnswersComponent,
-    DeviceCatalogComponent,
-    QuestionsGridComponent,
+    ForumComponent,
+    DevicesComponent,
+    ForumThreadListComponent,
     DeviceCardComponent,
     DeviceFiltersPanelComponent,
     NavHeaderComponent,
-    QuestionFiltersPanelComponent,
+    ForumFiltersPanelComponent,
     DeviceDialogComponent,
-    QuestionDialogComponent,
-    QuestionThreadComponent,
-    QuestionReplyFormComponent,
-    QuestionFormComponent
+    ForumThreadDialogComponent,
+    ForumThreadComponent,
+    ForumThreadReplyFormComponent,
+    ForumThreadFormComponent
   ],
   imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
     SharedModule,
+    BrowserAnimationsModule,
     AppRoutingModule
   ],
   providers: [
@@ -55,7 +64,7 @@ registerLocaleData(localeEs);
   ],
   entryComponents: [
     DeviceDialogComponent,
-    QuestionDialogComponent
+    ForumThreadDialogComponent
   ],
   bootstrap: [AppComponent]
 })
