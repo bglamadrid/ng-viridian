@@ -1,11 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { Device } from 'src/models/entities/Device';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Descriptable } from 'src/models/Descriptable';
-import { DeviceCatalogService } from '../devices.service';
-import { LBL_UPDATE, LBL_DEVICE_FILTERS, LBL_NAME, LBL_BRAND, LBL_TYPE, LBL_NO_FILTER } from 'src/text/es/labels';
+import { Device } from 'src/models/entities/Device';
+import { LBL_BRAND, LBL_NAME, LBL_NO_FILTER, LBL_TYPE, LBL_UPDATE } from 'src/text/es/labels';
+import { TTL_DEVICE_FILTERS } from 'src/text/es/titles';
 import { DeviceFilters } from '../DeviceFilters';
+import { DeviceCatalogService } from '../devices.service';
 
 @Component({
   selector: 'app-device-filters-panel',
@@ -29,7 +30,7 @@ export class DeviceFiltersPanelComponent
   public get labelName(): string { return LBL_NAME; }
   public get labelBrand(): string { return LBL_BRAND; }
   public get labelType(): string { return LBL_TYPE; }
-  public get labelDeviceFilters(): string { return LBL_DEVICE_FILTERS; }
+  public get labelDeviceFilters(): string { return TTL_DEVICE_FILTERS; }
   public get labelUpdateFilters(): string { return LBL_UPDATE; }
   public get labelOmitFilter(): string { return LBL_NO_FILTER; }
 

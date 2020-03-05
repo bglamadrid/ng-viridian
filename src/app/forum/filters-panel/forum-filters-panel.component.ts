@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { LBL_AUTHOR, LBL_DATE_FROM, LBL_DATE_TO, LBL_QUESTION_FILTERS, LBL_UPDATE, LBL_TITLE } from 'src/text/es/labels';
 import { UserProfile } from 'src/models/entities/UserProfile';
+import { LBL_AUTHOR, LBL_DATE_FROM, LBL_DATE_TO, LBL_TITLE, LBL_UPDATE } from 'src/text/es/labels';
+import { TTL_QUESTION_FILTERS } from 'src/text/es/titles';
 import { ForumService } from '../forum.service';
 import { ForumFilters } from '../ForumFilters';
 
@@ -25,7 +26,7 @@ export class ForumFiltersPanelComponent
   public get dateRangeFrom() { return this.filterForm.get('dateRangeFrom') as FormControl; }
   public get dateRangeTo() { return this.filterForm.get('dateRangeTo') as FormControl; }
 
-  public get labelQuestionFilters(): string { return LBL_QUESTION_FILTERS; }
+  public get labelQuestionFilters(): string { return TTL_QUESTION_FILTERS; }
   public get labelUpdateFilters(): string { return LBL_UPDATE; }
   public get labelTitle(): string { return LBL_TITLE; }
   public get labelAuthor(): string { return LBL_AUTHOR; }
