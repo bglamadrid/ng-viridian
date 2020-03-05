@@ -1,14 +1,15 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, Inject } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { CommonInMemoryService } from 'src/app/services/in-memory/common.in-memory.service';
-import { DeviceCrudInMemoryService } from 'src/app/services/in-memory/crud/device.crud.in-memory.service';
-import { Descriptable } from 'src/models/Descriptable';
-import { Device } from 'src/models/entities/Device';
-import { DeviceFilters } from './DeviceFilters';
-import { MatDialog, MatDialogRef } from '@angular/material';
 import { DeviceDialogComponent } from 'src/app/devices/dialog/device-dialog.component';
 import { DeviceDialogData } from 'src/app/devices/dialog/DeviceDialogData';
+import { Descriptable } from 'src/models/Descriptable';
+import { Device } from 'src/models/entities/Device';
+import { CommonDataService } from 'src/data/common-data.service.interface';
+import { DeviceFilters } from './DeviceFilters';
+import { SERVICE_ALIASES } from 'src/data/service-aliases';
+import { DataService } from 'src/data/data.service.interface';
 
 @Injectable()
 export class DeviceCatalogService
@@ -27,16 +28,16 @@ export class DeviceCatalogService
   }
 
   public get deviceTypes$(): Observable<Descriptable[]> {
-    return this.commonData.loadDeviceTypes();
+    return this.commonData.deviceTypes$;
   }
 
   public get deviceBrands$(): Observable<Descriptable[]> {
-    return this.commonData.loadDeviceBrands();
+    return this.commonData.deviceBrands$;
   }
 
   constructor(
-    protected data: DeviceCrudInMemoryService,
-    protected commonData: CommonInMemoryService,
+    @Inject(SERVICE_ALIASES.devices) protected data: DataService<Device>,
+    @Inject(SERVICE_ALIASES.common) protected commonData: CommonDataService,
     protected dialogs: MatDialog
   ) {
     this.devicesArray = [];

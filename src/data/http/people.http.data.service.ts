@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
 import { PersonProfile } from 'src/models/entities/PersonProfile';
 import { Session } from 'src/models/entities/Session';
-import { CrudHttpService } from './.crud.http.service';
+import { HttpDataService } from './.http.data.service';
 
 @Injectable()
-export class PersonProfileCrudHttpService
-  extends CrudHttpService<PersonProfile> {
+export class PeopleHttpDataService
+  extends HttpDataService<PersonProfile> {
 
   protected entityURI = 'person';
   protected entitiesURI = 'people';

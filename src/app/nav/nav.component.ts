@@ -1,15 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PersonProfileCrudHttpService } from 'src/app/services/http/crud/person-profile.crud.http.service';
-import { SessionsHttpService } from 'src/app/services/http/sessions.http.service';
-import { NavItem } from './NavItem';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BASE_ROUTE } from 'src/app/app-routes';
+import { PeopleInMemoryDataService } from 'src/data/in-memory/people.in-memory.data.service';
 import { NavService } from './nav.service';
-import { CrudService } from 'src/app/services/.crud.service';
-import { PersonProfileCrudInMemoryService } from 'src/app/services/in-memory/crud/person-profile.crud.in-memory.service';
+import { NavItem } from './NavItem';
 
 @Component({
-  providers: [ PersonProfileCrudInMemoryService ],
+  providers: [ PeopleInMemoryDataService ],
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: [
@@ -27,7 +24,7 @@ export class NavComponent
   protected set currentModuleName(v: string) { this.svc.currentModuleName = v; }
 
   constructor(
-    protected profiles: PersonProfileCrudInMemoryService,
+    protected profiles: PeopleInMemoryDataService,
     // protected sessionsHttpSvc: SessionsHttpService,
     protected router: Router,
     protected svc: NavService

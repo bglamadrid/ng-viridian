@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { PersonProfile } from 'src/models/entities/PersonProfile';
-import { CrudInMemoryService } from './.crud.in-memory.service';
-import { MOCK_PEOPLE } from './data/mock-people';
+import { InMemoryDataService } from './.in-memory.data.service';
+
+export const MOCK_PEOPLE: Partial<PersonProfile>[] = [
+
+];
 
 @Injectable()
-export class PersonProfileCrudInMemoryService
-  extends CrudInMemoryService<PersonProfile> {
+export class PeopleInMemoryDataService
+  extends InMemoryDataService<PersonProfile> {
 
   constructor() {
     super();

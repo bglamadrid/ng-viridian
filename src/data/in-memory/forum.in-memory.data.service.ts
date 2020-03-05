@@ -1,3 +1,5 @@
+import { Injectable } from '@angular/core';
+import { InMemoryDataService } from './.in-memory.data.service';
 import { ForumThread } from 'src/models/entities/ForumThread';
 
 export const MOCK_QUESTIONS: Partial<ForumThread>[] = [
@@ -19,3 +21,13 @@ export const MOCK_QUESTIONS: Partial<ForumThread>[] = [
     ]
   }
 ];
+
+@Injectable()
+export class ForumInMemoryDataService
+  extends InMemoryDataService<ForumThread> {
+
+  constructor() {
+    super();
+    this.items = MOCK_QUESTIONS.map(q => Object.assign(new ForumThread(), q));
+  }
+}

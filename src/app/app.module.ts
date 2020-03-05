@@ -10,15 +10,11 @@ import { LandingComponent } from './landing/landing.component';
 import { ForumFiltersPanelComponent } from './forum/filters-panel/forum-filters-panel.component';
 import { ForumComponent } from './forum/forum.component';
 import { ForumThreadListComponent } from './forum/thread-list/forum-thread-list.component';
-import { CommonInMemoryService } from './services/in-memory/common.in-memory.service';
 import { SharedModule } from './shared/shared.module';
 
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import { DeviceCrudInMemoryService } from './services/in-memory/crud/device.crud.in-memory.service';
-import { QuestionCrudInMemoryService } from './services/in-memory/crud/question.crud.in-memory.service';
 import { DeviceDialogComponent } from './devices/dialog/device-dialog.component';
-import { UserProfileCrudInMemoryService } from './services/in-memory/crud/user-profile.crud.in-memory.service';
 import { ForumThreadDialogComponent } from './forum/thread-dialog/forum-thread-dialog.component';
 import { ForumThreadComponent } from './forum/thread/forum-thread.component';
 import { ForumThreadReplyFormComponent } from './forum/thread-reply-form/forum-thread-reply-form.component';
@@ -27,6 +23,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DataModule } from '../data/internal-data.module';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -54,13 +51,8 @@ registerLocaleData(localeEs);
     HttpClientModule,
     SharedModule,
     BrowserAnimationsModule,
-    AppRoutingModule
-  ],
-  providers: [
-    CommonInMemoryService,
-    DeviceCrudInMemoryService,
-    QuestionCrudInMemoryService,
-    UserProfileCrudInMemoryService
+    AppRoutingModule,
+    DataModule
   ],
   entryComponents: [
     DeviceDialogComponent,

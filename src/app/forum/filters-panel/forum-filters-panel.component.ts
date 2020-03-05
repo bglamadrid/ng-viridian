@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { LBL_AUTHOR, LBL_DATE_FROM, LBL_DATE_TO, LBL_QUESTION_FILTERS, LBL_UPDATE, LBL_TITLE } from 'src/text/es/labels';
 import { UserProfile } from 'src/models/entities/UserProfile';
 import { ForumService } from '../forum.service';
-import { ForumFilters } from './ForumFilters';
+import { ForumFilters } from '../ForumFilters';
 
 @Component({
   selector: 'app-forum-filters-panel',

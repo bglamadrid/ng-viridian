@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Device } from 'src/models/entities/Device';
 import { Observable } from 'rxjs';
 import { Descriptable } from 'src/models/Descriptable';
-import { DeviceCatalogService } from '../device-catalog.service';
+import { DeviceCatalogService } from '../devices.service';
 import { LBL_UPDATE, LBL_DEVICE_FILTERS, LBL_NAME, LBL_BRAND, LBL_TYPE, LBL_NO_FILTER } from 'src/text/es/labels';
 import { DeviceFilters } from '../DeviceFilters';
 

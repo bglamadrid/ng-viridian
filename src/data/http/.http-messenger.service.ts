@@ -1,13 +1,14 @@
 import { HttpParams, HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 /**
  * Service that communicates with a backend service through a HTTP client.
  */
-export abstract class HttpService {
+export abstract class HttpMessengerService {
 
-  protected readonly webSvcHostName = 'localhost';
-  protected readonly webSvcHostPort = 8082;
-  protected readonly webSvcBaseURI = `api`;
+  protected readonly webSvcHostName = environment.backendServerHostName;
+  protected readonly webSvcHostPort = environment.backendServerPort;
+  protected readonly webSvcBaseURI = environment.backendServerBaseURI;
 
   /**
    * The base URI for all API service consumption

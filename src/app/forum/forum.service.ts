@@ -1,15 +1,15 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { catchError, map, retry, tap } from 'rxjs/operators';
 import { ForumThreadDialogComponent } from 'src/app/forum/thread-dialog/forum-thread-dialog.component';
 import { ForumThreadDialogData } from 'src/app/forum/thread-dialog/ForumThreadDialogData';
-import { QuestionCrudInMemoryService } from 'src/app/services/in-memory/crud/question.crud.in-memory.service';
-import { UserProfileCrudInMemoryService } from 'src/app/services/in-memory/crud/user-profile.crud.in-memory.service';
 import { ForumThreadReply } from 'src/models/entities/ForumThreadReply';
 import { ForumThread } from 'src/models/entities/ForumThread';
 import { UserProfile } from 'src/models/entities/UserProfile';
-import { ForumFilters } from './filters-panel/ForumFilters';
+import { ForumFilters } from './ForumFilters';
+import { SERVICE_ALIASES } from 'src/data/service-aliases';
+import { DataService } from 'src/data/data.service.interface';
 
 @Injectable()
 export class ForumService
@@ -33,8 +33,8 @@ export class ForumService
   }
 
   constructor(
-    protected data: QuestionCrudInMemoryService,
-    protected usersData: UserProfileCrudInMemoryService,
+    @Inject(SERVICE_ALIASES.forum) protected data: DataService<ForumThread>,
+    @Inject(SERVICE_ALIASES.users) protected usersData: DataService<UserProfile>,
     protected dialogs: MatDialog
   ) {
     this.threadsArray = [];

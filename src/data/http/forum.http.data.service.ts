@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Device } from 'src/models/entities/Device';
-import { CrudHttpService } from './.crud.http.service';
+import { HttpDataService } from './.http.data.service';
 
 @Injectable()
-export class DeviceCrudHttpService
-  extends CrudHttpService<Device> {
+export class ForumHttpDataService
+  extends HttpDataService<Device> {
 
-  protected entityURI = 'device';
-  protected entitiesURI = 'devices';
+  protected entityURI = 'forum';
+  protected entitiesURI = 'forum';
 
   constructor(
     protected http: HttpClient

@@ -1,9 +1,9 @@
-import { CrudService } from '../../.crud.service';
+import { DataService } from '../data.service.interface';
 import { AbstractEntity } from 'src/models/AbstractEntity';
 import { Observable, of } from 'rxjs';
 
-export abstract class CrudInMemoryService<T extends AbstractEntity>
-  implements CrudService<AbstractEntity> {
+export abstract class InMemoryDataService<T extends AbstractEntity>
+  implements DataService<AbstractEntity> {
 
   protected items: T[];
 

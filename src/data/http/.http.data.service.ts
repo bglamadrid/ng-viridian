@@ -1,17 +1,18 @@
 import { Observable } from 'rxjs';
-import { HttpService } from '../.http.service';
+import { HttpMessengerService } from './.http-messenger.service';
 import { AbstractEntity } from 'src/models/AbstractEntity';
-import { CrudService } from 'src/app/services/.crud.service';
+import { DataService } from 'src/data/data.service.interface';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 /**
- * Transactional service that Creates/Reads/Updates/Deletes entities.
- * This is a verbose abstraction which main features are:
- * * Uses the HTTP methods that are standard for each CRUD operation.
- * * Only requires an URI name for both plural and singular methods to enable them.
+ * Observables-based service that sends HTTP requests to Create/Read/Update/Delete (CRUD) entities.
+ * * Uses the 'correct' HTTP methods for CRUD 'POST/GET/PUT/DELETE'
+ * * Only requires implementing two strings
  */
-export abstract class CrudHttpService<T extends AbstractEntity>
-  extends HttpService
-  implements CrudService<AbstractEntity> {
+export abstract class HttpDataService<T extends AbstractEntity>
+  extends HttpMessengerService
+  implements DataService<AbstractEntity> {
 
   /** Adverb for the singular entity over whose/which the CRUD methods would act upon e.g. 'person' */
   protected abstract entityURI: string;
@@ -55,5 +56,15 @@ export abstract class CrudHttpService<T extends AbstractEntity>
     return this.http.delete<boolean>(
       `${this.apiURL}/${this.entityURI}/${id}`,
     );
+  }
+
+  /**
+   * Syntactic sugar: create a wrapper object with HttpParams.
+   * The returned object may be used to include actual HTTP Parameters on any request fired up by an HttpClient.
+   */
+  protected httpParamsOf(object: any): { params: HttpParams } {
+    return {
+      params: new HttpParams({ fromObject: object })
+    };
   }
 }

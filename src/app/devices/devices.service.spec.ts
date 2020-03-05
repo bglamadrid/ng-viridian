@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DeviceCatalogService } from './device-catalog.service';
+import { DeviceCatalogService } from './devices.service';
 
 describe('DeviceCatalogService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

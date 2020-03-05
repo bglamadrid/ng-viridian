@@ -1,19 +1,6 @@
-import { Descriptable } from 'src/models/Descriptable';
+import { Injectable } from '@angular/core';
 import { Device } from 'src/models/entities/Device';
-
-export const MOCK_DEVICE_TYPES: Descriptable[] = [
-  { id: 1, name: 'Computadores' },
-  { id: 2, name: 'Notebooks' },
-  { id: 3, name: 'Monitores' },
-  { id: 4, name: 'Piezas' },
-  { id: 5, name: 'Periféricos' },
-  { id: 6, name: 'Accesorios' }
-];
-
-export const MOCK_DEVICE_BRANDS: Descriptable[] = [
-  { id: 1, name: 'Lenovo' },
-  { id: 2, name: 'ASUS' }
-];
+import { InMemoryDataService } from './.in-memory.data.service';
 
 export const MOCK_DEVICES: Partial<Device>[] = [
   {
@@ -41,3 +28,14 @@ export const MOCK_DEVICES: Partial<Device>[] = [
     specifications: { Procesador: 'Intel Core i3' }
   }
 ];
+
+
+@Injectable()
+export class DevicesInMemoryDataService
+  extends InMemoryDataService<Device> {
+
+  constructor() {
+    super();
+    this.items = MOCK_DEVICES.map(d => Object.assign(new Device(), d));
+  }
+}
