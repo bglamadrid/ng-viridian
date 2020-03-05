@@ -15,5 +15,10 @@ export const NAV_ITEMS: { [key: string]: NavItem } = {
     path: 'equipos',
     text: 'Equipos',
     icon: 'devices'
+  },
+  clases: {
+    path: 'clases',
+    text: 'Clases TIC 2.0',
+    icon: 'school'
   }
 };

@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DataModule } from '../data/internal-data.module';
+import { LessonsComponent } from './lessons/lessons.component';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -42,7 +43,8 @@ registerLocaleData(localeEs);
     ForumThreadDialogComponent,
     ForumThreadComponent,
     ForumThreadReplyFormComponent,
-    ForumThreadFormComponent
+    ForumThreadFormComponent,
+    LessonsComponent
   ],
   imports: [
     BrowserModule,
