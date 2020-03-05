@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BASE_ROUTE } from 'src/app/app-routes';
 import { PeopleInMemoryDataService } from 'src/data/in-memory/people.in-memory.data.service';
+import { APP_VERSION } from '../app.globals';
 import { NavService } from './nav.service';
 import { NavItem } from './NavItem';
 
@@ -20,6 +21,7 @@ export class NavComponent
 
   public get sidenavOpen(): boolean { return this.svc.sidenavOpen; }
   public get baseRoute(): string { return `/${BASE_ROUTE}`; }
+  public get labelVersion(): string { return APP_VERSION; }
 
   protected set currentModuleName(v: string) { this.svc.currentModuleName = v; }
 
