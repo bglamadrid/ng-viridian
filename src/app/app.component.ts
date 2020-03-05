@@ -8,7 +8,5 @@ import { NavComponent } from './nav/nav.component';
 })
 export class AppComponent {
 
-  public title = 'app-forein';
-
   @ViewChild('nav', { static: true }) public nav: NavComponent;
 }
