@@ -14,6 +14,30 @@ export const MOCK_USERS: Partial<UserProfile>[] = [
   {
     id: 3,
     name: 'SalonAniki'
+  },
+  {
+    id: 4,
+    name: 'CarlosBaeza'
+  },
+  {
+    id: 5,
+    name: 'ElNotario'
+  },
+  {
+    id: 6,
+    name: 'SrMuerte'
+  },
+  {
+    id: 7,
+    name: 'PabloAguilar'
+  },
+  {
+    id: 8,
+    name: 'ERisas99'
+  },
+  {
+    id: 9,
+    name: 'CabezaDeRadio'
   }
 ];
 
