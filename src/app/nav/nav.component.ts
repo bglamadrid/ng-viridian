@@ -42,7 +42,7 @@ export class NavComponent
       if (linkIndex !== -1) {
         this.onNavigation(linkIndex);
       } else {
-        this.router.navigateByUrl(this.links[0].path);
+        this.router.navigateByUrl('');
       }
     }
   }
