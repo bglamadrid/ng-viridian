@@ -2,6 +2,7 @@
   (submit)="submitReply()">
   <mat-form-field class="form-control reply-content">
     <textarea matInput cdkTextareaAutosize formControlName="replyContent"
+    cdkAutosizeMaxRows="10"
       placeholder="{{ labelReplyContent }}"></textarea>
   </mat-form-field>
   <mat-form-field class="form-control signature">

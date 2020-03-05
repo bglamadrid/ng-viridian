@@ -1,31 +1,48 @@
-.scroll-y
-  height: 30em
+.forum-thread
+  display: flex
+  max-height: 100%
+  flex-flow: column nowrap
 
-.resume
-  margin: 2em 2em 1em 2em
+.forum-thread>*
+  overflow: hidden
+
+.forum-thread>mat-divider
+  flex: 0 0 auto
+  padding: 0
+
+.forum-thread>.resume
+  flex: 0 0 auto
+  padding: 2em 2em 1em 2em
+
+.forum-thread>.answers
+  flex: 1 1 25em
+  overflow-y: auto !important
+
+.forum-thread>.reply-panel
+  flex: 1 0 auto
+
+.resume>h4
+  margin: 0
 
 .resume>.material-icons
   position: absolute
   top: 1.5em
   right: 1.5em
 
-mat-expansion-panel
-  margin: 1em 2em
-
-h2
+.answers>h2
   margin: 1em 1em 2em 1em
 
-.answer
+.answers>.answer
   margin: 1em 3em
 
-mat-divider
-  margin: 1em 0
+.answers>.answer>p
+  white-space: pre-wrap
 
-.votes
+.answers>.answer>.votes
   display: flex
   flex-flow: row nowrap
   align-items: center
   justify-content: flex-end
 
-.votes>button
+.answers>.answer>.votes>button
   margin-left: 1em

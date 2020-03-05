@@ -1,10 +1,8 @@
-<mat-dialog-content>
-  <app-forum-thread-form [hidden]="question"
-    (question)="onAsk($event)">
-  </app-forum-thread-form>
-  <ng-container *ngIf="question">
-    <app-forum-thread
-      [question]="question">
-    </app-forum-thread>
-  </ng-container>
-</mat-dialog-content>
+<app-forum-thread-form [hidden]="question"
+  (question)="onAsk($event)">
+</app-forum-thread-form>
+<ng-container *ngIf="question">
+  <app-forum-thread
+    [question]="question">
+  </app-forum-thread>
+</ng-container>
