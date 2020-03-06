@@ -11,6 +11,7 @@
 
 ## To-Do
 * A proper landing page
+* Lessons reviewing interface
 * A profile management module
 * Associating devices to their owners (as users)
 * User roles (for privilege limits)
