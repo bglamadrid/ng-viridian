@@ -8,7 +8,7 @@ export const MOCK_LESSONS: Partial<Lesson>[] = [
     date: new Date('2020-01-16T19:33'),
     author: { id: 1, name: 'Elias58' },
     title: 'Audacity',
-    images: [ { url: '../../assets/img/Audacity_Logo.svg.png' } ],
+    images: [ { url: 'assets/img/Audacity_Logo.svg.png' } ],
     resume: 'Audacity es una aplicación multiplataforma gratuita, que sirve para grabar y editar pistas de audio.',
     content: 'Audacity es una aplicación multiplataforma gratuita, que sirve para grabar y editar pistas de audio.\n' +
       'Este actualmente cuenta con soporte de idioma 100% en español.\n\n' +
