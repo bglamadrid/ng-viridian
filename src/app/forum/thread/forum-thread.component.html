@@ -1,31 +1,33 @@
 <div class="forum-thread">
-  <div class="resume">
-    <h4>{{ question.author.name }} | {{ question.date }}</h4>
-    <h1>{{ question.title }}</h1>
-    <p>{{ question.content }}</p>
-    <i class="small material-icons"></i>
-  </div>
-  <mat-divider></mat-divider>
-  <div class="answers">
-    <h2>Respuestas</h2>
-    <div *ngIf="question.answers.length === 0"
-      class="answer">
-      <p>Aún no hay respuestas a esta pregunta.</p>
+  <div class="scroll-y">
+    <div class="resume">
+      <h4>{{ question.author.name }} | {{ question.date }}</h4>
+      <h1>{{ question.title }}</h1>
+      <p>{{ question.content }}</p>
+      <i class="small material-icons"></i>
     </div>
-    <ng-container *ngFor="let a of question.answers; index as i; last as isLast">
-      <div class="answer">
-        <h4>{{ a.author.name }} | {{ a.date }}</h4>
-        <p>{{ a.content }}</p>
-        <div class="votes">
-          <span>{{ a.votes }}</span>
-          <button type="button" mat-icon-button
-            (click)="onClickThumbsUpAnswer(a)">
-            <i class="very-small material-icons">thumb_up</i>
-          </button>
-        </div>
+    <mat-divider></mat-divider>
+    <div class="answers">
+      <h2>Respuestas</h2>
+      <div *ngIf="question.answers.length === 0"
+        class="answer">
+        <p>Aún no hay respuestas a esta pregunta.</p>
       </div>
-      <mat-divider *ngIf="!isLast"></mat-divider>
-    </ng-container>
+      <ng-container *ngFor="let a of question.answers; index as i; last as isLast">
+        <div class="answer">
+          <h4>{{ a.author.name }} | {{ a.date }}</h4>
+          <p>{{ a.content }}</p>
+          <div class="votes">
+            <span>{{ a.votes }}</span>
+            <button type="button" mat-icon-button
+              (click)="onClickThumbsUpAnswer(a)">
+              <i class="very-small material-icons">thumb_up</i>
+            </button>
+          </div>
+        </div>
+        <mat-divider *ngIf="!isLast"></mat-divider>
+      </ng-container>
+    </div>
   </div>
   <mat-divider></mat-divider>
   <div class="reply-panel">

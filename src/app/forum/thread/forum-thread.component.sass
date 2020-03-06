@@ -1,25 +1,21 @@
 .forum-thread
   display: flex
-  max-height: 100%
+  height: 100%
   flex-flow: column nowrap
-
-.forum-thread>*
-  overflow: hidden
 
 .forum-thread>mat-divider
   flex: 0 0 auto
   padding: 0
 
-.forum-thread>.resume
-  flex: 0 0 auto
-  padding: 2em 2em 1em 2em
-
-.forum-thread>.answers
-  flex: 1 1 25em
-  overflow-y: auto !important
+.forum-thread>.scroll-y
+  flex: 1 1 100%
 
 .forum-thread>.reply-panel
   flex: 1 0 auto
+  overflow: hidden
+
+.resume
+  padding: 2em 2em 1em 2em
 
 .resume>h4
   margin: 0
