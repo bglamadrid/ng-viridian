@@ -24,6 +24,7 @@ export const LBL_ASK_A_QUESTION = 'Hacer una pregunta';
 export const LBL_REPLY_TO_THIS_QUESTION = 'Responder a esta pregunta';
 export const LBL_TOGGLE_SIDEMENU = 'Alternar menú lateral';
 export const LBL_EDIT_PROFILE = 'Editar perfil';
+export const LBL_VIEW_MORE = 'Ver más';
 
 export const LBL_NO_FILTER = 'No filtrar';
 export const LBL_NO_PHOTOS = 'No hay fotos asociadas';

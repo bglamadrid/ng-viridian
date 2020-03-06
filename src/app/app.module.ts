@@ -25,6 +25,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DataModule } from '../data/internal-data.module';
 import { LessonsComponent } from './lessons/lessons.component';
+import { LessonResumeCardComponent } from './lessons/resume-card/lesson-resume-card.component';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -44,7 +45,8 @@ registerLocaleData(localeEs);
     ForumThreadComponent,
     ForumThreadReplyFormComponent,
     ForumThreadFormComponent,
-    LessonsComponent
+    LessonsComponent,
+    LessonResumeCardComponent
   ],
   imports: [
     BrowserModule,
