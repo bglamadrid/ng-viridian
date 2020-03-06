@@ -5,6 +5,7 @@ import { ForumInMemoryDataService } from './in-memory/forum.in-memory.data.servi
 import { PeopleInMemoryDataService } from './in-memory/people.in-memory.data.service';
 import { UsersInMemoryDataService } from './in-memory/users.in-memory.data.service';
 import { SERVICE_ALIASES } from './service-aliases';
+import { LessonsInMemoryDataService } from './in-memory/lessons.in-memory.data.service';
 
 
 
@@ -14,6 +15,7 @@ import { SERVICE_ALIASES } from './service-aliases';
     { provide: SERVICE_ALIASES.devices, useClass: DevicesInMemoryDataService },
     { provide: SERVICE_ALIASES.forum, useClass: ForumInMemoryDataService },
     { provide: SERVICE_ALIASES.people, useClass: PeopleInMemoryDataService },
+    { provide: SERVICE_ALIASES.lessons, useClass: LessonsInMemoryDataService },
     { provide: SERVICE_ALIASES.users, useClass: UsersInMemoryDataService }
   ]
 })

@@ -3,5 +3,6 @@ export const SERVICE_ALIASES = {
   devices: 'DevicesData',
   forum: 'ForumData',
   people: 'PeopleData',
-  users: 'UsersData'
+  users: 'UsersData',
+  lessons: 'LessonsData'
 };
