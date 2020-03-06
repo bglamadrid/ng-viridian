@@ -6,7 +6,8 @@
         <a mat-list-item *ngFor="let link of links; let i = index"
           (click)="onNavigation(i)"
           [class.active]="link.enabled"
-          [routerLink]="[baseRoute, link.path]">
+          [routerLink]="[baseRoute, link.path]"
+          [style.font-size]="link.fontSize">
           <i class="material-icons">{{ link.icon }}</i>
           {{ link.text }}
         </a>

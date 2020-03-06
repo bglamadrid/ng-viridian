@@ -9,7 +9,8 @@ export const NAV_ITEMS: { [key: string]: NavItem } = {
   foro: {
     path: 'foro',
     text: 'Preguntas y Respuestas',
-    icon: 'question_answer'
+    icon: 'question_answer',
+    fontSize: '1rem'
   },
   equipos: {
     path: 'equipos',
