@@ -1,1 +1,12 @@
-<app-nav #nav id="nav"></app-nav>
+<div class="app">
+  <app-header></app-header>
+  <mat-sidenav-container>
+    <mat-sidenav [opened]="sidenavOpen" mode="side" role="navigation">
+      <app-sidenav></app-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content role="main" class="content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <app-footer></app-footer>
+</div>

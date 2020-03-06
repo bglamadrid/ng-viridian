@@ -3,16 +3,16 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/text/es/messages';
 import { ConfirmationDialogData, ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation.dialog.component';
 import { Observable } from 'rxjs';
-import { NavService } from '../nav.service';
+import { AppService } from '../app.service';
 import { APP_NAME } from 'src/app/app.globals';
 import { LBL_TOGGLE_SIDEMENU, LBL_EDIT_PROFILE, LBL_DISCONNECT } from 'src/text/es/labels';
 
 @Component({
-  selector: 'app-nav-header',
+  selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.sass']
 })
-export class NavHeaderComponent
+export class HeaderComponent
   implements OnInit {
 
   public get sidenavOpen(): boolean { return this.svc.sidenavOpen; }
@@ -28,7 +28,7 @@ export class NavHeaderComponent
   constructor(
     protected snackBar: MatSnackBar,
     protected dialog: MatDialog,
-    protected svc: NavService
+    protected svc: AppService
   ) { }
 
   ngOnInit() {

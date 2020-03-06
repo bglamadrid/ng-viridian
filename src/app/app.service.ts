@@ -1,11 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { NavItem } from './NavItem';
-import { APP_ROUTES } from 'src/app/app-routes';
-import { NAV_ITEMS } from './nav.items';
 import { isMobileScreen } from 'src/functions/isMobileScreen';
 
 @Injectable({ providedIn: 'root' })
-export class NavService
+export class AppService
   implements OnDestroy {
 
   public currentModuleName: string;
@@ -40,17 +37,5 @@ export class NavService
 
   public canNavigateTo(): boolean {
     return true;
-  }
-
-  public loadNavItems(): NavItem[] {
-
-    return APP_ROUTES.filter(
-      r => (
-        r.path in NAV_ITEMS &&
-        this.canNavigateTo()
-      )
-    ).map(
-      r => NAV_ITEMS[r.path]
-    );
   }
 }

@@ -1,4 +1,4 @@
-export abstract class NavItem {
+export abstract class SidenavItem {
   public abstract path: string;
   public abstract text: string;
   public abstract icon: string;

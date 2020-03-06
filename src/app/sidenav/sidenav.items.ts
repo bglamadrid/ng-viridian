@@ -1,6 +1,6 @@
-import { NavItem } from './NavItem';
+import { SidenavItem } from './SidenavItem';
 
-export const NAV_ITEMS: { [key: string]: NavItem } = {
+export const SIDENAV_ITEMS: { [key: string]: SidenavItem } = {
   inicio: {
     path: 'inicio',
     text: 'Inicio',

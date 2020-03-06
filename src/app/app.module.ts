@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavHeaderComponent } from './nav/header/header.component';
-import { NavComponent } from './nav/nav.component';
+import { HeaderComponent } from './header/header.component';
 import { DeviceCardComponent } from './devices/card/device-card.component';
 import { DevicesComponent } from './devices/devices.component';
 import { DeviceFiltersPanelComponent } from './devices/filters-panel/device-filters-panel.component';
@@ -26,27 +25,31 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataModule } from '../data/internal-data.module';
 import { LessonsComponent } from './lessons/lessons.component';
 import { LessonResumeCardComponent } from './lessons/resume-card/lesson-resume-card.component';
+import { FooterComponent } from './footer/footer.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    SidenavComponent,
+    FooterComponent,
     LandingComponent,
-    NavComponent,
-    ForumComponent,
+
     DevicesComponent,
-    ForumThreadListComponent,
     DeviceCardComponent,
     DeviceFiltersPanelComponent,
-    NavHeaderComponent,
-    ForumFiltersPanelComponent,
     DeviceDialogComponent,
-    ForumThreadDialogComponent,
+    ForumComponent,
     ForumThreadComponent,
-    ForumThreadReplyFormComponent,
+    ForumThreadListComponent,
+    ForumFiltersPanelComponent,
     ForumThreadFormComponent,
+    ForumThreadReplyFormComponent,
+    ForumThreadDialogComponent,
     LessonsComponent,
-    LessonResumeCardComponent
+    LessonResumeCardComponent,
   ],
   imports: [
     BrowserModule,

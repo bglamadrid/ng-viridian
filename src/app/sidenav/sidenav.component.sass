@@ -1,39 +1,19 @@
-.container,
-mat-nav-list,
-.footer
-  display: flex
-
-.container
-  width: 100vw
-  height: 100vh
-  flex: 1 1 1em
-  flex-flow: column nowrap
-
-.container>app-nav-header
-  flex: 0 0 5em
-
-.container>mat-sidenav-container
-  flex: 1 1 100%
-  background: #ddd
-
-.container>.footer
-  flex: 1 0 auto
-
-mat-nav-list>a
-  color: white
-
-
 mat-sidenav
   width: 16em
   background: maroon
   border-right: none
 
 mat-nav-list
+  width: 16em
   height: 100%
-  padding: 0
+  display: flex
   flex-flow: column nowrap
+  padding: 0
+  background: maroon
+  border-right: none
 
 mat-nav-list>a
+  color: white
   height: 3.75rem
   font-size: 1.25rem
   border-top: 1px rgba(0, 0, 0, 0.1) solid
@@ -54,16 +34,3 @@ mat-nav-list>a.active
 mat-nav-list>a i
   font-size: 2.5rem
   margin-right: 0.25em
-
-.content
-  overflow-y: auto
-
-.footer
-  flex-flow: column nowrap
-  align-items: center
-  justify-content: center
-  text-align: center
-  padding: 0.5em 1em
-  background: black
-  color: grey
-  border-top: 1px #e0e0e06b solid
