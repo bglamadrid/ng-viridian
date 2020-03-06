@@ -4,7 +4,7 @@ import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/text/es/messages';
 import { ConfirmationDialogData, ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation.dialog.component';
 import { Observable } from 'rxjs';
 import { NavService } from '../nav.service';
-import { APPLICATION_NAME } from 'src/app/app.module.constants';
+import { APP_NAME } from 'src/app/app.globals';
 import { LBL_TOGGLE_SIDEMENU, LBL_EDIT_PROFILE, LBL_DISCONNECT } from 'src/text/es/labels';
 
 @Component({
@@ -18,7 +18,7 @@ export class NavHeaderComponent
   public get sidenavOpen(): boolean { return this.svc.sidenavOpen; }
   public set sidenavOpen(v: boolean) { this.svc.sidenavOpen = v; }
 
-  public get applicationNameLabel(): string { return APPLICATION_NAME; }
+  public get applicationNameLabel(): string { return APP_NAME; }
   public get currentModuleNameLabel(): string { return this.svc.currentModuleName; }
   public get userNameLabel(): string { return 'User'; }
   public get toggleSideMenuLabel(): string { return LBL_TOGGLE_SIDEMENU; }
