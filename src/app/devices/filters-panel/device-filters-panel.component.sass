@@ -1,2 +1,10 @@
 .filters-grid
-  grid-template-columns: 1fr 1fr 1fr 6em
+  grid-template-columns: 1fr
+
+@media only screen and (min-width: 450px)
+  .filters-grid
+    grid-template-columns: 1fr 1fr
+
+@media only screen and (min-width: 768px)
+  .filters-grid
+    grid-template-columns: 1fr 1fr 1fr 6em
