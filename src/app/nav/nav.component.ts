@@ -5,6 +5,7 @@ import { PeopleInMemoryDataService } from 'src/data/in-memory/people.in-memory.d
 import { APP_VERSION } from '../app.globals';
 import { NavService } from './nav.service';
 import { NavItem } from './NavItem';
+import { isMobileScreen } from 'src/functions/isMobileScreen';
 
 @Component({
   providers: [ PeopleInMemoryDataService ],
@@ -42,17 +43,24 @@ export class NavComponent
       const linkIndex = this.links.findIndex(m => m.path === currentPath);
       console.log(`linkIndex: ${linkIndex}`);
       if (linkIndex !== -1) {
-        this.onNavigation(linkIndex);
+        this.setActiveItem(linkIndex);
       } else {
         this.router.navigateByUrl('');
       }
     }
   }
 
-  public onNavigation(linkIndex: number) {
+  protected setActiveItem(linkIndex: number) {
     const item = this.links[linkIndex];
     this.svc.currentModuleName = item.text;
     this.links.forEach(m => { m.enabled = false; });
     item.enabled = true;
+  }
+
+  public onNavigation(linkIndex: number) {
+    if (isMobileScreen()) {
+      this.svc.sidenavOpen = false;
+    }
+    this.setActiveItem(linkIndex);
   }
 }

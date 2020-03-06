@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Subject, Observable, BehaviorSubject } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { Injectable, OnDestroy } from '@angular/core';
 import { NavItem } from './NavItem';
 import { APP_ROUTES } from 'src/app/app-routes';
 import { NAV_ITEMS } from './nav.items';
+import { isMobileScreen } from 'src/functions/isMobileScreen';
 
 @Injectable({ providedIn: 'root' })
-export class NavService {
+export class NavService
+  implements OnDestroy {
 
   public currentModuleName: string;
 
@@ -14,9 +14,11 @@ export class NavService {
 
   public get sidenavOpen(): boolean {
     const localParam = this.localParamSidenavOpen;
-    return (typeof localParam === 'string') ?
-            (localParam === 'true') :
-            (true);
+    if (localParam === null) {
+      return !isMobileScreen();
+    }
+
+    return (localParam === 'true');
   }
   public set sidenavOpen(v: boolean) {
     localStorage.setItem('sidenavOpen', String(v));
@@ -30,6 +32,10 @@ export class NavService {
 
   constructor() {
     this.currentModuleName = '';
+  }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('sidenavOpen');
   }
 
   public canNavigateTo(): boolean {
