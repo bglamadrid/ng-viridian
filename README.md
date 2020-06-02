@@ -25,7 +25,3 @@ Ejecuta `ng e2e` para que [Protractor](http://www.protractortest.org/) ejecute l
 
 ## Ayuda
 Si necesitas ayuda con la interfaz de comandos de Angular, ejecuta `ng help` o revisa el [léeme](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## Qué sigue
-* Separación del consumo de la API a un módulo de servicios
-* Creación de un módulo de servicios equivalente, con datos en memoria local (no se requerirá una app externa)
