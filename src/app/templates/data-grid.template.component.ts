@@ -1,7 +1,8 @@
-import { EventEmitter, Input, Output } from '@angular/core';
+import { EventEmitter, Input, Output, Directive } from '@angular/core';
 import { MatTable } from '@angular/material';
 import { of } from 'rxjs';
 
+@Directive()
 export abstract class DataGridTemplateComponent<T> {
 
   @Output() public itemsLoaded: EventEmitter<void>;
