@@ -1,4 +1,4 @@
-# AppForein
+# NgForeinApp
 Demo de una app web que se empleará para los proyectos de la fundación chilena de fomento, reciclaje e investigación tecnológica sin fines de lucro, FOREIN.
 El objetivo de la app se desglosa en disponer los siguientes módulos: un catálogo de equipos licitados y/o por licitar (con enlaces a su documentación oficial actualizada),  un foro de preguntas y respuestas para que los usuarios de dichos equipos tengan dónde realizar sus consultas de soporte técnico, y un sector donde encontrar las clases TIC impartidas con el apoyo de FOREIN en formato online.
 
