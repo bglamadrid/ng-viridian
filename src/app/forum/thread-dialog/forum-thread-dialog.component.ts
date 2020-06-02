@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ForumService } from 'src/app/forum/forum.service';
 import { ForumThread } from 'src/models/entities/ForumThread';
 import { ForumThreadDialogData } from './ForumThreadDialogData';

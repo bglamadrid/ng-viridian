@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/text/es/messages';
 import { ConfirmationDialogData, ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation.dialog.component';
 import { Observable } from 'rxjs';

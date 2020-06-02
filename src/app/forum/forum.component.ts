@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { LBL_ASK_A_QUESTION } from 'src/text/es/labels';
 import { MSG_INF_OPERATION_COMPLETED } from 'src/text/es/messages';

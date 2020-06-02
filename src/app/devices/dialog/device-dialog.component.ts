@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatTable, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatTable } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { DeviceCatalogService } from 'src/app/devices/devices.service';
 import { LBL_BRAND, LBL_NAME, LBL_SPECS, LBL_KEY, LBL_VALUE, LBL_TYPE, LBL_DESCRIPTION } from 'src/text/es/labels';

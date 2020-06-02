@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy, Inject } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { catchError, map, retry, tap } from 'rxjs/operators';
 import { ForumThreadDialogComponent } from 'src/app/forum/thread-dialog/forum-thread-dialog.component';

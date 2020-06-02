@@ -3,7 +3,7 @@ import { DeviceCatalogService } from './devices.service';
 import { Observable, Subscription } from 'rxjs';
 import { Device } from 'src/models/entities/Device';
 import { LBL_ADD_DEVICE } from 'src/text/es/labels';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MSG_INF_OPERATION_COMPLETED } from 'src/text/es/messages';
 
 @Component({

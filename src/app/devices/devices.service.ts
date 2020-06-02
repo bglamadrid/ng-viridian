@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy, Inject } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { DeviceDialogComponent } from 'src/app/devices/dialog/device-dialog.component';

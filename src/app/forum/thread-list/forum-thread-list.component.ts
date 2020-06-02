@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material';
+import { MatTable } from '@angular/material/table';
 import { LBL_ANSWERS_COUNT, LBL_AUTHOR, LBL_DATE_CREATED, LBL_TITLE } from 'src/text/es/labels';
 import { DataGridTemplateComponent } from 'src/app/templates/data-grid.template.component';
 import { ForumThread } from 'src/models/entities/ForumThread';

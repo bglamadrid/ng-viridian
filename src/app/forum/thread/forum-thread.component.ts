@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { LBL_REPLY_TO_THIS_QUESTION } from 'src/text/es/labels';
 import { MSG_ERR_UNKNOWN, MSG_INF_OPERATION_COMPLETED } from 'src/text/es/messages';
 import { ForumThreadReply } from 'src/models/entities/ForumThreadReply';
