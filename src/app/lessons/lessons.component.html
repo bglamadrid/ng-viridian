@@ -1,8 +1,0 @@
-<div class="page">
-  <mat-spinner-centered *ngIf="loading"></mat-spinner-centered>
-  <div class="catalog">
-    <app-lesson-resume-card *ngFor="let lesson of (lessons$ | async); let i = index"
-      [lesson]="lesson">
-    </app-lesson-resume-card>
-  </div>
-</div>

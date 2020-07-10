@@ -23,8 +23,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DataModule } from '../data/internal-data.module';
-import { LessonsComponent } from './lessons/lessons.component';
-import { LessonResumeCardComponent } from './lessons/resume-card/lesson-resume-card.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 registerLocaleData(localeEs);
@@ -47,9 +45,7 @@ registerLocaleData(localeEs);
     ForumFiltersPanelComponent,
     ForumThreadFormComponent,
     ForumThreadReplyFormComponent,
-    ForumThreadDialogComponent,
-    LessonsComponent,
-    LessonResumeCardComponent,
+    ForumThreadDialogComponent
   ],
   imports: [
     BrowserModule,
