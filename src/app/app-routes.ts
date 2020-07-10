@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { DevicesComponent } from './devices/devices.component';
-import { LandingComponent } from './landing/landing.component';
-import { ForumComponent } from './forum/forum.component';
+import { DevicesComponent } from 'src/app/routes/devices/devices.component';
+import { LandingComponent } from 'src/app/routes/landing/landing.component';
+import { ForumComponent } from 'src/app/routes/forum/forum.component';
 
 export const BASE_ROUTE = '';
 

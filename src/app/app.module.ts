@@ -1,30 +1,30 @@
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { DeviceCardComponent } from './devices/card/device-card.component';
-import { DevicesComponent } from './devices/devices.component';
-import { DeviceFiltersPanelComponent } from './devices/filters-panel/device-filters-panel.component';
-import { LandingComponent } from './landing/landing.component';
-import { ForumFiltersPanelComponent } from './forum/filters-panel/forum-filters-panel.component';
-import { ForumComponent } from './forum/forum.component';
-import { ForumThreadListComponent } from './forum/thread-list/forum-thread-list.component';
-import { SharedModule } from './shared/shared.module';
-
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import localeEs from '@angular/common/locales/es';
-import { DeviceDialogComponent } from './devices/dialog/device-dialog.component';
-import { ForumThreadDialogComponent } from './forum/thread-dialog/forum-thread-dialog.component';
-import { ForumThreadComponent } from './forum/thread/forum-thread.component';
-import { ForumThreadReplyFormComponent } from './forum/thread-reply-form/forum-thread-reply-form.component';
-import { ForumThreadFormComponent } from './forum/thread-form/forum-thread-form.component';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { DataModule } from '../data/internal-data.module';
+import { DataModule } from 'src/data/services/http/external-data.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { DeviceCardComponent } from './routes/devices/card/device-card.component';
+import { DevicesComponent } from './routes/devices/devices.component';
+import { DeviceDialogComponent } from './routes/devices/dialog/device-dialog.component';
+import { DeviceFiltersPanelComponent } from './routes/devices/filters-panel/device-filters-panel.component';
+import { ForumFiltersPanelComponent } from './routes/forum/filters-panel/forum-filters-panel.component';
+import { ForumComponent } from './routes/forum/forum.component';
+import { ForumThreadDialogComponent } from './routes/forum/thread-dialog/forum-thread-dialog.component';
+import { ForumThreadFormComponent } from './routes/forum/thread-form/forum-thread-form.component';
+import { ForumThreadListComponent } from './routes/forum/thread-list/forum-thread-list.component';
+import { ForumThreadReplyFormComponent } from './routes/forum/thread-reply-form/forum-thread-reply-form.component';
+import { ForumThreadComponent } from './routes/forum/thread/forum-thread.component';
+import { LandingComponent } from './routes/landing/landing.component';
+import { SharedModule } from './shared/shared.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
+
 registerLocaleData(localeEs);
 
 @NgModule({
