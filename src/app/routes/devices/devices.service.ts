@@ -6,7 +6,7 @@ import { Descriptable } from 'src/data/models/Descriptable';
 import { DATA_INJECTION_TOKENS } from 'src/data/services/data-injection-tokens';
 import { EntityDataIService } from 'src/data/services/entity.data.iservice';
 import { CommonDataIService } from 'src/data/services/common-data.iservice';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { catchError, retry } from 'rxjs/operators';
 import { DeviceDialogData } from './dialog/DeviceDialogData';
 import { DeviceDialogComponent } from './dialog/device-dialog.component';
