@@ -1,22 +1,18 @@
-.app,
-mat-nav-list
-  display: flex
-
 .app
-  width: 100vw
-  height: 100vh
-  flex: 1 1 1em
+  display: flex
   flex-flow: column nowrap
+  width: 100%
+  height: 100%
 
-.app>app-nav-header
+app-header
   flex: 0 0 5em
 
-.app>mat-sidenav-container
-  flex: 1 1 100%
+mat-sidenav-container
+  flex: 1 1 auto
   background: #ddd
 
-.app>app-footer
-  flex: 1 0 auto
+app-footer
+  flex: 0 0 auto
 
 .content
   overflow-y: auto
