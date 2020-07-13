@@ -6,15 +6,12 @@ import { Device } from 'src/data/models/entities/Device';
 import { LBL_BRAND, LBL_NAME, LBL_NO_FILTER, LBL_TYPE, LBL_UPDATE } from 'src/text/es/labels';
 import { TTL_DEVICE_FILTERS } from 'src/text/es/titles';
 import { DeviceFilters } from '../DeviceFilters';
-import { DeviceCatalogService } from '../devices.service';
+import { DevicesService } from '../devices.service';
 
 @Component({
   selector: 'app-device-filters-panel',
   templateUrl: './device-filters-panel.component.html',
-  styleUrls: [
-    '../../../../assets/styles/filters-panel.sass',
-    './device-filters-panel.component.sass'
-  ]
+  styleUrls: [ './device-filters-panel.component.css' ]
 })
 export class DeviceFiltersPanelComponent
   implements OnInit {
@@ -48,7 +45,7 @@ export class DeviceFiltersPanelComponent
 
   constructor(
     protected fb: FormBuilder,
-    protected svc: DeviceCatalogService
+    protected svc: DevicesService
   ) {
     this.filterForm = this.fb.group({
       name: [''],

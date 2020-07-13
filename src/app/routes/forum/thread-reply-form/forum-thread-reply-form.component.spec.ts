@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForumThreadReplyFormComponent } from './forum-thread-reply-form.component';
 
-describe('ForumReplyFormComponent', () => {
+describe('ForumThreadReplyFormComponent', () => {
   let component: ForumThreadReplyFormComponent;
   let fixture: ComponentFixture<ForumThreadReplyFormComponent>;
 

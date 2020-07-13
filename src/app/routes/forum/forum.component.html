@@ -2,7 +2,7 @@
   <app-forum-filters-panel></app-forum-filters-panel>
 
   <mat-spinner-centered *ngIf="loading"></mat-spinner-centered>
-  <app-forum-thread-list #grid class="grid"
+  <app-forum-thread-list #grid
     [hidden]="loading">
   </app-forum-thread-list>
   <button mat-fab class="btn-add"

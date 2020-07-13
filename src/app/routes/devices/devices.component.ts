@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceCatalogService } from './devices.service';
+import { DevicesService } from './devices.service';
 import { Observable, Subscription } from 'rxjs';
 import { Device } from 'src/data/models/entities/Device';
 import { LBL_ADD_DEVICE } from 'src/text/es/labels';
@@ -7,10 +7,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MSG_INF_OPERATION_COMPLETED } from 'src/text/es/messages';
 
 @Component({
-  providers: [ DeviceCatalogService ],
+  providers: [ DevicesService ],
   selector: 'app-devices',
   templateUrl: './devices.component.html',
-  styleUrls: ['./devices.component.sass']
+  styleUrls: ['./devices.component.css']
 })
 export class DevicesComponent
   implements OnInit {
@@ -28,7 +28,7 @@ export class DevicesComponent
   }
 
   constructor(
-    protected svc: DeviceCatalogService,
+    protected svc: DevicesService,
     protected snackBar: MatSnackBar
   ) {
     this.totalItemNumber = 2;

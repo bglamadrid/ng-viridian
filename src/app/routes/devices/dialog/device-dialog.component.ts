@@ -9,22 +9,19 @@ import { DeviceDialogData } from './DeviceDialogData';
 import { Device } from 'src/data/models/entities/Device';
 import { Image } from 'src/data/models/Image';
 import { finalize } from 'rxjs/operators';
-import { DeviceCatalogService } from '../devices.service';
+import { DevicesService } from '../devices.service';
 
 export const requiredTextInput = ['', Validators.required];
 
 @Component({
   selector: 'app-device-dialog',
   templateUrl: './device-dialog.component.html',
-  styleUrls: [
-    '../../../../assets/styles/forms.sass',
-    './device-dialog.component.sass'
-  ]
+  styleUrls: [ './device-dialog.component.css' ]
 })
 export class DeviceDialogComponent
   implements OnInit {
 
-  protected svc: DeviceCatalogService;
+  protected svc: DevicesService;
   protected deviceId: number;
   protected images: Image[];
 

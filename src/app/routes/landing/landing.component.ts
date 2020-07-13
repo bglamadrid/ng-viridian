@@ -8,10 +8,7 @@ import { ForumThreadListComponent } from '../forum/thread-list/forum-thread-list
   providers: [ ForumService ],
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: [
-    '../../../assets/styles/single-card-page.sass',
-    './landing.component.sass'
-  ]
+  styleUrls: [ './landing.component.css' ]
 })
 export class LandingComponent
   implements OnInit {

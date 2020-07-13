@@ -7,7 +7,7 @@ import { ForumService } from '../forum.service';
 @Component({
   selector: 'app-forum-thread-dialog',
   templateUrl: './forum-thread-dialog.component.html',
-  styleUrls: ['./forum-thread-dialog.component.sass']
+  styleUrls: ['./forum-thread-dialog.component.css']
 })
 export class ForumThreadDialogComponent {
 

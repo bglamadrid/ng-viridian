@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForumThreadDialogComponent } from './thread-dialog.component';
+import { ForumThreadDialogComponent } from './forum-thread-dialog.component';
 
-describe('QuestionDialogComponent', () => {
+describe('ForumThreadDialogComponent', () => {
   let component: ForumThreadDialogComponent;
   let fixture: ComponentFixture<ForumThreadDialogComponent>;
 

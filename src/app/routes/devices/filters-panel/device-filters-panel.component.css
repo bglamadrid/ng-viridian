@@ -1,0 +1,23 @@
+.filters-grid {
+  display: grid;
+  grid-gap: 1.5em;
+  justify-content: center;
+  margin-bottom: 1em;
+  grid-template-columns: 1fr;
+}
+
+.filter {
+  height: 3em;
+}
+
+@media only screen and (min-width: 450px) {
+  .filters-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .filters-grid {
+    grid-template-columns: 1fr 1fr 1fr 6em;
+  }
+}

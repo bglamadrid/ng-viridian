@@ -1,0 +1,43 @@
+mat-sidenav {
+  width: 16em;
+  background: maroon;
+  border-right: none;
+}
+
+mat-nav-list {
+  width: 16em;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 0;
+  background: maroon;
+  border-right: none;
+}
+
+mat-nav-list>a {
+  color: white;
+  height: 3.75rem;
+  font-size: 1.25rem;
+  border-top: 1px rgba(0, 0, 0, 0.1) solid;
+  border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+}
+
+mat-nav-list>a:hover,
+mat-nav-list>a.active {
+  background: darkred;
+}
+
+mat-nav-list>a:hover {
+  border-top: 1px rgba(0, 0, 0, 0.25) solid;
+  border-bottom: 1px rgba(0, 0, 0, 0.25) solid;
+}
+
+mat-nav-list>a.active {
+  border-top: 1px rgba(255, 255, 255, 0.1) solid;
+  border-bottom: 1px rgba(255, 255, 255, 0.1) solid;
+}
+
+mat-nav-list>a i {
+  font-size: 2.5rem;
+  margin-right: 0.25em;
+}

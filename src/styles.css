@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/styles/material-buttons.css';
+@import './assets/styles/important.css';
+@import './assets/fonts/MaterialIcons/MaterialIcons.css';
+@import './assets/fonts/LiberationSans/LiberationSans.css';
+
+* {
+  font-family: "Liberation Sans Regular", sans-serif;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.cdk-overlay-pane.no-padding>.mat-dialog-container,
+.cdk-overlay-pane.no-padding>.mat-dialog-container>.ng-star-inserted {
+  padding: 0;
+  overflow: hidden;
+}
+
+.cdk-overlay-pane.with-actions>.mat-dialog-container>.ng-star-inserted {
+  display: flex;
+  flex-flow: column nowrap;
+  height: inherit;
+}
+
+.cdk-overlay-pane.with-actions>.mat-dialog-container>.mat-dialog-content {
+  flex: 1 1 65vh;
+}
+
+.cdk-overlay-pane.with-actions>.mat-dialog-container>.mat-dialog-actions {
+  flex: 0 0 52px;
+}
+
+.mat-fab.no-padding>.mat-button-wrapper {
+  padding: 0;
+}

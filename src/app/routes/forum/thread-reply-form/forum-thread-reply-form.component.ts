@@ -7,7 +7,7 @@ import { ForumThreadReply } from 'src/data/models/entities/ForumThreadReply';
 @Component({
   selector: 'app-forum-thread-reply-form',
   templateUrl: './forum-thread-reply-form.component.html',
-  styleUrls: ['./forum-thread-reply-form.component.sass']
+  styleUrls: ['./forum-thread-reply-form.component.css']
 })
 export class ForumThreadReplyFormComponent {
 

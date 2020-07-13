@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForumFiltersPanelComponent } from './forum-filters-panel.component';
 
-describe('QuestionFiltersPanelComponent', () => {
+describe('ForumFiltersPanelComponent', () => {
   let component: ForumFiltersPanelComponent;
   let fixture: ComponentFixture<ForumFiltersPanelComponent>;
 

@@ -6,8 +6,8 @@ import { ForumThreadReply } from 'src/data/models/entities/ForumThreadReply';
 import { ForumThread } from 'src/data/models/entities/ForumThread';
 import { UserProfile } from 'src/data/models/entities/UserProfile';
 import { ForumFilters } from './ForumFilters';
-import { SERVICE_ALIASES } from 'src/data/services/service-aliases';
-import { DataService } from 'src/data/services/data.service.interface';
+import { DATA_INJECTION_TOKENS } from 'src/data/services/data-injection-tokens';
+import { EntityDataIService } from 'src/data/services/entity.data.iservice';
 import { ForumThreadDialogData } from './thread-dialog/ForumThreadDialogData';
 import { ForumThreadDialogComponent } from './thread-dialog/forum-thread-dialog.component';
 
@@ -33,8 +33,8 @@ export class ForumService
   }
 
   constructor(
-    @Inject(SERVICE_ALIASES.forum) protected data: DataService<ForumThread>,
-    @Inject(SERVICE_ALIASES.users) protected usersData: DataService<UserProfile>,
+    @Inject(DATA_INJECTION_TOKENS.forum) protected data: EntityDataIService<ForumThread>,
+    @Inject(DATA_INJECTION_TOKENS.users) protected usersData: EntityDataIService<UserProfile>,
     protected dialogs: MatDialog
   ) {
     this.threadsArray = [];

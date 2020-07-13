@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ThreadFormComponent } from './forum-thread-form.component';
+import { ForumThreadFormComponent } from './forum-thread-form.component';
 
-describe('ThreadFormComponent', () => {
-  let component: ThreadFormComponent;
-  let fixture: ComponentFixture<ThreadFormComponent>;
+describe('ForumThreadFormComponent', () => {
+  let component: ForumThreadFormComponent;
+  let fixture: ComponentFixture<ForumThreadFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ThreadFormComponent ]
+      declarations: [ ForumThreadFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ThreadFormComponent);
+    fixture = TestBed.createComponent(ForumThreadFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

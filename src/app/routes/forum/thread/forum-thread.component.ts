@@ -10,7 +10,7 @@ import { ForumService } from '../forum.service';
   providers: [ ForumService ],
   selector: 'app-forum-thread',
   templateUrl: './forum-thread.component.html',
-  styleUrls: ['./forum-thread.component.sass']
+  styleUrls: ['./forum-thread.component.css']
 })
 export class ForumThreadComponent {
 

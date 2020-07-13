@@ -3,9 +3,9 @@ import { Device } from 'src/data/models/entities/Device';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { DeviceFilters } from './DeviceFilters';
 import { Descriptable } from 'src/data/models/Descriptable';
-import { SERVICE_ALIASES } from 'src/data/services/service-aliases';
-import { DataService } from 'src/data/services/data.service.interface';
-import { CommonDataService } from 'src/data/services/common-data.service.interface';
+import { DATA_INJECTION_TOKENS } from 'src/data/services/data-injection-tokens';
+import { EntityDataIService } from 'src/data/services/entity.data.iservice';
+import { CommonDataIService } from 'src/data/services/common-data.iservice';
 import { MatDialog } from '@angular/material';
 import { catchError, retry } from 'rxjs/operators';
 import { DeviceDialogData } from './dialog/DeviceDialogData';
@@ -13,7 +13,7 @@ import { DeviceDialogComponent } from './dialog/device-dialog.component';
 
 
 @Injectable()
-export class DeviceCatalogService
+export class DevicesService
   implements OnDestroy {
 
   protected devicesArray: Device[];
@@ -37,8 +37,8 @@ export class DeviceCatalogService
   }
 
   constructor(
-    @Inject(SERVICE_ALIASES.devices) protected data: DataService<Device>,
-    @Inject(SERVICE_ALIASES.common) protected commonData: CommonDataService,
+    @Inject(DATA_INJECTION_TOKENS.devices) protected data: EntityDataIService<Device>,
+    @Inject(DATA_INJECTION_TOKENS.common) protected commonData: CommonDataIService,
     protected dialogs: MatDialog
   ) {
     this.devicesArray = [];

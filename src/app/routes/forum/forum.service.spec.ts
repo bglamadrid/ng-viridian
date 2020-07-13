@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ForumService } from './forum.service';
 
-describe('QuestionsAnswersService', () => {
+describe('ForumService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {

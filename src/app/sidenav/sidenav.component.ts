@@ -8,7 +8,7 @@ import { SIDENAV_ITEMS } from './sidenav.items';
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.sass']
+  styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent
   implements OnInit {

@@ -1,0 +1,24 @@
+table {
+  min-width: 100%;
+}
+
+.mat-column-title {
+  flex: 1 1 40em;
+}
+
+.mat-column-author {
+  flex: 1 0 15em;
+}
+
+.mat-column-dateCreated {
+  flex: 0 1 10em;
+}
+
+.mat-column-answersCount {
+  flex: 0 1 8em;
+}
+
+tr:not(.mat-header-row):hover {
+  background: #555;
+  cursor: pointer;
+}

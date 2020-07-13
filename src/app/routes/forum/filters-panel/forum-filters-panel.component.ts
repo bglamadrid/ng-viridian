@@ -10,10 +10,7 @@ import { ForumFilters } from '../ForumFilters';
 @Component({
   selector: 'app-forum-filters-panel',
   templateUrl: './forum-filters-panel.component.html',
-  styleUrls: [
-    '../../../../assets/styles/filters-panel.sass',
-    './forum-filters-panel.component.sass'
-  ]
+  styleUrls: [ './forum-filters-panel.component.css' ]
 })
 export class ForumFiltersPanelComponent
   implements OnInit {

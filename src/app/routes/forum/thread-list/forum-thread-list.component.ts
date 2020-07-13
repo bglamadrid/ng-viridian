@@ -8,10 +8,7 @@ import { ForumService } from '../forum.service';
 @Component({
   selector: 'app-forum-thread-list',
   templateUrl: './forum-thread-list.component.html',
-  styleUrls: [
-    '../../../../assets/styles/data-grid.sass',
-    './forum-thread-list.component.sass'
-  ]
+  styleUrls: [ './forum-thread-list.component.css' ]
 })
 export class ForumThreadListComponent
   extends DataGridTemplateComponent<ForumThread>

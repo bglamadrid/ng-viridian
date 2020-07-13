@@ -1,6 +1,7 @@
 <mat-dialog-content>
   <mat-spinner-centered *ngIf="submitting"></mat-spinner-centered>
   <div [hidden]="submitting">
+
     <form [formGroup]="formGroup">
       <h2>Registrar Nuevo Equipo</h2>
       <mat-form-field class="form-control name">
@@ -83,6 +84,7 @@
         </button>
       </div>
     </form>
+
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end" *ngIf="!submitting">

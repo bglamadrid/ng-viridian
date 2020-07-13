@@ -5,7 +5,7 @@ import { LBL_NO_PHOTOS, LBL_NO_DESCRIPTION } from 'src/text/es/labels';
 @Component({
   selector: 'app-device-card',
   templateUrl: './device-card.component.html',
-  styleUrls: ['./device-card.component.sass']
+  styleUrls: ['./device-card.component.css']
 })
 export class DeviceCardComponent
   implements OnInit {

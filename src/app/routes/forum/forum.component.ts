@@ -10,7 +10,7 @@ import { ForumThreadListComponent } from './thread-list/forum-thread-list.compon
   providers: [ ForumService ],
   selector: 'app-forum',
   templateUrl: './forum.component.html',
-  styleUrls: ['./forum.component.sass']
+  styleUrls: ['./forum.component.css']
 })
 export class ForumComponent
   implements OnInit {
