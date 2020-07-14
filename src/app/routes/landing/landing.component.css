@@ -1,51 +1,35 @@
-.page, mat-card-content {
+.landing {
   display: grid;
-}
-
-.page {
   background-color: #ddd;
-  grid-auto-rows: 100vh;
-  align-items: center;
-  justify-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr;
+}
+@media(min-width: 800px) {
+  .landing {
+    padding: 1rem;
+    grid-template-columns: 44rem;
+  }
 }
 
-mat-card {
-  background-color: #eee;
-  width: 20rem;
-  height: 20rem;
-}
-
-mat-card * {
+h2 {
   text-align: center;
 }
 
-mat-card-title {
-  height: 25%;
-  margin: 0;
-  color: black;
-  vertical-align: middle;
-  font-size: 32pt;
+section {
+  padding: 1rem;
 }
 
-mat-card-content {
-  height: 75%;
-  margin: 0;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-}
-
-mat-card-content > * {
+.section-header {
   display: flex;
-  flex-direction: column;
+  flex-flow: row nowrap;
   align-items: center;
-  justify-content: center;
 }
 
-mat-card-content > * > a {
-  width: 16rem;
-  height: 4rem;
-  font-size: 18pt;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.section-header span {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0.5rem
 }

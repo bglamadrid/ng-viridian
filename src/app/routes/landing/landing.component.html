@@ -1,8 +1,41 @@
-<div class="page">
-  <div class="latest-questions">
-    <app-forum-thread-list #questionsGrid class="grid"
-      [hidden]="loadingLatestQuestions"
-      [items]="latestQuestions$ | async">
-    </app-forum-thread-list>
-  </div>
+<div class="landing">
+  <mat-card>
+    <h2 mat-card-title>¡Bienvenido a la plataforma de apoyo tecno-estudiantil de Forein!</h2>
+    <section>
+      Lo que ud. está por ver, es el primer prototipo disponible para el proyecto en cuestión.
+    </section>
+    <section>
+      Esta plataforma potenciará los programas YEMP y MCPA de JUNAEB para que los estudiantes puedan acceder a un beneficio más completo y solidario, acorde con sus necesidades y falencias, para así apoyarlos a sumergirse en el apasionante mundo de la tecnología.
+    </section>
+    <section>
+      Pero primero, partamos dándole una breve introducción a los módulos disponibles.
+    </section>
+    <section>
+      <div class="section-header">
+        <i class="material-icons">question_answer</i>
+        <span>Foro de Preguntas y Respuestas</span>
+      </div>
+      <p>
+        Un apartado donde los beneficiarios de los programas YEMP y MCPA (de JUNAEB), podrán acceder a un repositorio de las consultas técnicas realizadas por la comunidad, y las respuestas que la misma comunidad, junto a los editores y moderadores, les hayan dado. ¡Todos contribuimos a esta base de conocimientos!
+      </p>
+    </section>
+    <section>
+      <div class="section-header">
+        <i class="material-icons">devices</i>
+        <span>Catálogo de Equipos</span>
+      </div>
+      <p>
+        Aquí cada usuario podrá acceder a los detalles de los equipos que hayan elegido, así como al resto de los equipos disponibles en los programas de JUNAEB. Transparentamos toda la información que podamos disponer en relación a estos equipos, incluyendo manuales de uso, controladores, fotografías y videos.
+      </p>
+    </section>
+    <section>
+      <span>La información disponible en este sitio, tales como las preguntas y respuestas precargadas, y los modelos de los equipos disponibles, son información completamente volátil, y los cambios que haga con ella no serán guardados en ningún lugar.</span><br/>
+      <b>Siéntase libre de experimentar.</b>
+    </section>
+    <section>
+      <span>En este prototipo no recopilamos ninguna información del uso que se le da. No almacenamos cookies, por lo que su información está completamente a salvo.</span><br/>
+      <span>Por este mismo motivo, si ud. tiene alguna duda, sugerencia, observación o comentario, puede hacerlos llegar a <i>recursosforein@gmail.com</i> ó <i>bg.lamadrid@gmail.com</i></span>
+      <span>Sin más preámbulos, es ud. libre de proceder. ¡Gracias por visitarnos!</span><br/>
+    </section>
+  </mat-card>
 </div>
