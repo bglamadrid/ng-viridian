@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { APP_ROUTES } from './app-routes';
 import { Router } from '@angular/router';
 import { AppService } from './app.service';
+import { APP_ROUTES } from './app-routing.module';
 
 @Component({
   selector: 'app-root',

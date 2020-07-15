@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SidenavItem } from './SidenavItem';
-import { BASE_ROUTE, APP_ROUTES } from '../app-routes';
 import { AppService } from '../app.service';
 import { isMobileScreen } from 'src/functions/isMobileScreen';
 import { SIDENAV_ITEMS } from './sidenav.items';
+import { APP_ROUTES } from '../app-routing.module';
 
 @Component({
   selector: 'app-sidenav',
@@ -14,8 +14,6 @@ export class SidenavComponent
   implements OnInit {
 
   public links: SidenavItem[];
-
-  public get baseRoute(): string { return `/${BASE_ROUTE}`; }
 
   constructor(
     protected svc: AppService

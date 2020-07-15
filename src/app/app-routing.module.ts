@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { APP_ROUTES } from 'src/app/app-routes';
+import { RouterModule, Routes } from '@angular/router';
 import { SelectivePreloadingStrategyService } from 'src/app/selective-preloading-strategy.service';
+import { LandingComponent } from './routes/landing/landing.component';
+import { ForumComponent } from './routes/forum/forum.component';
+import { DevicesComponent } from './routes/devices/devices.component';
+
+export const APP_ROUTES: Routes = [
+  { path: 'inicio', component: LandingComponent, canActivate: [] },
+  { path: 'foro', component: ForumComponent, canActivate: [] },
+  { path: 'equipos', component: DevicesComponent, canActivate: [] },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(
