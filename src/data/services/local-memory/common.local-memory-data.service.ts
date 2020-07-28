@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Descriptable } from 'src/data/models/Descriptable';
 import { CommonDataIService } from '../common-data.iservice';
 
-export const MOCK_DEVICE_TYPES: Descriptable[] = [
+export const MOCK_DEVICE_FAMILIES: Descriptable[] = [
   { id: 1, name: 'Computadores' },
   { id: 2, name: 'Notebooks' },
   { id: 3, name: 'Monitores' },
@@ -21,11 +21,11 @@ export const MOCK_DEVICE_BRANDS: Descriptable[] = [
 export class CommonInMemoryDataService
   implements CommonDataIService {
 
-  public deviceTypes$: Observable<Descriptable[]>;
+  public deviceFamilies$: Observable<Descriptable[]>;
   public deviceBrands$: Observable<Descriptable[]>;
 
   constructor() {
-    this.deviceTypes$ = of(MOCK_DEVICE_TYPES);
+    this.deviceFamilies$ = of(MOCK_DEVICE_FAMILIES);
     this.deviceBrands$ = of(MOCK_DEVICE_BRANDS);
   }
 }

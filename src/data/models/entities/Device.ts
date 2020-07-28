@@ -12,6 +12,6 @@ export class Device
   images: Image[];
   urls: string[];
 
-  public deviceType: Partial<Descriptable>;
+  public deviceFamily: Partial<Descriptable>;
   public specifications: { [key: string]: string };
 }

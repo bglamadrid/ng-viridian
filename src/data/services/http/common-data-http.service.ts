@@ -9,7 +9,7 @@ export class CommonDataHttpService
   extends HttpMessengerService
   implements CommonDataIService {
 
-  public get deviceTypes$() {
+  public get deviceFamilies$() {
     return this.http.get<Descriptable[]>(
       `${this.apiURL}/device_types`
     );

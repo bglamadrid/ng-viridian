@@ -38,8 +38,8 @@ export class DeviceFiltersPanelComponent
     if (dvc.brand) {
       this.brand.setValue(dvc.brand.id);
     }
-    if (dvc.deviceType) {
-      this.type.setValue(dvc.deviceType.id);
+    if (dvc.deviceFamily) {
+      this.type.setValue(dvc.deviceFamily.id);
     }
   }
 
@@ -56,14 +56,14 @@ export class DeviceFiltersPanelComponent
 
   ngOnInit(): void {
     this.brands$ = this.svc.deviceBrands$;
-    this.types$ = this.svc.deviceTypes$;
+    this.types$ = this.svc.deviceFamilies$;
   }
 
   public submitFilters(): void {
     const filters: Partial<DeviceFilters> = {};
     if (this.name.value) { filters.name = this.name.value; }
     if (this.brand.value) { filters.brand = { id: this.brand.value }; }
-    if (this.type.value) { filters.deviceType = { id: this.type.value }; }
+    if (this.type.value) { filters.deviceFamily = { id: this.type.value }; }
 
     if (JSON.stringify(this.svc.filters) !== JSON.stringify(filters)) {
       this.svc.filters = filters;

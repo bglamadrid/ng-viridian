@@ -17,7 +17,7 @@
       <mat-form-field class="form-control type">
         <mat-select formControlName="type"
           placeholder="{{ labelType }}">
-          <mat-option *ngFor="let b of (deviceTypes$ | async)" [value]="b.id">{{ b.name }}</mat-option>
+          <mat-option *ngFor="let b of (deviceFamilies$ | async)" [value]="b.id">{{ b.name }}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="form-control description">

@@ -28,7 +28,7 @@ export class DeviceDialogComponent
   public submitting: boolean;
   public formGroup: FormGroup;
   public brands$: Observable<Descriptable[]>;
-  public deviceTypes$: Observable<Descriptable[]>;
+  public deviceFamilies$: Observable<Descriptable[]>;
 
   @ViewChild('specsTable', { static: true }) public specsTable: MatTable<FormArray>;
   public specsTableColumns: string[];
@@ -53,7 +53,7 @@ export class DeviceDialogComponent
     this.images = dvc.images ? dvc.images : [];
     this.name.setValue(dvc.name);
     this.brand.setValue(dvc.brand.id);
-    this.type.setValue(dvc.deviceType.id);
+    this.type.setValue(dvc.deviceFamily.id);
     this.description.setValue(dvc.description);
 
     const specifications = [];
@@ -94,7 +94,7 @@ export class DeviceDialogComponent
 
   ngOnInit() {
     this.brands$ = this.svc.deviceBrands$;
-    this.deviceTypes$ = this.svc.deviceTypes$;
+    this.deviceFamilies$ = this.svc.deviceFamilies$;
   }
 
   protected constructSpecifications(): { [key: string]: string } {
@@ -111,7 +111,7 @@ export class DeviceDialogComponent
       name: this.name.value,
       description: this.description.value,
       brand: { id: this.brand.value },
-      deviceType: { id: this.type.value },
+      deviceFamily: { id: this.type.value },
       images: this.images,
       urls: [],
       specifications: this.constructSpecifications()

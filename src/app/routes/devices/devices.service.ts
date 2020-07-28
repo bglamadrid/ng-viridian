@@ -28,8 +28,8 @@ export class DevicesService
     this.devicesSource.next(devices);
   }
 
-  public get deviceTypes$(): Observable<Descriptable[]> {
-    return this.commonData.deviceTypes$;
+  public get deviceFamilies$(): Observable<Descriptable[]> {
+    return this.commonData.deviceFamilies$;
   }
 
   public get deviceBrands$(): Observable<Descriptable[]> {
