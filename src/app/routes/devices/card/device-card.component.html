@@ -1,6 +1,7 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>{{ device.name }}</mat-card-title>
+    <mat-card-subtitle>{{ device.deviceFamily.name }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div class="thumbnail">
@@ -11,6 +12,5 @@
         <span>{{ labelNoPhotos }}</span>
       </ng-template>
     </div>
-    <p class="summary">{{ device.description || labelNoDescription }}</p>
   </mat-card-content>
 </mat-card>
