@@ -177,6 +177,30 @@ export const MOCK_DEVICES: Partial<Device>[] = [
       Peso: '1,487 Kg',
       Dimensiones: '343 x 18 x 245 mm'
     }
+  },
+  {
+    id: 8,
+    name: 'Lenovo IdeaPad 330',
+    description: '',
+    urls: [ ],
+    brand: { id: 1, name: 'Lenovo' },
+    images: [
+      { width: 1000, height: 887, url: 'https://brain-images-ssl.cdn.dixons.com/7/3/10180837/u_10180837.jpg' }
+    ],
+    deviceFamily: { id: 5, name: '2019 Portátiles gráficos' },
+    specifications: {
+      Procesador: 'Intel Pentium 4415U',
+      Almacenamiento: '500GB HDD',
+      RAM: '4GB',
+      Pantalla: '15.6"',
+      TarjetaVideo: 'nVidia GeForce MX110',
+      Puertos: '2xUSB3.0 + 1xUSB3.1',
+      TipoBateria: '2 Celdas',
+      Bluetooth: 'Si',
+      CamaraWeb: 'Si',
+      Peso: '1,949 Kg',
+      Dimensiones: '23 x 18 x 245 mm'
+    }
   }
 ];
 
