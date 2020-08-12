@@ -1,17 +1,16 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Observable } from 'rxjs';
-import { LBL_BRAND, LBL_NAME, LBL_SPECS, LBL_KEY, LBL_VALUE, LBL_TYPE, LBL_DESCRIPTION } from 'src/text/es/labels';
 import { Descriptable } from 'src/data/models/Descriptable';
-import { DeviceDialogData } from './DeviceDialogData';
 import { Device } from 'src/data/models/entities/Device';
 import { Image } from 'src/data/models/Image';
-import { finalize } from 'rxjs/operators';
+import { LBL_BRAND, LBL_DESCRIPTION, LBL_KEY, LBL_NAME, LBL_SPECS, LBL_TYPE, LBL_VALUE } from 'src/text/es/labels';
 import { DevicesService } from '../devices.service';
+import { DeviceDialogData } from './DeviceDialogData';
 
-export const requiredTextInput = ['', Validators.required];
+const requiredTextInput = ['', Validators.required];
 
 @Component({
   selector: 'app-device-dialog',
@@ -21,18 +20,14 @@ export const requiredTextInput = ['', Validators.required];
 export class DeviceDialogComponent
   implements OnInit {
 
-  protected svc: DevicesService;
   protected deviceId: number;
   protected images: Image[];
 
-  public submitting: boolean;
-  public formGroup: FormGroup;
+  public submitting$: Observable<boolean>;
   public brands$: Observable<Descriptable[]>;
   public deviceFamilies$: Observable<Descriptable[]>;
 
-  @ViewChild('specsTable', { static: true }) public specsTable: MatTable<FormArray>;
-  public specsTableColumns: string[];
-
+  public formGroup: FormGroup;
   public get name() { return this.formGroup.get('name'); }
   public get brand() { return this.formGroup.get('brand'); }
   public get type() { return this.formGroup.get('type'); }
@@ -40,17 +35,47 @@ export class DeviceDialogComponent
   public get specs() { return this.formGroup.get('specs') as FormArray; }
   public get urls() { return this.formGroup.get('urls') as FormArray; }
 
-  public get labelName(): string { return LBL_NAME; }
-  public get labelBrand(): string { return LBL_BRAND; }
-  public get labelType(): string { return LBL_TYPE; }
-  public get labelDescription(): string { return LBL_DESCRIPTION; }
-  public get labelSpecs(): string { return LBL_SPECS; }
-  public get labelKey(): string { return LBL_KEY; }
-  public get labelValue(): string { return LBL_VALUE; }
+  @ViewChild('specsTable', { static: true }) public specsTable: MatTable<FormArray>;
+  public specsTableColumns: string[] = [ 'key', 'value', 'actions' ];
 
-  public set device(dvc: Device) {
-    this.deviceId = dvc.id;
-    this.images = dvc.images ? dvc.images : [];
+  public dialogTitle: string;
+
+  public readonly labelName: string = LBL_NAME;
+  public readonly labelBrand: string = LBL_BRAND;
+  public readonly labelType: string = LBL_TYPE;
+  public readonly labelDescription: string = LBL_DESCRIPTION;
+  public readonly labelSpecs: string = LBL_SPECS;
+  public readonly labelKey: string = LBL_KEY;
+  public readonly labelValue: string = LBL_VALUE;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) data: DeviceDialogData,
+    protected service: DevicesService,
+    protected dialog: MatDialogRef<DeviceDialogComponent>,
+    protected formBuilder: FormBuilder
+  ) {
+    this.dialogTitle = ((data?.device?.id) ? 'Actualizar datos de' : 'Ingresar nuevo') + ' equipo';
+    this.formGroup = this.formBuilder.group({
+      name: requiredTextInput,
+      brand: [null, Validators.required],
+      type: [null, Validators.required],
+      description: [''],
+      specs: this.formBuilder.array([ this.formBuilder.array([requiredTextInput, requiredTextInput]) ], Validators.required),
+      urls: this.formBuilder.array([])
+    });
+
+    if (data?.device) {
+      this.load(data.device);
+    } else {
+      this.deviceId = 0;
+      this.images = [];
+    }
+  }
+
+  protected load(dvc: Device) {
+    this.deviceId = (dvc.id ? dvc.id : 0);
+    this.images = (dvc.images ? dvc.images : []);
+
     this.name.setValue(dvc.name);
     this.brand.setValue(dvc.brand.id);
     this.type.setValue(dvc.deviceFamily.id);
@@ -59,42 +84,19 @@ export class DeviceDialogComponent
     const specifications = [];
     for (const key in dvc.specifications) {
       if (dvc.specifications.hasOwnProperty(key)) {
-        specifications.push([key, dvc.specifications[key]]);
+        const keyControl = this.formBuilder.control(key, Validators.required);
+        const valueControl = this.formBuilder.control(dvc.specifications[key], Validators.required);
+        specifications.push(this.formBuilder.array([keyControl, valueControl]));
       }
     }
-    this.specs.setValue(specifications);
+
+    this.formGroup.setControl('specs', this.formBuilder.array(specifications));
     this.urls.setValue(dvc.urls);
   }
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) data: DeviceDialogData,
-    protected dialog: MatDialogRef<DeviceDialogComponent>,
-    protected fb: FormBuilder
-  ) {
-    this.submitting = false;
-    this.formGroup = this.fb.group({
-      name: requiredTextInput,
-      brand: [null, Validators.required],
-      type: [null, Validators.required],
-      description: [''],
-      specs: this.fb.array([ this.fb.array([requiredTextInput, requiredTextInput]) ], Validators.required),
-      urls: this.fb.array([])
-    });
-
-    this.svc = data.svc;
-    if (data.device) {
-      this.device = data.device;
-    } else {
-      this.deviceId = 0;
-      this.images = [];
-    }
-
-    this.specsTableColumns = [ 'key', 'value', 'actions' ];
-  }
-
   ngOnInit() {
-    this.brands$ = this.svc.deviceBrands$;
-    this.deviceFamilies$ = this.svc.deviceFamilies$;
+    this.brands$ = this.service.deviceBrands$;
+    this.deviceFamilies$ = this.service.deviceFamilies$;
   }
 
   protected constructSpecifications(): { [key: string]: string } {
@@ -105,21 +107,24 @@ export class DeviceDialogComponent
     return specifications;
   }
 
-  protected constructDevice(): Device {
-    return {
-      id: this.deviceId,
-      name: this.name.value,
-      description: this.description.value,
-      brand: { id: this.brand.value },
-      deviceFamily: { id: this.type.value },
-      images: this.images,
-      urls: [],
-      specifications: this.constructSpecifications()
-    };
+  protected asItem(): Device {
+    return Object.assign<Device, Partial<Device>>(
+      new Device(),
+      {
+        id: this.deviceId,
+        name: this.name.value,
+        description: this.description.value,
+        brand: { id: this.brand.value },
+        deviceFamily: { id: this.type.value },
+        images: this.images,
+        urls: [],
+        specifications: this.constructSpecifications()
+      }
+    );
   }
 
   public onClickAddSpec(): void {
-    const specFormControl = this.fb.array([requiredTextInput, requiredTextInput]);
+    const specFormControl = this.formBuilder.array([requiredTextInput, requiredTextInput]);
     this.specs.push(specFormControl);
     this.specsTable.renderRows();
   }
@@ -130,7 +135,7 @@ export class DeviceDialogComponent
   }
 
   public onClickAddUrl(): void {
-    const urlFormControl = this.fb.control('', Validators.required);
+    const urlFormControl = this.formBuilder.control('', Validators.required);
     this.urls.push(urlFormControl);
   }
 
@@ -139,22 +144,12 @@ export class DeviceDialogComponent
   }
 
   public onSubmit() {
-    this.submitting = true;
-    setTimeout(() => {
-      const dvc = this.constructDevice();
-      const request = (!dvc.id) ? this.svc.insertDevice(dvc) : this.svc.updateDevice(dvc);
-      request.pipe(
-        finalize(
-          () => {
-            this.submitting = false;
-          }
-        )
-      ).subscribe(
-        (returnedDevice) => {
-          this.dialog.close(returnedDevice);
-        }
-      );
-    }, 2000);
+    const dvc = this.asItem();
+    this.service.insertDevice(dvc).subscribe(
+      (returnedDevice) => {
+        this.dialog.close(returnedDevice);
+      }
+    );
   }
 
 }

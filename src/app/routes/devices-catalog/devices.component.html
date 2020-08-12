@@ -1,13 +1,18 @@
 <div class="page">
-  <app-device-filters-panel></app-device-filters-panel>
+  <app-device-filters-panel>
+  </app-device-filters-panel>
 
-  <mat-spinner-centered *ngIf="loading"></mat-spinner-centered>
-  <div class="catalog-wrapper" [hidden]="loading">
+  <mat-spinner-centered *ngIf="loading$ | async">
+  </mat-spinner-centered>
+
+  <div class="catalog-wrapper" [hidden]="loading$ | async">
     <div class="catalog">
-      <app-device-card *ngFor="let device of (devices$ | async); let i = index" [device]="device"
-      (click)="onClickEdit(device)"></app-device-card>
+      <app-device-card *ngFor="let device of (devices$ | async); let i = index"
+        [device]="device"
+        (click)="onClickEdit(device)">
+      </app-device-card>
     </div>
-    <button mat-fab class="btn-add no-padding"
+    <button mat-fab class="btn-add no-padding" type="button"
       color="primary"
       (click)="onClickAdd()"
       title="{{ labelAddDevice }}">
