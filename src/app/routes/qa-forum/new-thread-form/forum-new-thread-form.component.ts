@@ -5,11 +5,11 @@ import { LBL_ASK, LBL_ASK_A_QUESTION, LBL_MESSAGE_BODY, LBL_SIGNATURE, LBL_TITLE
 import { ForumThread } from 'src/data/models/entities/ForumThread';
 
 @Component({
-  selector: 'app-forum-thread-form',
-  templateUrl: './forum-thread-form.component.html',
-  styleUrls: ['./forum-thread-form.component.css']
+  selector: 'app-forum-new-thread-form',
+  templateUrl: './forum-new-thread-form.component.html',
+  styleUrls: ['./forum-new-thread-form.component.css']
 })
-export class ForumThreadFormComponent {
+export class ForumNewThreadFormComponent {
 
   @Output() public question: EventEmitter<ForumThread>;
 

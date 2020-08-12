@@ -14,14 +14,14 @@ import { DeviceCardComponent } from './routes/devices-catalog/card/device-card.c
 import { DevicesComponent } from './routes/devices-catalog/devices.component';
 import { DeviceDialogComponent } from './routes/devices-catalog/dialog/device-dialog.component';
 import { DeviceFiltersPanelComponent } from './routes/devices-catalog/filters-panel/device-filters-panel.component';
+import { LandingComponent } from './routes/landing/landing.component';
 import { ForumFiltersPanelComponent } from './routes/qa-forum/filters-panel/forum-filters-panel.component';
 import { ForumComponent } from './routes/qa-forum/forum.component';
+import { ForumNewThreadFormComponent } from './routes/qa-forum/new-thread-form/forum-new-thread-form.component';
 import { ForumThreadDialogComponent } from './routes/qa-forum/thread-dialog/forum-thread-dialog.component';
-import { ForumThreadFormComponent } from './routes/qa-forum/thread-form/forum-thread-form.component';
 import { ForumThreadListComponent } from './routes/qa-forum/thread-list/forum-thread-list.component';
 import { ForumThreadReplyFormComponent } from './routes/qa-forum/thread-reply-form/forum-thread-reply-form.component';
 import { ForumThreadComponent } from './routes/qa-forum/thread/forum-thread.component';
-import { LandingComponent } from './routes/landing/landing.component';
 import { SharedModule } from './shared/shared.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
 
@@ -43,7 +43,7 @@ registerLocaleData(localeEs);
     ForumThreadComponent,
     ForumThreadListComponent,
     ForumFiltersPanelComponent,
-    ForumThreadFormComponent,
+    ForumNewThreadFormComponent,
     ForumThreadReplyFormComponent,
     ForumThreadDialogComponent
   ],
