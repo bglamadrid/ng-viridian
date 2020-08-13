@@ -1,6 +1,7 @@
 .forum-thread {
   display: flex;
   height: 100%;
+  width: 100%;
   flex-flow: column nowrap;
 }
 
@@ -13,7 +14,7 @@
   flex: 1 1 100%;
 }
 
-.forum-thread>.reply-panel {
+.forum-thread>.reply-panel-container {
   flex: 1 0 auto;
   overflow: hidden;
 }
@@ -42,6 +43,7 @@
 
 .answers>.answer>p {
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .answers>.answer>.votes {

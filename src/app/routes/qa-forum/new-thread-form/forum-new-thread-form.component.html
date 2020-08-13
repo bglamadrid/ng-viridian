@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup"
-  (submit)="submitQuestion()">
+  (submit)="onSubmit()">
   <h2>{{ labelAskQuestion }}</h2>
   <mat-form-field class="form-control title">
     <input matInput formControlName="title"

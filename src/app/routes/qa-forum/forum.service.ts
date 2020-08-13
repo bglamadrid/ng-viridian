@@ -1,23 +1,20 @@
-import { Injectable, OnDestroy, Inject } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Inject, Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { catchError, map, retry, tap } from 'rxjs/operators';
-import { ForumThreadReply } from 'src/data/models/entities/ForumThreadReply';
 import { ForumThread } from 'src/data/models/entities/ForumThread';
+import { ForumThreadReply } from 'src/data/models/entities/ForumThreadReply';
 import { UserProfile } from 'src/data/models/entities/UserProfile';
-import { ForumFilters } from './ForumFilters';
 import { DATA_INJECTION_TOKENS } from 'src/data/services/data-injection-tokens';
 import { EntityDataIService } from 'src/data/services/entity.data.iservice';
-import { ForumThreadDialogData } from './thread-dialog/ForumThreadDialogData';
-import { ForumThreadDialogComponent } from './thread-dialog/forum-thread-dialog.component';
+import { ForumFilters } from './ForumFilters';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ForumService
   implements OnDestroy {
 
-  protected threadsArray: ForumThread[];
-  public threadsSource: Subject<ForumThread[]>;
-  public filters: Partial<ForumFilters>;
+  protected threadsArray: ForumThread[] = [];
+  public threadsSource: Subject<ForumThread[]> = new BehaviorSubject(this.threadsArray);
+  public filters: Partial<ForumFilters> = {};
 
   public get questions(): ForumThread[] {
     return this.threadsArray;
@@ -34,12 +31,8 @@ export class ForumService
 
   constructor(
     @Inject(DATA_INJECTION_TOKENS.forum) protected data: EntityDataIService<ForumThread>,
-    @Inject(DATA_INJECTION_TOKENS.users) protected usersData: EntityDataIService<UserProfile>,
-    protected dialogs: MatDialog
+    @Inject(DATA_INJECTION_TOKENS.users) protected usersData: EntityDataIService<UserProfile>
   ) {
-    this.threadsArray = [];
-    this.threadsSource = new BehaviorSubject(this.threadsArray);
-    this.filters = {};
   }
 
   ngOnDestroy(): void {
@@ -60,24 +53,6 @@ export class ForumService
         }
       }
     );
-  }
-
-  public openQuestionDialogFor(dvc: ForumThread): Observable<ForumThread> {
-    const dialogData: ForumThreadDialogData = {
-      svc: this,
-      question: dvc ? dvc : null
-    };
-    const dialog = this.dialogs.open(
-      ForumThreadDialogComponent,
-      {
-        width: '60em',
-        height: '35em',
-        panelClass: [ 'no-padding' ],
-        data: dialogData
-      }
-    );
-
-    return dialog.afterClosed();
   }
 
   public insertQuestion(qst: ForumThread): Observable<ForumThread> {

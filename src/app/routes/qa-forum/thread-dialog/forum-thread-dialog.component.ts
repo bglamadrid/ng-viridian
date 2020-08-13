@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ForumThread } from 'src/data/models/entities/ForumThread';
-import { ForumThreadDialogData } from './ForumThreadDialogData';
 import { ForumService } from '../forum.service';
+import { ForumThreadDialogData } from './ForumThreadDialogData';
 
 @Component({
   selector: 'app-forum-thread-dialog',
@@ -11,23 +11,21 @@ import { ForumService } from '../forum.service';
 })
 export class ForumThreadDialogComponent {
 
-  protected svc: ForumService;
-
   public question: ForumThread;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: ForumThreadDialogData,
+    protected svc: ForumService,
     protected dialog: MatDialogRef<ForumThreadDialogComponent>
   ) {
-    this.svc = data.svc;
-    this.question = data.question;
+    this.question = (data?.question) ? data.question : null;
   }
 
   public onAsk(question: ForumThread): void {
     this.svc.insertQuestion(question).subscribe(
-      (q) => {
-        if (q) {
-          this.dialog.close(q);
+      (result) => {
+        if (result) {
+          this.dialog.close(result);
         }
       }
     );

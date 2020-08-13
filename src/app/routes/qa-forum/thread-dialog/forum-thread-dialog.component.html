@@ -1,8 +1,9 @@
-<app-forum-new-thread-form [hidden]="question"
-  (question)="onAsk($event)">
-</app-forum-new-thread-form>
-<ng-container *ngIf="question">
+<ng-container *ngIf="question; else newQuestion">
   <app-forum-thread
     [question]="question">
   </app-forum-thread>
 </ng-container>
+<ng-template #newQuestion>
+  <app-forum-new-thread-form (threadSubmit)="onAsk($event)">
+  </app-forum-new-thread-form>
+</ng-template>

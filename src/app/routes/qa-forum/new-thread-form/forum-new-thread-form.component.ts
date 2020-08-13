@@ -11,7 +11,7 @@ import { ForumThread } from 'src/data/models/entities/ForumThread';
 })
 export class ForumNewThreadFormComponent {
 
-  @Output() public question: EventEmitter<ForumThread>;
+  @Output() public threadSubmit: EventEmitter<ForumThread> = new EventEmitter();
 
   public formGroup: FormGroup;
   public get title() { return this.formGroup.get('title'); }
@@ -27,8 +27,6 @@ export class ForumNewThreadFormComponent {
   constructor(
     protected fb: FormBuilder
   ) {
-    this.question = new EventEmitter();
-
     this.formGroup = this.fb.group({
       title: ['', Validators.required],
       questionContent: ['', Validators.required],
@@ -36,18 +34,19 @@ export class ForumNewThreadFormComponent {
     });
   }
 
-  public submitQuestion(): void {
-    const newQuestion = Object.assign(
+  public onSubmit(): void {
+    const newQuestion = Object.assign<ForumThread, Partial<ForumThread>>(
       new ForumThread(),
       {
         date: new Date(),
         title: this.title.value,
         author: { name: this.signature.value },
-        content: this.questionContent.value
+        content: this.questionContent.value,
+        answers: []
       }
     );
 
-    this.question.emit(newQuestion);
+    this.threadSubmit.emit(newQuestion);
     resetForm(this.formGroup);
   }
 
