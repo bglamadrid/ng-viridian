@@ -22,8 +22,8 @@ export class DevicesComponent
   public loading$: Observable<boolean>;
   public totalItemNumber: number;
 
-  public readonly labelAddDevice: string = LBL_ADD_DEVICE;
-  public readonly labelSuccess: string = MSG_INF_OPERATION_COMPLETED;
+  public get labelAddDevice(): string { return LBL_ADD_DEVICE; }
+  public get labelSuccess(): string { return MSG_INF_OPERATION_COMPLETED; }
 
   constructor(
     protected service: DevicesService,

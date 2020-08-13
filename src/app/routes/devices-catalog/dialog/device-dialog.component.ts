@@ -42,13 +42,13 @@ export class DeviceDialogComponent
 
   public dialogTitle: string;
 
-  public readonly labelName: string = LBL_NAME;
-  public readonly labelBrand: string = LBL_BRAND;
-  public readonly labelType: string = LBL_TYPE;
-  public readonly labelDescription: string = LBL_DESCRIPTION;
-  public readonly labelSpecs: string = LBL_SPECS;
-  public readonly labelKey: string = LBL_KEY;
-  public readonly labelValue: string = LBL_VALUE;
+  public get labelName(): string { return LBL_NAME; }
+  public get labelBrand(): string { return LBL_BRAND; }
+  public get labelType(): string { return LBL_TYPE; }
+  public get labelDescription(): string { return LBL_DESCRIPTION; }
+  public get labelSpecs(): string { return LBL_SPECS; }
+  public get labelKey(): string { return LBL_KEY; }
+  public get labelValue(): string { return LBL_VALUE; }
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: DeviceDialogData,
