@@ -24,6 +24,8 @@ import { ForumThreadReplyFormComponent } from './routes/qa-forum/thread-reply-fo
 import { ForumThreadComponent } from './routes/qa-forum/thread/forum-thread.component';
 import { SharedModule } from './shared/shared.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { OnlineCoursesComponent } from './routes/online-courses/online-courses.component';
+import { OnlineCourseCardComponent } from './routes/online-courses/card/online-course-card.component';
 
 registerLocaleData(localeEs);
 
@@ -45,7 +47,9 @@ registerLocaleData(localeEs);
     ForumFiltersPanelComponent,
     ForumNewThreadFormComponent,
     ForumThreadReplyFormComponent,
-    ForumThreadDialogComponent
+    ForumThreadDialogComponent,
+    OnlineCoursesComponent,
+    OnlineCourseCardComponent
   ],
   imports: [
     BrowserModule,

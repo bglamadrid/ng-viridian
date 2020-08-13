@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ course.title }}</mat-card-title>
+    <mat-card-subtitle>por {{ course.author.name }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="thumbnail">
+      <img *ngIf="course.images[0]; else noImage"
+        src="{{ course.images[0].url }}"
+        alt="{{ course.title }}" />
+      <ng-template #noImage>
+        <span>{{ labelNoPhotos }}</span>
+      </ng-template>
+    </div>
+    <p class="description">
+      {{ course.resume }}
+    </p>
+  </mat-card-content>
+</mat-card>

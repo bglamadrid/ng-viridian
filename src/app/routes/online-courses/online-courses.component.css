@@ -1,0 +1,21 @@
+.page {
+  background: #ddd;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+.catalog-wrapper {
+  flex: 1 1 auto;
+  padding: 0.75em 0.75em 0.75em 0.75em;
+  overflow-y: auto;
+  padding-bottom: 0.5em;
+}
+
+.catalog {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(auto-fit, 24em);
+  grid-auto-rows: 1fr;
+  justify-content: center;
+}

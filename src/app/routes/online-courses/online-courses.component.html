@@ -1,0 +1,13 @@
+<div class="page">
+  <mat-spinner-centered *ngIf="loading$ | async">
+  </mat-spinner-centered>
+
+  <div class="catalog-wrapper" [hidden]="loading$ | async">
+    <div class="catalog">
+      <app-online-course-card *ngFor="let course of (courses$ | async)"
+        [course]="course">
+
+      </app-online-course-card>
+    </div>
+  </div>
+</div>
