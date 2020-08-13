@@ -1,7 +1,7 @@
 <div class="app">
   <app-header></app-header>
   <mat-sidenav-container>
-    <mat-sidenav [opened]="sidenavOpen" mode="side" role="navigation">
+    <mat-sidenav [opened]="sidenavOpen$ | async" mode="side" role="navigation">
       <app-sidenav></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content role="main" class="content">

@@ -2,7 +2,7 @@
   <button mat-button
     class="header-toggle-nav"
     title="{{ toggleSideMenuLabel }}"
-    (click)="sidenavOpen = !sidenavOpen">
+    (click)="onClickToggleSidenav()">
     <i class="material-icons">menu</i>
   </button>
   <div class="header-logo">
@@ -10,7 +10,7 @@
     <h1>Forein</h1>
   </div>
   <div class="header-content">
-    <span>{{ currentModuleNameLabel }}</span>
+    <span>{{ currentModuleNameLabel$ | async }}</span>
   </div>
   <ng-template *ngIf="userNameLabel">
     <mat-menu #headerMenu class="header-menu" xPosition="before">

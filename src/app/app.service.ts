@@ -1,41 +1,39 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { isMobileScreen } from 'src/functions/isMobileScreen';
+import { ActivatedRouteSnapshot, ActivationEnd, Router } from '@angular/router';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { filter, map, throttleTime } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class AppService
-  implements OnDestroy {
+export class AppService {
 
-  public currentModuleName: string;
+  protected sidenavOpen: boolean = true;
+  protected sidenavOpenSource: Subject<boolean> = new BehaviorSubject(this.sidenavOpen);
 
-  public get localParamSidenavOpen(): string | null { return localStorage.getItem('sidenavOpen'); }
+  public sidenavOpen$: Observable<boolean> = this.sidenavOpenSource.asObservable();
 
-  public get sidenavOpen(): boolean {
-    const localParam = this.localParamSidenavOpen;
-    if (localParam === null) {
-      return !isMobileScreen();
-    }
+  public activeRouteSnapshot$: Observable<ActivatedRouteSnapshot>;
+  public currentPageName$: Observable<string>;
 
-    return (localParam === 'true');
-  }
-  public set sidenavOpen(v: boolean) {
-    localStorage.setItem('sidenavOpen', String(v));
-  }
+  constructor(
+    protected router: Router
+  ) {
+    this.activeRouteSnapshot$ = this.router.events.pipe(
+      filter(ev => ev instanceof ActivationEnd),
+      throttleTime(50),
+      map(ev => (ev as ActivationEnd).snapshot)
+    );
 
-  public get currentPathName(): string {
-    const pathSplits = location.pathname.split('/');
-    console.log(pathSplits);
-    return pathSplits[1];
-  }
-
-  constructor() {
-    this.currentModuleName = '';
-  }
-
-  ngOnDestroy(): void {
-    localStorage.removeItem('sidenavOpen');
+    this.currentPageName$ = this.activeRouteSnapshot$.pipe(
+      map(snap => snap.data.title as string)
+    );
   }
 
   public canNavigateTo(): boolean {
     return true;
+  }
+
+  public toggleSidenav(): void {
+    this.sidenavOpen = !this.sidenavOpen;
+    this.sidenavOpenSource.next(this.sidenavOpen);
   }
 }

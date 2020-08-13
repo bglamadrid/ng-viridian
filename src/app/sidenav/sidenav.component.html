@@ -1,8 +1,7 @@
 <mat-nav-list role="navigation-links">
-  <a mat-list-item *ngFor="let link of links; let i = index"
-    (click)="onNavigation(i)"
+  <a mat-list-item *ngFor="let link of (links$ | async)"
     [class.active]="link.enabled"
-    [routerLink]="['/', link.path]"
+    [routerLink]="[baseRoute, link.path]"
     [style.font-size]="link.fontSize">
     <i class="material-icons">{{ link.icon }}</i>
     {{ link.text }}

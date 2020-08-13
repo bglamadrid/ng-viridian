@@ -1,60 +1,56 @@
-import { Component, OnInit } from '@angular/core';
-import { SidenavItem } from './SidenavItem';
+import { Component } from '@angular/core';
+import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
+import { AppRoute, APP_ROUTES } from '../app-routing.module';
 import { AppService } from '../app.service';
-import { isMobileScreen } from 'src/functions/isMobileScreen';
-import { SIDENAV_ITEMS } from './sidenav.items';
-import { APP_ROUTES } from '../app-routing.module';
+import { SidenavItem } from './SidenavItem';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent
-  implements OnInit {
+export class SidenavComponent {
 
-  public links: SidenavItem[];
+  protected links: SidenavItem[] = [];
+  protected linksSource: Subject<SidenavItem[]> = new BehaviorSubject(this.links);
+  protected activeRouteSubscription: Subscription;
+
+  public links$: Observable<SidenavItem[]> = this.linksSource.asObservable();
+  public readonly baseRoute = '/';
 
   constructor(
-    protected svc: AppService
+    protected service: AppService
   ) {
-    this.links = this.loadItems();
   }
 
-  ngOnInit() {
-    const currentPath = this.svc.currentPathName;
+  protected routeToListItem(r: AppRoute): SidenavItem {
+    return {
+      path: r.path,
+      text: r.data.title,
+      icon: r.data.matIcon,
+      enabled: false
+    };
+  }
 
-    if (currentPath) {
-      const linkIndex = this.links.findIndex(m => m.path === currentPath);
-      if (linkIndex !== -1) {
-        this.setActiveItem(linkIndex);
+  ngOnInit(): void {
+    this.links = APP_ROUTES.filter(r => ('data' in r)).map(this.routeToListItem);
+    this.linksSource.next(this.links);
+
+    this.activeRouteSubscription = this.service.activeRouteSnapshot$.subscribe(
+      (route: ActivatedRouteSnapshot) => {
+        const mIndex = this.links.findIndex(v => v.path === route?.url[0]?.path);
+        if (mIndex !== -1) {
+          for (let m of this.links) { m.enabled = false; }
+          this.links[mIndex].enabled = true;
+          this.linksSource.next(this.links);
+        }
       }
-    }
-  }
-
-  protected loadItems(): SidenavItem[] {
-    return APP_ROUTES.filter(
-      r => (
-        r.path in SIDENAV_ITEMS &&
-        this.svc.canNavigateTo()
-      )
-    ).map(
-      r => SIDENAV_ITEMS[r.path]
     );
   }
 
-  protected setActiveItem(linkIndex: number) {
-    const item = this.links[linkIndex];
-    this.svc.currentModuleName = item.text;
-    this.links.forEach(m => { m.enabled = false; });
-    item.enabled = true;
-  }
-
-  public onNavigation(linkIndex: number) {
-    if (isMobileScreen()) {
-      this.svc.sidenavOpen = false;
-    }
-    this.setActiveItem(linkIndex);
+  ngOnDestroy(): void {
+    this.activeRouteSubscription.unsubscribe();
   }
 
 }

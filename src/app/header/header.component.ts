@@ -1,26 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/text/es/messages';
-import { ConfirmationDialogData, ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation.dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { AppService } from '../app.service';
 import { APP_NAME } from 'src/app/app.globals';
-import { LBL_TOGGLE_SIDEMENU, LBL_EDIT_PROFILE, LBL_DISCONNECT } from 'src/text/es/labels';
+import { ConfirmationDialogComponent, ConfirmationDialogData } from 'src/app/shared/confirmation-dialog/confirmation.dialog.component';
+import { LBL_DISCONNECT, LBL_EDIT_PROFILE, LBL_TOGGLE_SIDEMENU } from 'src/text/es/labels';
+import { MSG_INF_UNSUPPORTED_OPERATION } from 'src/text/es/messages';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent
-  implements OnInit {
+export class HeaderComponent {
 
-  public get sidenavOpen(): boolean { return this.svc.sidenavOpen; }
-  public set sidenavOpen(v: boolean) { this.svc.sidenavOpen = v; }
+  public currentModuleNameLabel$: Observable<string>;
+  public sidenavOpen$: Observable<boolean>;
 
   public get applicationNameLabel(): string { return APP_NAME; }
-  public get currentModuleNameLabel(): string { return this.svc.currentModuleName; }
   public get userNameLabel(): string { return 'User'; }
   public get toggleSideMenuLabel(): string { return LBL_TOGGLE_SIDEMENU; }
   public get editProfileLabel(): string { return LBL_EDIT_PROFILE; }
@@ -29,10 +27,10 @@ export class HeaderComponent
   constructor(
     protected snackBar: MatSnackBar,
     protected dialog: MatDialog,
-    protected svc: AppService
-  ) { }
-
-  ngOnInit() {
+    protected service: AppService
+  ) {
+    this.currentModuleNameLabel$ = this.service.currentPageName$.pipe();
+    this.sidenavOpen$ = this.service.sidenavOpen$.pipe();
   }
 
   protected askToConfirmExitSession(): Observable<boolean> {
@@ -48,6 +46,10 @@ export class HeaderComponent
         data: dialogData
       }
     ).afterClosed();
+  }
+
+  public onClickToggleSidenav(): void {
+    this.service.toggleSidenav();
   }
 
   public onClickEditProfile(): void {
