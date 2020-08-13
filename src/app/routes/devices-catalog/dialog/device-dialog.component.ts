@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Observable } from 'rxjs';
@@ -28,15 +28,17 @@ export class DeviceDialogComponent
   public deviceFamilies$: Observable<Descriptable[]>;
 
   public formGroup: FormGroup;
-  public get name() { return this.formGroup.get('name'); }
-  public get brand() { return this.formGroup.get('brand'); }
-  public get type() { return this.formGroup.get('type'); }
-  public get description() { return this.formGroup.get('description'); }
-  public get specs() { return this.formGroup.get('specs') as FormArray; }
-  public get urls() { return this.formGroup.get('urls') as FormArray; }
+  public get name(): FormControl { return this.formGroup.get('name') as FormControl; }
+  public get brand(): FormControl { return this.formGroup.get('brand') as FormControl; }
+  public get type(): FormControl { return this.formGroup.get('type') as FormControl; }
+  public get description(): FormControl { return this.formGroup.get('description') as FormControl; }
+  public get specs(): FormArray { return this.formGroup.get('specs') as FormArray; }
+  public get urls(): FormArray { return this.formGroup.get('urls') as FormArray; }
 
   @ViewChild('specsTable', { static: true }) public specsTable: MatTable<FormArray>;
   public specsTableColumns: string[] = [ 'key', 'value', 'actions' ];
+  @ViewChild('urlTable', { static: true }) public urlTable: MatTable<FormControl>;
+  public urlTableColumns: string[] = [ 'address', 'actions' ];
 
   public dialogTitle: string;
 
@@ -137,10 +139,12 @@ export class DeviceDialogComponent
   public onClickAddUrl(): void {
     const urlFormControl = this.formBuilder.control('', Validators.required);
     this.urls.push(urlFormControl);
+    this.urlTable.renderRows();
   }
 
   public onClickDeleteUrl(index: number): void {
     this.urls.removeAt(index);
+    this.urlTable.renderRows();
   }
 
   public onSubmit() {

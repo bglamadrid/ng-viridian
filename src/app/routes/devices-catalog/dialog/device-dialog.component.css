@@ -7,32 +7,11 @@ form {
   grid-gap: 1rem;
 }
 
-
-#specsTable .mat-column-key,
-#specsTable .mat-column-value {
-  flex: 1 0 10rem;
-}
-
-#specsTable .mat-column-actions {
-  flex: 0 0 3rem;
-}
-
-.urls.form-array-container {
-  display: flex;
-  flex-flow: row nowrap;
-  align-content: flex-start;
-}
-
-.urls.form-array-container>.urls {
-  flex: 1 1 8rem;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-evenly;
-}
-
-.form-array-container.urls>.btn-add-url {
-  flex: 0 0 auto;
-  margin: 1rem;
+.mat-column-actions {
+  text-align: right;
+  width: 3rem;
+  max-width: 3rem;
+  padding: 1rem;
 }
 
 .actions {
