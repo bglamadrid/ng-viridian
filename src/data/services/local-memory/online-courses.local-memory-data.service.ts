@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { EntityLocalMemoryDataService } from './local-memory-data.abstract-service';
-import { Lesson } from 'src/data/models/entities/Lesson';
+import { OnlineCourse } from 'src/data/models/entities/OnlineCourse';
 
-export const MOCK_LESSONS: Partial<Lesson>[] = [
+export const MOCK_LESSONS: Partial<OnlineCourse>[] = [
   {
     id: 1,
     date: new Date('2020-01-16T19:33'),
@@ -32,11 +32,11 @@ export const MOCK_LESSONS: Partial<Lesson>[] = [
 ];
 
 @Injectable()
-export class LessonsInMemoryDataService
-  extends EntityLocalMemoryDataService<Lesson> {
+export class OnlineCoursesInMemoryDataService
+  extends EntityLocalMemoryDataService<OnlineCourse> {
 
   constructor() {
     super();
-    this.items = MOCK_LESSONS.map(u => Object.assign(new Lesson(), u));
+    this.items = MOCK_LESSONS.map(u => Object.assign(new OnlineCourse(), u));
   }
 }

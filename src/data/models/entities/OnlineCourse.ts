@@ -2,7 +2,7 @@ import { AbstractEntity } from '../AbstractEntity';
 import { UserProfile } from './UserProfile';
 import { Image } from '../Image';
 
-export class Lesson
+export class OnlineCourse
   extends AbstractEntity {
 
   id: number;
