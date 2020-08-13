@@ -47,9 +47,10 @@ export class DevicesComponent
     return this.dialogService.open(
       DeviceDialogComponent,
       {
-        panelClass: 'with-actions',
+        panelClass: [ 'with-actions', 'no-padding' ],
         width: '40rem',
-        height: '70vh',
+        height: '40rem',
+        maxHeight: '90%',
         data: dialogData
       }
     ).afterClosed();
