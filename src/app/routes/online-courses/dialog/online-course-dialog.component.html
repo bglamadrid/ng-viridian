@@ -15,11 +15,12 @@
     <p class="description">
       {{ course.resume }}
     </p>
-    <iframe width="1280" height="720"
-      [src]="youtubeURL | safe"
-      frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
+    <div class="youtube-container">
+      <iframe [src]="youtubeURL | safe"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
   </div>
 </div>

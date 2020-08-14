@@ -5,8 +5,8 @@
   <div class="catalog-wrapper" [hidden]="loading$ | async">
     <div class="catalog">
       <app-online-course-card *ngFor="let course of (courses$ | async)"
-        [course]="course">
-
+        [course]="course"
+        (click)="onClickView(course)">
       </app-online-course-card>
     </div>
   </div>

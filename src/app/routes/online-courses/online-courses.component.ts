@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { mapTo, startWith } from 'rxjs/operators';
 import { OnlineCourse } from 'src/data/models/entities/OnlineCourse';
+import { OnlineCourseDialogComponent } from './dialog/online-course-dialog.component';
+import { OnlineCourseDialogData } from './dialog/OnlineCourseDialogData';
 import { OnlineCoursesService } from './online-courses.service';
-import { startWith, mapTo } from 'rxjs/operators';
 
 @Component({
   selector: 'app-online-courses',
@@ -16,7 +19,8 @@ export class OnlineCoursesComponent
   public loading$: Observable<boolean>;
 
   constructor(
-    protected service: OnlineCoursesService
+    protected service: OnlineCoursesService,
+    protected dialogService: MatDialog
   ) {
     this.courses$ = this.service.courses$.pipe();
     this.loading$ = this.courses$.pipe(startWith(true), mapTo(false));
@@ -24,6 +28,20 @@ export class OnlineCoursesComponent
 
   ngOnInit(): void {
     this.service.reloadCourses();
+  }
+
+  public onClickView(c: OnlineCourse): void {
+    const dialogData: OnlineCourseDialogData = {
+      onlineCourse: c
+    };
+
+    this.dialogService.open(
+      OnlineCourseDialogComponent,
+      {
+        width: '40rem',
+        data: dialogData
+      }
+    );
   }
 
 }
