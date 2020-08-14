@@ -1,9 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { OnlineCourse } from 'src/data/models/entities/OnlineCourse';
-import { OnlineCourseDialogData } from './OnlineCourseDialogData';
-import { SafeHtml } from '@angular/platform-browser';
 import { LBL_NO_PHOTOS } from 'src/text/es/labels';
+import { OnlineCourseDialogData } from './OnlineCourseDialogData';
 
 @Component({
   selector: 'app-online-course-dialog',
@@ -15,6 +14,8 @@ export class OnlineCourseDialogComponent {
   public course: OnlineCourse;
 
   public youtubeURL: string;
+
+  public get labelNoPhotos(): string { return LBL_NO_PHOTOS; }
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: OnlineCourseDialogData
