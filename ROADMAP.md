@@ -22,4 +22,5 @@
 * Consume different labels based on preferred language
 * Add interface to switch languages
 * More examples & complete mock data
-* More & better documentation
+* More, better documentation
+* Fix existing unit tests & write more!
