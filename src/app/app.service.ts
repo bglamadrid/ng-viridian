@@ -1,12 +1,13 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, ActivationEnd, Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { filter, map, throttleTime } from 'rxjs/operators';
+import { isMobileScreen } from 'src/functions/isMobileScreen';
 
 @Injectable({ providedIn: 'root' })
 export class AppService {
 
-  protected sidenavOpen: boolean = true;
+  protected sidenavOpen: boolean = !isMobileScreen();
   protected sidenavOpenSource: Subject<boolean> = new BehaviorSubject(this.sidenavOpen);
 
   public sidenavOpen$: Observable<boolean> = this.sidenavOpenSource.asObservable();
