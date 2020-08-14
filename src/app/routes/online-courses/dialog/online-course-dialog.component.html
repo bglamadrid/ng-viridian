@@ -1,0 +1,25 @@
+<div class="dialog">
+  <div class="header">
+    <mat-card-title>{{ course.title }}</mat-card-title>
+    <mat-card-subtitle>por {{ course.author.name }}</mat-card-subtitle>
+  </div>
+  <div class="content">
+    <div class="thumbnail">
+      <img *ngIf="course.images[0]; else noImage"
+        src="{{ course.images[0].url }}"
+        alt="{{ course.title }}" />
+      <ng-template #noImage>
+        <span>{{ labelNoPhotos }}</span>
+      </ng-template>
+    </div>
+    <p class="description">
+      {{ course.resume }}
+    </p>
+    <!-- <iframe width="1280" height="720"
+      [src]="course.youtubeVideoId"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe> -->
+  </div>
+</div>

@@ -26,6 +26,7 @@ import { SharedModule } from './shared/shared.module';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { OnlineCoursesComponent } from './routes/online-courses/online-courses.component';
 import { OnlineCourseCardComponent } from './routes/online-courses/card/online-course-card.component';
+import { OnlineCourseDialogComponent } from './routes/online-courses/dialog/online-course-dialog.component';
 
 registerLocaleData(localeEs);
 
@@ -49,7 +50,8 @@ registerLocaleData(localeEs);
     ForumThreadReplyFormComponent,
     ForumThreadDialogComponent,
     OnlineCoursesComponent,
-    OnlineCourseCardComponent
+    OnlineCourseCardComponent,
+    OnlineCourseDialogComponent
   ],
   imports: [
     BrowserModule,
