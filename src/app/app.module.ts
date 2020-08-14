@@ -63,10 +63,6 @@ registerLocaleData(localeEs);
     AppRoutingModule,
     DataModule
   ],
-  entryComponents: [
-    DeviceDialogComponent,
-    ForumThreadDialogComponent
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

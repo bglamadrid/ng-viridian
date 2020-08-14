@@ -10,9 +10,6 @@ import { SafePipe } from './safe.pipe';
     ConfirmationDialogComponent,
     SafePipe
   ],
-  entryComponents: [
-    ConfirmationDialogComponent
-  ],
   imports: [
     AngularMaterialModule
   ],
