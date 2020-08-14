@@ -27,7 +27,8 @@ export const MOCK_LESSONS: Partial<OnlineCourse>[] = [
         '  2) Herramientas del programa y primer proyecto\n' +
         '  3) Edición de proyecto de audio\n' +
         '  4) Presentación del proyecto\n\n' +
-      'El objetivo de la unidad es que los estudiantes sean capaces de utilizar de forma básica una herramienta digital para la producción de materal auditivo con el fin de perfimitir el fortalecimiento de los proyectos fonográficos que se desarrollaran más adelante en el año escolar.'
+      'El objetivo de la unidad es que los estudiantes sean capaces de utilizar de forma básica una herramienta digital para la producción de materal auditivo con el fin de perfimitir el fortalecimiento de los proyectos fonográficos que se desarrollaran más adelante en el año escolar.',
+    youtubeVideoId: 'pJlWRBHb00o'
   }
 ];
 

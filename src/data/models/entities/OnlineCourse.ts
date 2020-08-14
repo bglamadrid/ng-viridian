@@ -12,4 +12,5 @@ export class OnlineCourse
   public resume: string;
   public content: string;
   public images: Partial<Image>[];
+  public youtubeVideoId?: string;
 }
