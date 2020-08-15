@@ -156,7 +156,7 @@ export const MOCK_DEVICES: Partial<Device>[] = [
     name: 'Acer Aspire 1',
     description: '',
     urls: [
-      'http://www.mercadopublico.cl/CMII/Archivos/AttchPC.aspx?file=G9moE3Of1jobqVFGNuLPCUekRqkyVHKnk0iU3SZ5VslmxcecMI8x6AeIYD+Ztf+W'
+      'https://www.mercadopublico.cl/CMII/Archivos/AttchPC.aspx?file=Fd/1svIF76UzFEqHRP5ISpjj5Vsd4OwV5TQRWAlUReSSNrJ1TgN6FCPWsF8r9l9H'
     ],
     brand: { id: 1, name: 'Lenovo' },
     images: [
