@@ -9,6 +9,10 @@
   }
 }
 
+.sidenav * {
+  color: var(--color-content);
+}
+
 mat-nav-list {
   min-height: 100%;
   display: grid;
@@ -16,18 +20,9 @@ mat-nav-list {
   border-right: none;
 }
 
-mat-nav-list * {
-  color: var(--color-content);
-}
-
-mat-nav-list a {
+mat-nav-list>a {
+  height: 4rem;
   font-size: 1.25rem;
-  padding: 0.5rem 0;
-}
-@media(min-width: 800px) {
-  mat-nav-list a {
-    padding: 1rem 0;
-  }
 }
 
 a:hover {
@@ -39,8 +34,8 @@ a.active {
 }
 
 a .material-icons {
-  font-size: 2.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
   margin-right: 0.25em;
 }
