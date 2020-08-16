@@ -11,6 +11,12 @@
   }
 }
 
+@media(max-width: 799px) {
+  mat-card {
+    border-radius: 0;
+  }
+}
+
 h2 {
   text-align: center;
 }
