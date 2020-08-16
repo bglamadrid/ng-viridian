@@ -1,33 +1,35 @@
 <div class="header">
-  <button mat-button
-    class="header-toggle-nav"
-    title="{{ toggleSideMenuLabel }}"
+  <button mat-button type="button"
+    class="toggle-sidenav action"
+    [title]="toggleSideMenuLabel"
     (click)="onClickToggleSidenav()">
     <i class="material-icons">menu</i>
   </button>
-  <div class="header-logo">
-    <img src="assets/logo.png" alt="Forein">
-    <h1>Forein</h1>
+  <div class="logo">
+    <img src="assets/logo.png" [alt]="appTitle">
+    <h1>{{ appTitle }}</h1>
   </div>
-  <div class="header-content">
+  <div class="middle">
     <span>{{ currentModuleNameLabel$ | async }}</span>
   </div>
   <ng-template *ngIf="userNameLabel">
     <mat-menu #headerMenu class="header-menu" xPosition="before">
-      <button mat-menu-item class="header-menu-edit-profile"
-        title="{{ editProfileLabel }}"
+      <button mat-menu-item type="button"
+        [title]="editProfileLabel"
         (click)="onClickEditProfile()">
         <i class="material-icons">edit</i>
         {{ editProfileLabel }}
       </button>
-      <button mat-menu-item class="header-menu-exit-session"
-        title="{{ disconnectLabel }}"
+      <button mat-menu-item type="button"
+        [title]="disconnectLabel"
         (click)="onClickExitSession()">
         <i class="material-icons">exit_to_app</i>
         {{ disconnectLabel }}
       </button>
     </mat-menu>
-    <button mat-button class="header-open-menu" [matMenuTriggerFor]="headerMenu">
+    <button mat-button type="button"
+      class="open-menu action"
+      [matMenuTriggerFor]="headerMenu">
       <span>{{ userNameLabel }}</span>
       <i class="material-icons">person</i>
     </button>

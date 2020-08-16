@@ -24,6 +24,8 @@ export class HeaderComponent {
   public get editProfileLabel(): string { return LBL_EDIT_PROFILE; }
   public get disconnectLabel(): string { return LBL_DISCONNECT; }
 
+  public appTitle = 'Viridian';
+
   constructor(
     protected snackBar: MatSnackBar,
     protected dialog: MatDialog,
