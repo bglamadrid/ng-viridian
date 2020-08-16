@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/styles/material-buttons.css';
 @import './assets/styles/important.css';
+@import './assets/styles/color-palette.css';
 @import './assets/fonts/MaterialIcons/MaterialIcons.css';
 @import './assets/fonts/LiberationSans/LiberationSans.css';
 
