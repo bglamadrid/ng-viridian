@@ -1,43 +1,46 @@
-mat-sidenav {
-  width: 16em;
-  background: maroon;
-  border-right: none;
+.sidenav {
+  min-height: 100%;
+  width: 16rem;
+  background-color: var(--color-bg);
+}
+@media(min-width: 800px) {
+  .sidenav {
+    width: fit-content;
+  }
 }
 
 mat-nav-list {
-  width: 16em;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
+  min-height: 100%;
+  display: grid;
   padding: 0;
-  background: maroon;
   border-right: none;
 }
 
-mat-nav-list>a {
-  color: white;
-  height: 3.75rem;
+mat-nav-list * {
+  color: var(--color-content);
+}
+
+mat-nav-list a {
   font-size: 1.25rem;
-  border-top: 1px rgba(0, 0, 0, 0.1) solid;
-  border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+  padding: 0.5rem 0;
+}
+@media(min-width: 800px) {
+  mat-nav-list a {
+    padding: 1rem 0;
+  }
 }
 
-mat-nav-list>a:hover,
-mat-nav-list>a.active {
-  background: darkred;
+a:hover {
+  background-color: rgba(0,0,0,0.1);
 }
 
-mat-nav-list>a:hover {
-  border-top: 1px rgba(0, 0, 0, 0.25) solid;
-  border-bottom: 1px rgba(0, 0, 0, 0.25) solid;
+a.active {
+  background-color: rgba(0,0,0,0.2);
 }
 
-mat-nav-list>a.active {
-  border-top: 1px rgba(255, 255, 255, 0.1) solid;
-  border-bottom: 1px rgba(255, 255, 255, 0.1) solid;
-}
-
-mat-nav-list>a i {
+a .material-icons {
   font-size: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   margin-right: 0.25em;
 }

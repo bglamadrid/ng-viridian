@@ -1,9 +1,11 @@
-<mat-nav-list role="navigation-links">
-  <a mat-list-item *ngFor="let link of (links$ | async)"
-    [class.active]="link.enabled"
-    [routerLink]="[baseRoute, link.path]"
-    [style.font-size]="link.fontSize">
-    <i class="material-icons">{{ link.icon }}</i>
-    {{ link.text }}
-  </a>
-</mat-nav-list>
+<div class="sidenav">
+  <mat-nav-list>
+    <a mat-list-item *ngFor="let link of (links$ | async)"
+      [class.active]="link.enabled"
+      [routerLink]="[baseRoute, link.path]"
+      [style.font-size]="link.fontSize">
+      <i class="material-icons">{{ link.icon }}</i>
+      {{ link.text }}
+    </a>
+  </mat-nav-list>
+</div>
