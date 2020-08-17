@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { APP_VERSION } from '../app.globals';
+import { APP_NAME, APP_VERSION } from '../app.globals';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +9,7 @@ import { APP_VERSION } from '../app.globals';
 export class FooterComponent
   implements OnInit {
 
+  public get labelAppName(): string { return APP_NAME; }
   public get labelVersion(): string { return APP_VERSION; }
 
   constructor() { }

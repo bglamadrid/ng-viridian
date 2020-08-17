@@ -1,4 +1,4 @@
-# NgForein
+# NgViridian
 
 Este repositorio contiene el código fuente de la app web para el primer proyecto de la fundación chilena de fomento, reciclaje e investigación tecnológica sin fines de lucro, FOREIN.
 Esta app pretende potenciar los programas de JUNAEB (YEMP y MCPA) como una plataforma de interfaz web que disponga los siguientes módulos:
