@@ -74,6 +74,27 @@ export class DeviceDialogComponent
     }
   }
 
+  private specsAsFormArray(dvc: Device): FormArray {
+    const controls = [];
+    for (const key in dvc.specifications) {
+      if (dvc.specifications.hasOwnProperty(key)) {
+        const keyControl = this.formBuilder.control(key, Validators.required);
+        const valueControl = this.formBuilder.control(dvc.specifications[key], Validators.required);
+        controls.push(this.formBuilder.array([keyControl, valueControl]));
+      }
+    }
+    return this.formBuilder.array(controls);
+  }
+
+  private urlsAsFormArray(dvc: Device): FormArray {
+    const controls = [];
+    for (const url of dvc.urls) {
+      const control = this.formBuilder.control(url, Validators.required);
+      controls.push(control);
+    }
+    return this.formBuilder.array(controls);
+  }
+
   protected load(dvc: Device) {
     this.deviceId = (dvc.id ? dvc.id : 0);
     this.images = (dvc.images ? dvc.images : []);
@@ -83,17 +104,11 @@ export class DeviceDialogComponent
     this.type.setValue(dvc.deviceFamily.id);
     this.description.setValue(dvc.description);
 
-    const specifications = [];
-    for (const key in dvc.specifications) {
-      if (dvc.specifications.hasOwnProperty(key)) {
-        const keyControl = this.formBuilder.control(key, Validators.required);
-        const valueControl = this.formBuilder.control(dvc.specifications[key], Validators.required);
-        specifications.push(this.formBuilder.array([keyControl, valueControl]));
-      }
-    }
+    const specificationsFormArray = this.specsAsFormArray(dvc);
+    this.formGroup.setControl('specs', specificationsFormArray);
 
-    this.formGroup.setControl('specs', this.formBuilder.array(specifications));
-    this.urls.setValue(dvc.urls);
+    const urlsFormArray = this.urlsAsFormArray(dvc);
+    this.formGroup.setControl('urls', urlsFormArray);
   }
 
   ngOnInit() {
