@@ -90,7 +90,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            URLs
+            URLs ({{ urls.controls.length }})
           </mat-panel-title>
         </mat-expansion-panel-header>
         <table mat-table #urlTable id="urlTable"
@@ -127,7 +127,7 @@
         </table>
       </mat-expansion-panel>
 
-      <div class="actions" [hidden]="submitting$ | async">
+      <div class="actions">
         <button mat-raised-button type="submit"
           color="success"
           [disabled]="formGroup.invalid || formGroup.untouched || formGroup.pristine">
