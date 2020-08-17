@@ -23,8 +23,7 @@ export class HeaderComponent {
   public get toggleSideMenuLabel(): string { return LBL_TOGGLE_SIDEMENU; }
   public get editProfileLabel(): string { return LBL_EDIT_PROFILE; }
   public get disconnectLabel(): string { return LBL_DISCONNECT; }
-
-  public appTitle = 'Viridian';
+  public get appTitleLabel(): string { return APP_NAME; };
 
   constructor(
     protected snackBar: MatSnackBar,
